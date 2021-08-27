@@ -44,9 +44,6 @@ stomata_anatomy1 = stomata_anatomy |>
   filter(!str_detect(trait, "width"), 
          !(source == "pathare_increased_2020" & str_detect(trait, "pore")))
 
-processed_data_files = tibble(file_name = list.files("processed-data"))
-objects_files = tibble(file_name = list.files("objects"))
-
 # 01_taxize-data ----
 taxize_output = read_rds("processed-data/taxize_output.rds") |>
   mutate(ref = case_when(
@@ -107,6 +104,9 @@ h2_parameters = read_rds("objects/h2_parameters.rds") |>
     upper = scientize(.upper, threshold = -2L),
     interval = glue("95\\% HPD interval $[{lower},{upper}]$")
   )
+
+# 17_summarize-fit ----
+mo = read_rds("objects/modeloutput.rds")
 
 ```
 
@@ -348,15 +348,61 @@ stomata_anatomy_metadata |>
 write_csv(pair_div, "ms/tableS2.csv")
 ```
 
-```{r, modeloutput}
+\begin{table}[ht]
+\caption{\label{tab:modeloutput} Parameter estimates and 95\% highest posterior density (HPD) intervals. For each trait ($D_\mathrm{ab}$, $D_\mathrm{ad}$, $L_\mathrm{ab}$, $L_\mathrm{ad}$) we estimated the average (median) divergence between taxon pairs, denoted $\Delta \text{log(trait)}$. See Table \ref{tab:traits} for symbol definitions. The second section is the standard deviation of $\Delta \text{log(trait)}$. The third section is the estimated coefficient of pair age (millions of years) on the standard devition on a log-link scale. The fourth section is the estimated correlation coefficient between $\Delta \text{log(trait)}$ of all pairwise trait combinations. The final section is the estimated $\nu$ family of the Student $t$ distribution.}
+\begin{center}
+\begin{tabular}{lll}
 
-# stomata_anatomy_metadata |>
-#   dplyr::mutate(Source = stringr::str_c("@", source), Taxa = taxa) |>
-#   dplyr::select(Source, Taxa) |>
-#   knitr::kable(format = "markdown", caption = "Primary sources of stomatal anatomical data and the taxa covered by each source.")
-tibble(x = 1:2, y = 3:4) |>
-  knitr::kable(format = "markdown", caption = "Model output")
-```
+  \toprule
+  Trait(s) & Estimate & 95\% HPD interval \\
+  \midrule
+  
+  \multicolumn{3}{l}{Average $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}$ & `r mo$mu["D_ab", "value"]`  & `r mo$mu["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r mo$mu["D_ad", "value"]`  & `r mo$mu["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r mo$mu["L_ab", "value"]`  & `r mo$mu["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r mo$mu["L_ad", "value"]`  & `r mo$mu["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Standard deviation of $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}$ & `r mo$sigma["D_ab", "value"]`  & `r mo$sigma["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r mo$sigma["D_ad", "value"]`  & `r mo$sigma["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r mo$sigma["L_ab", "value"]`  & `r mo$sigma["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r mo$sigma["L_ad", "value"]`  & `r mo$sigma["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Effect of pair age on standard deviation of $\Delta \text{log(trait)}$} \\
+  \multicolumn{3}{l}{log-link scale} \\
+  \\
+  $D_\mathrm{ab}$ & `r mo$age["D_ab", "value"]`  & `r mo$age["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r mo$age["D_ad", "value"]`  & `r mo$age["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r mo$age["L_ab", "value"]`  & `r mo$age["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r mo$age["L_ad", "value"]`  & `r mo$age["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Correlation between $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}-D_\mathrm{ad}$ & 
+  `r mo$cor["D_ab-D_ad", "value"]`  & `r mo$cor["D_ab-D_ad", "hdi"]`  \\
+  $D_\mathrm{ab}-L_\mathrm{ab}$ & 
+  `r mo$cor["D_ab-L_ab", "value"]`  & `r mo$cor["D_ab-L_ab", "hdi"]`  \\
+  $D_\mathrm{ab}-L_\mathrm{ad}$ & 
+  `r mo$cor["D_ab-L_ad", "value"]`  & `r mo$cor["D_ab-L_ad", "hdi"]`  \\
+  $D_\mathrm{ad}-L_\mathrm{ab}$ & 
+  `r mo$cor["D_ad-L_ab", "value"]`  & `r mo$cor["D_ad-L_ab", "hdi"]`  \\
+  $D_\mathrm{ad}-L_\mathrm{ad}$ & 
+  `r mo$cor["D_ad-L_ad", "value"]`  & `r mo$cor["D_ad-L_ad", "hdi"]`  \\
+  $L_\mathrm{ab}-L_\mathrm{ad}$ & 
+  `r mo$cor["L_ab-L_ad", "value"]`  & `r mo$cor["L_ab-L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Student $t$ famil parameter $\nu$} \\
+  \\
+  $-$ & `r mo$nu["nu", "value"]`  & `r mo$nu["nu", "hdi"]`  \\
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
 
 \clearpage
 

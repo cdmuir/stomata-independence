@@ -5,7 +5,7 @@ data: objects/pair_div.rds
 model: objects/fit.rds
 paper: ms/ms.pdf figures/concepts.pdf figures/h1-raw.pdf figures/h1.pdf figures/h2.pdf
 
-ms/ms.pdf: ms/ms.Rmd ms/stomata-independence.bib figures/concepts.pdf figures/h1-raw.pdf figures/h2-raw.pdf figures/h1.pdf figures/h2.pdf
+ms/ms.pdf: ms/ms.Rmd ms/stomata-independence.bib figures/concepts.pdf figures/h1-raw.pdf figures/h2-raw.pdf figures/h1.pdf figures/h2.pdf objects/modeloutput.rds
 	Rscript -e 'rmarkdown::render("ms/ms.Rmd", output_format = "bookdown::pdf_document2", output_file = "ms.pdf")'
 
 figures/concepts.pdf: r/16_plot-concepts.R
@@ -26,6 +26,9 @@ figures/h2.pdf: r/11_prepare-plotting.R r/13_plot-h2-pairs.R r/15_plot-h2.R obje
 	Rscript -e 'source("r/11_prepare-plotting.R")'
 	Rscript -e 'source("r/13_plot-h2-pairs.R")'
 	Rscript -e 'source("r/15_plot-h2.R")'
+
+objects/modeloutput.rds: objects/fit.rds r/17_summarize-fit.R
+	Rscript -e 'source("r/17_summarize-fit.R")'
 
 objects/fit.rds: r/10_fit-pairs.R processed-data/trimmed-data.rds processed-data/trimmed-phylogeny.rds objects/pair_div.rds
 	Rscript -e 'source("r/10_fit-pairs.R")'
