@@ -186,7 +186,7 @@ We reasoned that the developmental hypotheses for inverse size-density scaling a
 
 We tested these predictions in a phylogenetic comparative framework by compiling stomatal anatomy data from the literature for a broad range of seed plants. 	
 
-# Methods
+# Materials and Methods
 
 Unless otherwise mentioned, we performed all data wrangling and statistical analyses in *R* version `r as.character(getRversion())` [@r_core_team_r:_2021]. The source code is available to reviewers. All source code will be publically available on GitHub upon publication (https://github.com/cdmuir/stomata-independence) and archived on Zenodo.
 
@@ -300,6 +300,14 @@ Future research should identify the mechanistic basis of developmental disintegr
 
 <!-- CONCLUSION PARAGRAPH? -->
 
+# Acknowledgements
+
+CDM designed the study, compiled data, analyzed data, and wrote the manuscript with input from all authors. All authors contributed data. We thank Jacob Watts for comments on earlier versions of this manuscript.
+
+# Data avaibility
+
+The final data set and phylogeny used in the analysis are included in the [Supporting Information]. The raw anatomical data and source code will be archived on Zenodo upon publication.
+
 \clearpage
 
 # Supporting Information
@@ -316,6 +324,13 @@ stomata_anatomy_metadata |>
   dplyr::mutate(Source = stringr::str_c("@", source), Taxa = taxa) |>
   dplyr::select(Source, Taxa) |>
   knitr::kable(format = "markdown", caption = "Primary sources of stomatal anatomical data and the taxa covered by each source.")
+
+```
+
+```{r}
+
+# write supporting information table
+write_csv(pair_div, "ms/tableS2.csv")
 
 ```
 

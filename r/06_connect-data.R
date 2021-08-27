@@ -89,32 +89,36 @@ trimmed_data = trimmed_data |>
   left_join(resolved_names, by = "source_id") |>
   mutate(phy_name = str_replace_all(resolved_name, " ", "_"))
 
-duplicated_tips = trimmed_data |>
+# Remove cases where different sources measured the same species by choosing
+# most recent observation or at random if they are same year. This occurred
+# because sometimes two source_ids resolved to same resolved_name, for example
+trimmed_data = trimmed_data |>
+  mutate(source_year = str_extract(source, "[1-2][0-9]{3}")) |>
+  group_by(resolved_name) |>
+  summarize(
+    # n = n(), 
+    # sources = str_c(source, collapse = ","),
+    i = last(order(source_year)), 
+    source = source[i], 
+    source_id = source_id[i],             
+    abaxial_stomatal_density_mm2 = abaxial_stomatal_density_mm2[i],
+    adaxial_stomatal_density_mm2 = adaxial_stomatal_density_mm2[i],
+    abaxial_stomatal_length_um = abaxial_stomatal_length_um[i],
+    adaxial_stomatal_length_um = adaxial_stomatal_length_um[i],
+    resolved_name = resolved_name[i],
+    phy_name = phy_name[i],
+    .groups = "drop"
+  ) |>
+  select(-i)
+  
+# should be no duplicated resolved_names
+trimmed_data |>
   group_by(resolved_name) |>
   summarize(n = n(), .groups = "drop") |>
   filter(n > 1L) |>
-  pull(resolved_name)
-
-trimmed_data = trimmed_data |>
-  group_by(resolved_name) |>
-  mutate(phy_name = ifelse(resolved_name %in% duplicated_tips,
-                           str_c(phy_name, "_", LETTERS[1:n()]),
-                           phy_name))
-
-duplicated_tips = trimmed_data |>
-  group_by(resolved_name) |>
-  summarize(n = n(), .groups = "drop") |>
-  filter(n > 1L)
-
-for (i in 1:nrow(duplicated_tips)) {
-  
-  phy2 = split_tip(
-    phy = phy2, 
-    tip.label = duplicated_tips$resolved_name[i],
-    n = duplicated_tips$n[i]
-  )
-  
-}
+  nrow() |>
+  equals(0) |>
+  assert_true()
 
 # Export trimmed dataset and phylogeny ----
 
