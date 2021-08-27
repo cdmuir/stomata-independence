@@ -60,3 +60,7 @@ processed-data/phy.rds: r/03_make-megatree.R processed-data/resolved_names.rds
 
 clean: 
 	\rm -f *~ *.Rout */*~ */*.Rout .RData Rplots.pdf
+	
+cleanall: 
+	\rm -f *.aux *.bbl *.blg *.log *.pdf *~ *.Rout */*~ */*.Rout figures/*.png figures/*.pdf ms/ms.pdf ms/ms.tex objects/*.rds processed-data/*.rds */*.aux */*.log 
+

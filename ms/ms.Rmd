@@ -302,7 +302,11 @@ Future research should identify the mechanistic basis of developmental disintegr
 
 # Acknowledgements
 
-CDM designed the study, compiled data, analyzed data, and wrote the manuscript with input from all authors. All authors contributed data. We thank Jacob Watts for comments on earlier versions of this manuscript.
+We thank Jacob Watts for comments on earlier versions of this manuscript.
+
+# Author Contribution
+
+CDM designed the study, compiled data, analyzed data, and wrote the manuscript with input from all authors. All authors contributed data. 
 
 # Data avaibility
 
