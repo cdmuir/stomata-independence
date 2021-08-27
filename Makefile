@@ -17,12 +17,12 @@ figures/h1-raw.pdf: r/08_plot-h1-raw.R
 figures/h2-raw.pdf: r/09_plot-h2-raw.R
 	Rscript -e 'source("r/09_plot-h2-raw.R")'
 
-figures/h1.pdf: r/11_prepare-plotting.R r/12_plot-h1-pairs.R r/14_plot-h1.R
+figures/h1.pdf: r/11_prepare-plotting.R r/12_plot-h1-pairs.R r/14_plot-h1.R objects/fit.rds
 	Rscript -e 'source("r/11_prepare-plotting.R")'
 	Rscript -e 'source("r/12_plot-h1-pairs.R")'
 	Rscript -e 'source("r/14_plot-h1.R")'
 
-figures/h2.pdf: r/11_prepare-plotting.R r/13_plot-h2-pairs.R r/15_plot-h2.R
+figures/h2.pdf: r/11_prepare-plotting.R r/13_plot-h2-pairs.R r/15_plot-h2.R objects/fit.rds
 	Rscript -e 'source("r/11_prepare-plotting.R")'
 	Rscript -e 'source("r/13_plot-h2-pairs.R")'
 	Rscript -e 'source("r/15_plot-h2.R")'
