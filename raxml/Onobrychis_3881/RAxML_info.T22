@@ -1,0 +1,148 @@
+IMPORTANT WARNING: Alignment column 78 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 98 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 115 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 116 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 117 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 118 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 119 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 120 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 121 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 122 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 213 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 214 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 247 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 272 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 341 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 342 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 343 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 344 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 345 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 346 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 780 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 1383 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 1848 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 1867 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2674 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2675 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2676 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2677 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2678 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2679 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2680 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2681 contains only undetermined values which will be treated as missing data
+
+IMPORTANT WARNING
+Found 32 columns that contain only undetermined values which will be treated as missing data.
+Normally these columns should be excluded from the analysis.
+
+
+Just in case you might need it, a mixed model file with 
+model assignments for undetermined columns removed is printed to file ../../alignments/Onobrychis_3881_outpart.reduced
+Just in case you might need it, an alignment file with 
+undetermined columns removed is printed to file ../../alignments/Onobrychis_3881_outaln_names1.reduced
+
+Alignment has 32 completely undetermined sites that will be automatically removed from the input data
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 1243 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 39.32%
+
+RAxML rapid hill-climbing mode
+
+Using 4 distinct models/data partitions with individual per partition branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 501
+Name: Onobrychis_3881/clusters/cluster1.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 1
+Alignment Patterns: 264
+Name: Onobrychis_3881/clusters/cluster3.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 2
+Alignment Patterns: 311
+Name: Onobrychis_3881/clusters/cluster2.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 3
+Alignment Patterns: 167
+Name: Onobrychis_3881/clusters/cluster4.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Onobrychis_3881_outpart -s ../../alignments/Onobrychis_3881_outaln_names1 -n T22 
+
+
+Partition: 0 with name: Onobrychis_3881/clusters/cluster1.aln.rn
+Base frequencies: 0.216 0.250 0.278 0.255 
+
+Partition: 1 with name: Onobrychis_3881/clusters/cluster3.aln.rn
+Base frequencies: 0.398 0.109 0.105 0.387 
+
+Partition: 2 with name: Onobrychis_3881/clusters/cluster2.aln.rn
+Base frequencies: 0.379 0.170 0.160 0.291 
+
+Partition: 3 with name: Onobrychis_3881/clusters/cluster4.aln.rn
+Base frequencies: 0.410 0.118 0.118 0.355 
+
+Inference[0]: Time 52.603563 GAMMA-based likelihood -15839.048169, best rearrangement setting 5
+alpha[0]: 0.561276 rates[0] ac ag at cg ct gt: 1.099305 2.231669 1.097998 0.740713 2.208467 1.000000 alpha[1]: 0.274484 rates[1] ac ag at cg ct gt: 0.979877 1.153582 0.295072 1.127783 0.896127 1.000000 alpha[2]: 0.213921 rates[2] ac ag at cg ct gt: 0.800754 1.527456 0.477058 1.222388 1.325217 1.000000 alpha[3]: 0.231327 rates[3] ac ag at cg ct gt: 0.537071 0.692815 0.172138 0.921078 0.718182 1.000000 
+
+
+Conducting final model optimizations on all 1 trees under GAMMA-based models ....
+
+Inference[0] final GAMMA-based Likelihood: -15838.180046 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Onobrychis_3881/RAxML_result.T22
+
+
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -15838.180046 .... 
+
+Final GAMMA-based Score of best tree -15838.180046
+
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Onobrychis_3881/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Onobrychis_3881/RAxML_bestTree.T22
+
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Onobrychis_3881/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Onobrychis_3881/RAxML_bestTree.T22.PARTITION.3
+
+Overall execution time: 64.253435 secs or 0.017848 hours or 0.000744 days
+

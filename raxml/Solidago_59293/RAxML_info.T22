@@ -1,0 +1,213 @@
+IMPORTANT WARNING: Alignment column 2279 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2280 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2312 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2313 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2314 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2368 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2398 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2399 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2400 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2780 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 2998 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5262 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5363 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5413 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5414 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5415 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5436 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5438 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5472 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5473 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5841 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5843 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5866 contains only undetermined values which will be treated as missing data
+
+
+IMPORTANT WARNING: Sequences Solidago_leiocarpa and Solidago_lepida are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_puberula are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_pallida are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_latissimifolia are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_jejunifolia are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_brendiae are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_mollis are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_racemosa and Solidago_squarrosa are exactly identical
+
+
+IMPORTANT WARNING: Sequences Solidago_ontarioensis and Solidago_chlorolepis are exactly identical
+
+IMPORTANT WARNING
+Found 9 sequences that are exactly identical to other sequences in the alignment.
+Normally they should be excluded from the analysis.
+
+
+IMPORTANT WARNING
+Found 23 columns that contain only undetermined values which will be treated as missing data.
+Normally these columns should be excluded from the analysis.
+
+
+Just in case you might need it, a mixed model file with 
+model assignments for undetermined columns removed is printed to file ../../alignments/Solidago_59293_outpart.reduced
+Just in case you might need it, an alignment file with 
+sequence duplicates and undetermined columns removed is printed to file ../../alignments/Solidago_59293_outaln_names1.reduced
+
+Alignment has 23 completely undetermined sites that will be automatically removed from the input data
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 467 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 60.12%
+
+RAxML rapid hill-climbing mode
+
+Using 6 distinct models/data partitions with individual per partition branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 44
+Name: Solidago_59293/clusters/cluster6.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 1
+Alignment Patterns: 111
+Name: Solidago_59293/clusters/cluster2.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 2
+Alignment Patterns: 133
+Name: Solidago_59293/clusters/cluster7.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 3
+Alignment Patterns: 78
+Name: Solidago_59293/clusters/cluster3.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 4
+Alignment Patterns: 55
+Name: Solidago_59293/clusters/cluster1.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 5
+Alignment Patterns: 46
+Name: Solidago_59293/clusters/cluster5.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Solidago_59293_outpart -s ../../alignments/Solidago_59293_outaln_names1 -n T22 
+
+
+Partition: 0 with name: Solidago_59293/clusters/cluster6.aln.rn
+Base frequencies: 0.372 0.162 0.135 0.331 
+
+Partition: 1 with name: Solidago_59293/clusters/cluster2.aln.rn
+Base frequencies: 0.285 0.189 0.179 0.347 
+
+Partition: 2 with name: Solidago_59293/clusters/cluster7.aln.rn
+Base frequencies: 0.464 0.081 0.084 0.371 
+
+Partition: 3 with name: Solidago_59293/clusters/cluster3.aln.rn
+Base frequencies: 0.235 0.247 0.278 0.239 
+
+Partition: 4 with name: Solidago_59293/clusters/cluster1.aln.rn
+Base frequencies: 0.270 0.198 0.232 0.299 
+
+Partition: 5 with name: Solidago_59293/clusters/cluster5.aln.rn
+Base frequencies: 0.163 0.214 0.286 0.336 
+
+
+WARNING the alpha parameter with a value of 12.777363 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 29.337541 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 67.233131 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 21.167711 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+Inference[0]: Time 12.381997 GAMMA-based likelihood -9885.443361, best rearrangement setting 10
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 1.383207 1.693580 0.667077 0.958092 0.775189 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.023222 2.233029 0.000100 1.130504 2.820630 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.982212 0.994096 14.541247 0.000100 3.395106 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 2.347546 5.616183 3.213481 0.000100 6.454100 1.000000 alpha[4]: 0.978256 rates[4] ac ag at cg ct gt: 14.870288 0.000100 0.000100 0.000100 14.690477 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.169217 6.702495 0.833613 2.044297 14.588488 1.000000 
+
+
+Conducting final model optimizations on all 1 trees under GAMMA-based models ....
+
+Inference[0] final GAMMA-based Likelihood: -9883.711496 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_result.T22
+
+
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -9883.711496 .... 
+
+Final GAMMA-based Score of best tree -9883.704059
+
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22
+
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22.PARTITION.5
+
+Overall execution time: 15.834128 secs or 0.004398 hours or 0.000183 days
+

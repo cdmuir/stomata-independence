@@ -1,0 +1,243 @@
+IMPORTANT WARNING: Alignment column 5890 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5891 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5892 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5893 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5894 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5895 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5896 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5897 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5898 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5899 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5900 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5901 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5902 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5903 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5904 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5905 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5906 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5907 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5908 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 5909 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6103 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6104 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6143 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6144 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6145 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6146 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6147 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6148 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6149 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6150 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6151 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6152 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6153 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6154 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6155 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6337 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6338 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6339 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6340 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6341 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6342 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6343 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6344 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6345 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6346 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6347 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6348 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6349 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6350 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6351 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6352 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6353 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6354 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6355 contains only undetermined values which will be treated as missing data
+IMPORTANT WARNING: Alignment column 6356 contains only undetermined values which will be treated as missing data
+
+IMPORTANT WARNING
+Found 55 columns that contain only undetermined values which will be treated as missing data.
+Normally these columns should be excluded from the analysis.
+
+
+Just in case you might need it, a mixed model file with 
+model assignments for undetermined columns removed is printed to file ../../alignments/Echinochloa_45618_outpart.reduced
+Just in case you might need it, an alignment file with 
+undetermined columns removed is printed to file ../../alignments/Echinochloa_45618_outaln_names1.reduced
+
+Alignment has 55 completely undetermined sites that will be automatically removed from the input data
+
+
+
+This is RAxML version 8.2.12 released by Alexandros Stamatakis on May 2018.
+
+With greatly appreciated code contributions by:
+Andre Aberer      (HITS)
+Simon Berger      (HITS)
+Alexey Kozlov     (HITS)
+Kassian Kobert    (HITS)
+David Dao         (KIT and HITS)
+Sarah Lutteropp   (KIT and HITS)
+Nick Pattengale   (Sandia)
+Wayne Pfeiffer    (SDSC)
+Akifumi S. Tanabe (NRIFS)
+Charlie Taylor    (UF)
+
+
+Alignment has 263 distinct alignment patterns
+
+Proportion of gaps and completely undetermined characters in this alignment: 54.92%
+
+RAxML rapid hill-climbing mode
+
+Using 6 distinct models/data partitions with individual per partition branch length optimization
+
+
+Executing 1 inferences on the original alignment using 1 distinct randomized MP trees
+
+All free model parameters will be estimated by RAxML
+GAMMA model of rate heterogeneity, ML estimate of alpha-parameter
+
+GAMMA Model parameters will be estimated up to an accuracy of 0.1000000000 Log Likelihood units
+
+Partition: 0
+Alignment Patterns: 54
+Name: Echinochloa_45618/clusters/cluster1.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 1
+Alignment Patterns: 24
+Name: Echinochloa_45618/clusters/cluster5.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 2
+Alignment Patterns: 45
+Name: Echinochloa_45618/clusters/cluster6.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 3
+Alignment Patterns: 71
+Name: Echinochloa_45618/clusters/cluster2.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 4
+Alignment Patterns: 34
+Name: Echinochloa_45618/clusters/cluster3.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+Partition: 5
+Alignment Patterns: 35
+Name: Echinochloa_45618/clusters/cluster4.aln.rn
+DataType: DNA
+Substitution Matrix: GTR
+
+
+
+
+RAxML was called as follows:
+
+raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Echinochloa_45618_outpart -s ../../alignments/Echinochloa_45618_outaln_names1 -n T22 
+
+
+Partition: 0 with name: Echinochloa_45618/clusters/cluster1.aln.rn
+Base frequencies: 0.313 0.171 0.162 0.354 
+
+Partition: 1 with name: Echinochloa_45618/clusters/cluster5.aln.rn
+Base frequencies: 0.271 0.208 0.234 0.287 
+
+Partition: 2 with name: Echinochloa_45618/clusters/cluster6.aln.rn
+Base frequencies: 0.274 0.168 0.176 0.382 
+
+Partition: 3 with name: Echinochloa_45618/clusters/cluster2.aln.rn
+Base frequencies: 0.214 0.295 0.298 0.194 
+
+Partition: 4 with name: Echinochloa_45618/clusters/cluster3.aln.rn
+Base frequencies: 0.340 0.167 0.169 0.324 
+
+Partition: 5 with name: Echinochloa_45618/clusters/cluster4.aln.rn
+Base frequencies: 0.273 0.196 0.244 0.288 
+
+
+WARNING the alpha parameter with a value of 13.104431 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 30.337243 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 70.135021 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 152.785562 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+Inference[0]: Time 1.497198 GAMMA-based likelihood -11937.885932, best rearrangement setting 10
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.174336 1.290440 0.507662 0.342855 0.785188 1.000000 alpha[1]: 152.785562 rates[1] ac ag at cg ct gt: 4.508565 0.000100 3.397111 5.686651 4.809175 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.914153 2.642518 0.806104 0.000100 1.680210 1.000000 alpha[3]: 0.485105 rates[3] ac ag at cg ct gt: 1.155862 2.967991 1.538837 0.274905 5.618885 1.000000 alpha[4]: 0.020000 rates[4] ac ag at cg ct gt: 2.619914 1.284212 3.698514 5.908649 3.187978 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 8.078928 0.000100 3.806341 6.530313 2.811590 1.000000 
+
+
+Conducting final model optimizations on all 1 trees under GAMMA-based models ....
+
+
+WARNING the alpha parameter with a value of 343.615956 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 784.190233 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+
+WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 1 with the name "Echinochloa_45618/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+Inference[0] final GAMMA-based Likelihood: -11936.561471 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Echinochloa_45618/RAxML_result.T22
+
+
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -11936.561471 .... 
+
+Final GAMMA-based Score of best tree -11936.558378
+
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Echinochloa_45618/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Echinochloa_45618/RAxML_bestTree.T22
+
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Echinochloa_45618/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Echinochloa_45618/RAxML_bestTree.T22.PARTITION.5
+
+Overall execution time: 4.740748 secs or 0.001317 hours or 0.000055 days
+
