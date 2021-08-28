@@ -10,13 +10,13 @@ This repository contains source code associated with the manuscript:
 
 These authors contributed data:
 
-Miquel Àngel Conesa
-Jeroni Galmés
-Varsha S. Pathare
-PatriciaRivera
-Rosana López Rodríguez
-Teresa Terrazas
-Dongliang Xiong
+* Miquel Àngel Conesa
+* Jeroni Galmés
+* Varsha S. Pathare
+* PatriciaRivera
+* Rosana López Rodríguez
+* Teresa Terrazas
+* Dongliang Xiong
 
 ## Contents
 
