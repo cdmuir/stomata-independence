@@ -13,7 +13,7 @@ These authors contributed data:
 * Miquel Àngel Conesa
 * Jeroni Galmés
 * Varsha S. Pathare
-* PatriciaRivera
+* Patricia Rivera
 * Rosana López Rodríguez
 * Teresa Terrazas
 * Dongliang Xiong
