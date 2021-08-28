@@ -130,7 +130,7 @@ Dongliang Xiong\textsuperscript{6}
 \bf{2} Research Group on Plant Biology under Mediterranean Conditions, Departament de Biologia, Universitat de les Illes Balears, Ctra. Valldemossa km 7.5, E-07122, Palma, Spain \\
 \bf{3} School of Biological Sciences, Washington State University, Pullman, WA 99164-4236, USA \\
 \bf{4} Departamento de Botánica, Instituto de Biología, Universidad Nacional Autónoma de México, Apartado Postal 70‑367, 04510 Mexico City, Mexico \\
-\bf{5} Departamento de Sistemas y Recursos Naurales, Universidad Politécnica de Madrid, 28040 Madrid, Spain. \\
+\bf{5} Departamento de Sistemas y Recursos Naturales, Universidad Politécnica de Madrid, 28040 Madrid, Spain \\
 \bf{6} National Key Laboratory of Crop Genetic Improvement, MOA Key Laboratory of Crop Ecophysiology and Farming System in the Middle Reaches of the Yangtze River, College of Plant Science and Technology, Huazhong Agricultural University, Wuhan, Hubei 430070, China\\
 \bigskip
 * cdmuir@hawaii.edu
@@ -324,7 +324,7 @@ The final data set and phylogeny used in the analysis are included in the [Suppo
 **Note S1:** Final fully resolved bifurcating phylogenetic tree of `r n_tax3` taxa in Newick format.
 ```{r}
 library(ape)
-write.tree(trimmed_phy, "ms/notesS1.new")
+write.tree(trimmed_phy, "ms/notesS1.new.txt")
 ```
 
 ```{r, sources}
