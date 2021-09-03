@@ -10,13 +10,13 @@ This repository contains source code associated with the manuscript:
 
 These authors contributed data:
 
-Miquel Àngel Conesa
-Jeroni Galmés
-Varsha S. Pathare
-PatriciaRivera
-Rosana López Rodríguez
-Teresa Terrazas
-Dongliang Xiong
+* Miquel Àngel Conesa
+* Jeroni Galmés
+* Varsha S. Pathare
+* Patricia Rivera
+* Rosana López Rodríguez
+* Teresa Terrazas
+* Dongliang Xiong
 
 ## Contents
 
@@ -31,7 +31,7 @@ This repository has the following file folders:
 - `raxml`: out from tree inference using [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)
 - `template`: manuscript style files
 
-## Prerequisites (copied from https://github.com/daijiang/workflow_demo):
+## Prerequisites:
 
 To run code and render manuscript:
 
