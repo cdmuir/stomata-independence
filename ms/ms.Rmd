@@ -2,8 +2,8 @@
 output:
   bookdown::pdf_document2:
     includes:
-      before_body: ../template/doc_prefix.tex
-      in_header: ../template/preamble.tex
+      before_body: ../template/amnat_doc_prefix.tex
+      in_header: ../template/amnat_preamble.tex
     keep_tex: yes
     latex_engine: pdflatex
     number_sections: no
@@ -16,10 +16,10 @@ output:
     number_sections: no
     toc: yes
   bookdown::word_document2: null
-fontsize: 10pt
-linestretch: 1.5
+fontsize: 12pt
+linestretch: 1.7
 link-citations: yes
-bst: ../template/newphyt.bst
+bst: ../template/amnat.bst
 bibliography: stomata-independence.bib
 ---
 
@@ -110,43 +110,66 @@ mo = read_rds("objects/modeloutput.rds")
 
 ```
 
-\begin{flushleft}
-{\Large
-\textbf\newline{Developmental integration cannot explain major features of stomatal anatomical evolution in seed plants}
-}
-\newline
-\\
-Christopher D. Muir\textsuperscript{1,*},
-Miquel \`{A}ngel Conesa\textsuperscript{2},
-Jeroni Galm\'{e}s\textsuperscript{2},
-Varsha S. Pathare\textsuperscript{3},
-Patricia Rivera\textsuperscript{4},
-Rosana López Rodríguez\textsuperscript{5},
-Teresa Terrazas\textsuperscript{4},
-Dongliang Xiong\textsuperscript{6}
-\\
-\bigskip
-\bf{1} School of Life Sciences, University of Hawaiʻi at M\=anoa, Honolulu, HI 96822, USA \\
-\bf{2} Research Group on Plant Biology under Mediterranean Conditions, Departament de Biologia, Universitat de les Illes Balears, Ctra. Valldemossa km 7.5, E-07122, Palma, Spain \\
-\bf{3} School of Biological Sciences, Washington State University, Pullman, WA 99164-4236, USA \\
-\bf{4} Departamento de Botánica, Instituto de Biología, Universidad Nacional Autónoma de México, Apartado Postal 70‑367, 04510 Mexico City, Mexico \\
-\bf{5} Departamento de Sistemas y Recursos Naturales, Universidad Politécnica de Madrid, 28040 Madrid, Spain \\
-\bf{6} National Key Laboratory of Crop Genetic Improvement, MOA Key Laboratory of Crop Ecophysiology and Farming System in the Middle Reaches of the Yangtze River, College of Plant Science and Technology, Huazhong Agricultural University, Wuhan, Hubei 430070, China\\
-\bigskip
-* cdmuir@hawaii.edu
+<!-- % Covering page info I used for New Phyt -->
+<!-- % For Am Nat, moved to "template/amnat_preamble.text" -->
+<!-- \begin{flushleft} -->
+<!-- {\Large -->
+<!-- \textbf\newline{Developmental integration cannot explain major features of stomatal anatomical evolution in seed plants} -->
+<!-- } -->
+<!-- \newline -->
+<!-- \\ -->
+<!-- Christopher D. Muir\textsuperscript{1,*}, -->
+<!-- Miquel \`{A}ngel Conesa\textsuperscript{2}, -->
+<!-- Jeroni Galm\'{e}s\textsuperscript{2}, -->
+<!-- Varsha S. Pathare\textsuperscript{3}, -->
+<!-- Patricia Rivera\textsuperscript{4}, -->
+<!-- Rosana López Rodríguez\textsuperscript{5}, -->
+<!-- Teresa Terrazas\textsuperscript{4}, -->
+<!-- Dongliang Xiong\textsuperscript{6} -->
+<!-- \\ -->
+<!-- \bigskip -->
+<!-- \bf{1} School of Life Sciences, University of Hawaii at M\=anoa, Honolulu, HI 96822, USA \\ -->
+<!-- \bf{2} Research Group on Plant Biology under Mediterranean Conditions, Departament de Biologia, Universitat de les Illes Balears, Ctra. Valldemossa km 7.5, E-07122, Palma, Spain \\ -->
+<!-- \bf{3} School of Biological Sciences, Washington State University, Pullman, WA 99164-4236, USA \\ -->
+<!-- \bf{4} Departamento de Botánica, Instituto de Biología, Universidad Nacional Autónoma de México, Apartado Postal 70‑367, 04510 Mexico City, Mexico \\ -->
+<!-- \bf{5} Departamento de Sistemas y Recursos Naturales, Universidad Politécnica de Madrid, 28040 Madrid, Spain \\ -->
+<!-- \bf{6} National Key Laboratory of Crop Genetic Improvement, MOA Key Laboratory of Crop Ecophysiology and Farming System in the Middle Reaches of the Yangtze River, College of Plant Science and Technology, Huazhong Agricultural University, Wuhan, Hubei 430070, China\\ -->
+<!-- \bigskip -->
+<!-- * cdmuir@hawaii.edu -->
 
-\end{flushleft}
+<!-- \end{flushleft} -->
+
+
+\maketitle
+
+\bigskip
+
+\textit{Manuscript elements}: Figure 1, figure 2, figure 3, figure 4, figure 5, table 1, online appendix A (including Notes A1, table A1, table A2, and table A3).
+
+\bigskip
+
+\textit{Keywords}: adaptation, amphistomy, developmental integration, leaf, phylogenetic comparative methods, stomata
+
+\bigskip
+
+\textit{Manuscript type}: Major Article
+
+\bigskip
+
+\textit{Word Count}: 4,704
+
+\bigskip
+
+\linenumbers{}
+\modulolinenumbers[3]
+
+\newpage{}
 
 # Abstract
 
-* Developmental integration can cause traits to covary over macroevolutionary time and in some cases prevent populations from reaching their adaptive optima. Developmental integration between stomatal size and density may contribute to two major features of stomatal anatomical evolution: inverse size-density scaling and bimodal stomatal ratio. If these patterns result from developmental integration, we predicted that in amphistomatous leaves 1) stomatal size and density should covary similarly on both abaxial and adaxial surfaces and 2) stomatal traits (size and density) on each surface should covary isometrically.
-* We synthesized data on stomatal density and length from amphistomatous leaves of `r n_tax3` terrestrial seed plant taxa mostly from the literature. We estimated the covariance in divergence between stomatal traits from `r n_pair` phylogenetically independent contrasts using a robust Bayesian model.
-*	Adaxial stomatal density, but not length, is evolutionarily labile and not strongly integrated with stomatal length or abaxial stomatal density. Hence, developmental integration alone cannot explain inverse size-density scaling nor bimodal stomatal  ratio.
-* Quasi-independent evolution of stomatal anatomical traits facilitates largely unfettered access to fitness optima. If stomatal anatomical traits are near their current fitness optimum, this implies that limits on trait (co)variance result from selective rather than developmental constraints. However, we cannot rule out that developmental integration is important in some lineages. Future research should identify the mechanistic basis of (dis)integration in stomatal development.
+Developmental integration can cause traits to covary over macroevolutionary time and in some cases prevent populations from reaching their adaptive optima. Developmental integration between stomatal size and density may contribute to two major features of stomatal anatomical evolution: inverse size-density scaling and bimodal stomatal ratio. If these patterns result from developmental integration, we predicted that in amphistomatous leaves 1) stomatal size and density should covary similarly on both abaxial and adaxial surfaces and 2) stomatal traits (size and density) on each surface should covary isometrically. We synthesized data on stomatal density and length from amphistomatous leaves of `r n_tax3` terrestrial seed plant taxa mostly from the literature. We estimated the covariance in divergence between stomatal traits from `r n_pair` phylogenetically independent contrasts using a robust Bayesian model. Adaxial stomatal density, but not length, is evolutionarily labile and not strongly integrated with stomatal length or abaxial stomatal density. Hence, developmental integration alone cannot explain inverse size-density scaling nor bimodal stomatal  ratio. Quasi-independent evolution of stomatal anatomical traits facilitates largely unfettered access to fitness optima. If stomatal anatomical traits are near their current fitness optimum, this implies that limits on trait (co)variance result from selective rather than developmental constraints. However, we cannot rule out that developmental integration is important in some lineages. Future research should identify the mechanistic basis of (dis)integration in stomatal development.
 
-**Keywords:** Adaptation, amphistomy, developmental integration, leaf, phylogenetic comparative methods, stomata
-
-\linenumbers
+\newpage{}
 
 # Introduction
 
@@ -213,7 +236,7 @@ Data on stomatal anatomy are spread over a disparate literature and we have not 
 
 We resolved taxonomic names using the R package **taxize** version `r packageVersion("taxize")` [@chamberlain_taxize_2013]. We queried taxonomic names supplied by the original study authors on `r str_extract(file.info("processed-data/taxize_output.rds")$ctime, "^[0-9]{4}-[0-9]{2}-[0-9]{2}")` from the following sources: `r taxize_source_ref`. We retained the maximum scoring matched name with taxize score $\ge 0.75$ (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from `r n_tax1` to `r n_tax2` taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
 
-We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018 ; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducated molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa (Notes S1). Seven taxa are gymnosperms; the vast majority are angiosperms. 
+We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018 ; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducated molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa (Notes A1). Seven taxa are gymnosperms; the vast majority are angiosperms. 
 
 ## Phylogenetically independent contrasts
 
@@ -300,13 +323,13 @@ Future research should identify the mechanistic basis of developmental disintegr
 
 <!-- CONCLUSION PARAGRAPH? -->
 
-# Acknowledgements
+<!-- # Acknowledgements -->
 
-We thank Jacob Watts for comments on earlier versions of this manuscript.
+<!-- We thank Jacob Watts for comments on earlier versions of this manuscript. -->
 
-# Author Contribution
+<!-- # Author Contribution -->
 
-CDM designed the study, compiled data, analyzed data, and wrote the manuscript with input from all authors. All authors contributed data. 
+<!-- CDM designed the study, compiled data, analyzed data, and wrote the manuscript with input from all authors. All authors contributed data.  -->
 
 # Data avaibility
 
@@ -314,17 +337,16 @@ The final data set and phylogeny used in the analysis are included in the [Suppo
 
 \clearpage
 
-# Supporting Information
+# Online Appendix
 
-\renewcommand\thefigure{S\arabic{figure}}    
-\renewcommand\thetable{S\arabic{table}}    
+\renewcommand\thefigure{A\arabic{figure}}    
+\renewcommand\thetable{A\arabic{table}}    
 \setcounter{figure}{0}    
 \setcounter{table}{0}    
 
-**Note S1:** Final fully resolved bifurcating phylogenetic tree of `r n_tax3` taxa in Newick format.
 ```{r}
 library(ape)
-write.tree(trimmed_phy, "ms/notesS1.new.txt")
+write.tree(trimmed_phy, "ms/notesA1.new")
 ```
 
 ```{r, sources}
@@ -406,4 +428,4 @@ write_csv(pair_div, "ms/tableS2.csv")
 
 \clearpage
 
-# References
+# Literature Cited

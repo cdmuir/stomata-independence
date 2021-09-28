@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  10pt,
+  12pt,
 ]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -69,112 +69,25 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\usepackage{geometry}
-\geometry{verbose,letterpaper,top=0.85in,left=2.75in,footskip=0.75in,marginparwidth=2in}
-
-% \usepackage[breaklinks=true,pdfstartview=FitH,citecolor=blue]{hyperref}
-\hypersetup{colorlinks,%
-	citecolor=blue,%
-	filecolor=red,%
-	linkcolor=blue,%
-	urlcolor=red,%
-	pdfstartview=FitH}
-
-\usepackage[T1]{fontenc}
+% \documentclass[11pt]{article} % redundant
+\usepackage[sc]{mathpazo} %Like Palatino with extensive math support
+\usepackage{fullpage}
+\usepackage[authoryear,sectionbib,sort]{natbib}
+\linespread{1.7}
 \usepackage[utf8]{inputenc}
-\usepackage{textgreek}
-\usepackage[greek,english]{babel}
-\usepackage{microtype}
-\usepackage{amsmath}
-\usepackage[osf]{libertine}
-\usepackage{libertinust1math}
-\usepackage{inconsolata}
+\usepackage{lineno}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{\thesection}{1em}{}
+\titleformat{\subsection}[block]{\Large\itshape\filcenter}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{\large\itshape}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]{\itshape}{\theparagraph}{1em}{}[. ]\renewcommand{\refname}{Literature Cited}
 
-\usepackage{booktabs}
+\title{Developmental integration cannot explain major features of stomatal anatomical evolution in seed plants}
 
-\usepackage{setspace}
-\doublespacing
+\setlength{\parindent}{5ex}
 
-% \setstretch{1.8999999999999999}
-
-\usepackage[right]{lineno}
-
-% \renewcommand{\rmdefault}{cmr}
-
-% Additional template based on: https://www.overleaf.com/project/5dba26749d2ef50001d3a002
-
-% clean citations
-\usepackage{cite}
-
-% hyperref makes references clicky. use \url{www.example.com} or \href{www.example.com}{description} to add a clicky url
-\usepackage{nameref,hyperref}
-
-% improves typesetting in LaTeX
-\usepackage{microtype}
-\DisableLigatures[f]{encoding = *, family = * }
-
-% text layout - change as needed
-\raggedright
-\setlength{\parindent}{0.5cm}
-\textwidth 5.25in 
-\textheight 8.75in
-
-% adjust caption style
-\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,singlelinecheck=off]{caption}
-
-% remove brackets from references
-\makeatletter
-\renewcommand{\@biblabel}[1]{\quad#1.}
-\makeatother
-
-% headrule, footrule and page numbers
-\usepackage{lastpage,fancyhdr,graphicx}
-\usepackage{epstopdf}
-\pagestyle{myheadings}
-\pagestyle{fancy}
-\fancyhf{}
-\rfoot{\thepage/\pageref{LastPage}}
-\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
-\fancyheadoffset[L]{2.25in}
-\fancyfootoffset[L]{2.25in}
-
-% use \textcolor{color}{text} for colored text (e.g. highlight to-do areas)
-\usepackage{color}
-
-% define custom colors (this one is for figure captions)
-\definecolor{Gray}{gray}{.25}
-
-% this is required to include graphics
-\usepackage{graphicx}
-
-% use if you want to put caption to the side of the figure - see example in text
-\usepackage{sidecap}
-
-% use for have text wrap around figures
-\usepackage{wrapfig}
-\usepackage[pscoord]{eso-pic}
-\usepackage[fulladjust]{marginnote}
-\reversemarginpar
-
-
-% flush left while keep identation
-\makeatletter
-\newcommand\iraggedright{%
-  \let\\\@centercr\@rightskip\@flushglue \rightskip\@rightskip
-  \leftskip\z@skip}
-\makeatother
-
-% make pdf as default figure format
-\DeclareGraphicsExtensions{.pdf,.png, %
-    .jpg,.mps,.jpeg,.jbig2,.jb2,.JPG,.JPEG,.JBIG2,.JB2}
-
-\usepackage{newunicodechar}
-\DeclareRobustCommand{\okina}{%
-  \raisebox{\dimexpr\fontcharht\font`A-\height}{%
-    \scalebox{0.8}{`}%
-  }%
-}
-\newunicodechar{ʻ}{\okina}
+\author{}
+\date{\vspace{-2.5em}}
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -200,59 +113,44 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \author{}
-\date{\vspace{-2.5em}}
+\date{}
 
 \begin{document}
 
-% align only at left, not at right.
-\iraggedright
 
-\setstretch{1.5}
-\begin{flushleft}
-{\Large
-\textbf\newline{Developmental integration cannot explain major features of stomatal anatomical evolution in seed plants}
-}
-\newline
-\\
-Christopher D. Muir\textsuperscript{1,*},
-Miquel \`{A}ngel Conesa\textsuperscript{2},
-Jeroni Galm\'{e}s\textsuperscript{2},
-Varsha S. Pathare\textsuperscript{3},
-Patricia Rivera\textsuperscript{4},
-Rosana López Rodríguez\textsuperscript{5},
-Teresa Terrazas\textsuperscript{4},
-Dongliang Xiong\textsuperscript{6}
-\\
-\bigskip
-\bf{1} School of Life Sciences, University of Hawaiʻi at M\=anoa, Honolulu, HI 96822, USA \\
-\bf{2} Research Group on Plant Biology under Mediterranean Conditions, Departament de Biologia, Universitat de les Illes Balears, Ctra. Valldemossa km 7.5, E-07122, Palma, Spain \\
-\bf{3} School of Biological Sciences, Washington State University, Pullman, WA 99164-4236, USA \\
-\bf{4} Departamento de Botánica, Instituto de Biología, Universidad Nacional Autónoma de México, Apartado Postal 70‑367, 04510 Mexico City, Mexico \\
-\bf{5} Departamento de Sistemas y Recursos Naturales, Universidad Politécnica de Madrid, 28040 Madrid, Spain \\
-\bf{6} National Key Laboratory of Crop Genetic Improvement, MOA Key Laboratory of Crop Ecophysiology and Farming System in the Middle Reaches of the Yangtze River, College of Plant Science and Technology, Huazhong Agricultural University, Wuhan, Hubei 430070, China\\
-\bigskip
-* cdmuir@hawaii.edu
 
-\end{flushleft}
+\setstretch{1.7}
+\maketitle
+
+\bigskip
+
+\textit{Manuscript elements}: Figure 1, figure 2, figure 3, figure 4, figure 5, table 1, online appendix A (including Notes A1, table A1, table A2, and table A3).
+
+\bigskip
+
+\textit{Keywords}: adaptation, amphistomy, developmental integration, leaf, phylogenetic comparative methods, stomata
+
+\bigskip
+
+\textit{Manuscript type}: Major Article
+
+\bigskip
+
+\textit{Word Count}: 4,704
+
+\bigskip
+
+\linenumbers{}
+\modulolinenumbers[3]
+
+\newpage{}
 
 \hypertarget{abstract}{%
 \section{Abstract}\label{abstract}}
 
-\begin{itemize}
-\tightlist
-\item
-  Developmental integration can cause traits to covary over macroevolutionary time and in some cases prevent populations from reaching their adaptive optima. Developmental integration between stomatal size and density may contribute to two major features of stomatal anatomical evolution: inverse size-density scaling and bimodal stomatal ratio. If these patterns result from developmental integration, we predicted that in amphistomatous leaves 1) stomatal size and density should covary similarly on both abaxial and adaxial surfaces and 2) stomatal traits (size and density) on each surface should covary isometrically.
-\item
-  We synthesized data on stomatal density and length from amphistomatous leaves of 711 terrestrial seed plant taxa mostly from the literature. We estimated the covariance in divergence between stomatal traits from 327 phylogenetically independent contrasts using a robust Bayesian model.
-\item
-  Adaxial stomatal density, but not length, is evolutionarily labile and not strongly integrated with stomatal length or abaxial stomatal density. Hence, developmental integration alone cannot explain inverse size-density scaling nor bimodal stomatal ratio.
-\item
-  Quasi-independent evolution of stomatal anatomical traits facilitates largely unfettered access to fitness optima. If stomatal anatomical traits are near their current fitness optimum, this implies that limits on trait (co)variance result from selective rather than developmental constraints. However, we cannot rule out that developmental integration is important in some lineages. Future research should identify the mechanistic basis of (dis)integration in stomatal development.
-\end{itemize}
+Developmental integration can cause traits to covary over macroevolutionary time and in some cases prevent populations from reaching their adaptive optima. Developmental integration between stomatal size and density may contribute to two major features of stomatal anatomical evolution: inverse size-density scaling and bimodal stomatal ratio. If these patterns result from developmental integration, we predicted that in amphistomatous leaves 1) stomatal size and density should covary similarly on both abaxial and adaxial surfaces and 2) stomatal traits (size and density) on each surface should covary isometrically. We synthesized data on stomatal density and length from amphistomatous leaves of 711 terrestrial seed plant taxa mostly from the literature. We estimated the covariance in divergence between stomatal traits from 327 phylogenetically independent contrasts using a robust Bayesian model. Adaxial stomatal density, but not length, is evolutionarily labile and not strongly integrated with stomatal length or abaxial stomatal density. Hence, developmental integration alone cannot explain inverse size-density scaling nor bimodal stomatal ratio. Quasi-independent evolution of stomatal anatomical traits facilitates largely unfettered access to fitness optima. If stomatal anatomical traits are near their current fitness optimum, this implies that limits on trait (co)variance result from selective rather than developmental constraints. However, we cannot rule out that developmental integration is important in some lineages. Future research should identify the mechanistic basis of (dis)integration in stomatal development.
 
-\textbf{Keywords:} Adaptation, amphistomy, developmental integration, leaf, phylogenetic comparative methods, stomata
-
-\linenumbers
+\newpage{}
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -336,7 +234,7 @@ Data on stomatal anatomy are spread over a disparate literature and we have not 
 
 We resolved taxonomic names using the R package \textbf{taxize} version 0.9.99 (\protect\hyperlink{ref-chamberlain_taxize_2013}{Chamberlain and Szöcs 2013}). We queried taxonomic names supplied by the original study authors on 2021-08-26 from the following sources: GRIN Taxonomy for Plants (\protect\hyperlink{ref-united_states_department_of_agriculture_agricultural_research_service_germplasm_2020}{United States Department of Agriculture, Agricultural Research Service 2020}), Open Tree of Life Reference Taxonomy (\protect\hyperlink{ref-rees_automated_2017}{Rees and Cranston 2017}), The International Plant Names Index (\protect\hyperlink{ref-the_royal_botanic_gardens_international_2020}{The Royal Botanic Gardens et al. 2020}), Tropicos - Missouri Botanical Garden (\protect\hyperlink{ref-missouri_botanical_garden_tropicos_2020}{Missouri Botanical Garden 2020}). We retained the maximum scoring matched name with taxize score \(\ge 0.75\) (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from 1224 to 1183 taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
 
-We used the R packages \textbf{taxonlookup} version 1.1.5 (\protect\hyperlink{ref-pennell_simple_2016}{Pennell, FitzJohn, and Cornwell 2016}) and \textbf{V.phylomaker} version 0.1.0 (\protect\hyperlink{ref-jin_vphylomaker_2019}{Jin and Qian 2019}) to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants (\protect\hyperlink{ref-smith_constructing_2018}{S. A. Smith and Brown 2018} ; \protect\hyperlink{ref-zanne_three_2014}{Zanne et al. 2014}). We further resolved large (\(\ge4\) taxa) polytomies in 30 clades with sufficient sequence data using \textbf{PyPHLAWD} version 1.0 (\protect\hyperlink{ref-smith_pyphlawd_2019}{S. A. Smith and Walker 2019}) in Python 3.8.2 (Python Software Foundation, \url{https://www.python.org/}). We used sequence data from the most recent GenBank Plant and Fungal sequences database division (\protect\hyperlink{ref-ouellette_database_1997}{Ouellette and Boguski 1997}). We inferred subtree phylogenies using RAxML version 8.2.12 (\protect\hyperlink{ref-stamatakis_raxml_2014}{Stamatakis 2014}) and conducated molecular dating using the \texttt{chronos()} function in the R package \textbf{ape} version 5.5 (\protect\hyperlink{ref-paradis_ape_2019}{Paradis and Schliep 2019}) to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for \textbf{PyPHLAWD}. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the \texttt{multi2di()} function in \textbf{ape}. The final data set for which we had both trait and phylogenetic information contained 711 taxa (Notes S1). Seven taxa are gymnosperms; the vast majority are angiosperms.
+We used the R packages \textbf{taxonlookup} version 1.1.5 (\protect\hyperlink{ref-pennell_simple_2016}{Pennell, FitzJohn, and Cornwell 2016}) and \textbf{V.phylomaker} version 0.1.0 (\protect\hyperlink{ref-jin_vphylomaker_2019}{Jin and Qian 2019}) to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants (\protect\hyperlink{ref-smith_constructing_2018}{S. A. Smith and Brown 2018} ; \protect\hyperlink{ref-zanne_three_2014}{Zanne et al. 2014}). We further resolved large (\(\ge4\) taxa) polytomies in 30 clades with sufficient sequence data using \textbf{PyPHLAWD} version 1.0 (\protect\hyperlink{ref-smith_pyphlawd_2019}{S. A. Smith and Walker 2019}) in Python 3.8.9 (Python Software Foundation, \url{https://www.python.org/}). We used sequence data from the most recent GenBank Plant and Fungal sequences database division (\protect\hyperlink{ref-ouellette_database_1997}{Ouellette and Boguski 1997}). We inferred subtree phylogenies using RAxML version 8.2.12 (\protect\hyperlink{ref-stamatakis_raxml_2014}{Stamatakis 2014}) and conducated molecular dating using the \texttt{chronos()} function in the R package \textbf{ape} version 5.5 (\protect\hyperlink{ref-paradis_ape_2019}{Paradis and Schliep 2019}) to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for \textbf{PyPHLAWD}. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the \texttt{multi2di()} function in \textbf{ape}. The final data set for which we had both trait and phylogenetic information contained 711 taxa (Notes A1). Seven taxa are gymnosperms; the vast majority are angiosperms.
 
 \hypertarget{phylogenetically-independent-contrasts}{%
 \subsection{Phylogenetically independent contrasts}\label{phylogenetically-independent-contrasts}}
@@ -431,32 +329,20 @@ The ability of adaxial stomatal density to evolve independently of stomatal size
 
 Future research should identify the mechanistic basis of developmental disintegration between \(D_\text{ab}\) and \(D_\text{ad}\). Multiple reviews of stomatal development conclude that stomatal traits are independently controlled on each surface (\protect\hyperlink{ref-lake_longdistance_2002}{Lake, Woodward, and Quick 2002}; \protect\hyperlink{ref-bergmann_stomatal_2007}{Bergmann and Sack 2007}), but we do not know much about linkage between ab-adaxial polarity and stomatal development (\protect\hyperlink{ref-kidner_signaling_2010}{Kidner and Timmermans 2010}; \protect\hyperlink{ref-pillitteri_mechanisms_2012}{Pillitteri and Torii 2012}). Systems that have natural variation in stomatal ratio should allow us to study how developmental disintegration evolves. Quantitative genetic studies in \emph{Brassica oleracea} L., \emph{Oryza sativa} L., \emph{Populus trichocarpa} Torr. \& A. Gray ex Hook., \emph{Populus} interspecific crosses, and \emph{Solanum} interspecific crosses, typically find partial independence of \(D_\text{ab}\) and \(D_\text{ad}\); some loci affect both traits, but some loci only affect density on one surface and/or genetic correlations are weak (\protect\hyperlink{ref-ishimaru_identification_2001}{Ishimaru et al. 2001}; \protect\hyperlink{ref-ferris_leaf_2002}{Ferris et al. 2002}; \protect\hyperlink{ref-hall_relationships_2005}{Hall et al. 2005}; \protect\hyperlink{ref-rae_elucidating_2006}{Rae et al. 2006}; \protect\hyperlink{ref-laza_quantitative_2010}{Laza et al. 2010}; \protect\hyperlink{ref-chitwood_quantitative_2013}{Chitwood et al. 2013}; \protect\hyperlink{ref-mckown_association_2014}{McKown et al. 2014}; \protect\hyperlink{ref-muir_quantitative_2014}{Muir, Pease, and Moyle 2014}; \protect\hyperlink{ref-porth_evolutionary_2015}{Porth et al. 2015}; \protect\hyperlink{ref-fetter_growthdefense_2021}{Fetter, Nelson, and Keller 2021}). For example, \emph{Populus trichocarpa} populations have putatively adaptive genetic variation in \(D_\text{ad}\). Populations are more amphistomatous at Northern latitudes with shorter growing seasons that may select for faster carbon assimilation (\protect\hyperlink{ref-mckown_association_2014}{McKown et al. 2014}; \protect\hyperlink{ref-kaluthota_higher_2015}{Kaluthota et al. 2015}; \protect\hyperlink{ref-porth_evolutionary_2015}{Porth et al. 2015}). Genetic variation in key stomatal development transcription factors is associated with latitudinal variation in \(D_\text{ad}\), which should help reveal mechanistic basis of developmental disintegration between surfaces (\protect\hyperlink{ref-mckown_role_2019}{McKown et al. 2019}).
 
-\hypertarget{acknowledgements}{%
-\section{Acknowledgements}\label{acknowledgements}}
-
-We thank Jacob Watts for comments on earlier versions of this manuscript.
-
-\hypertarget{author-contribution}{%
-\section{Author Contribution}\label{author-contribution}}
-
-CDM designed the study, compiled data, analyzed data, and wrote the manuscript with input from all authors. All authors contributed data.
-
 \hypertarget{data-avaibility}{%
 \section{Data avaibility}\label{data-avaibility}}
 
-The final data set and phylogeny used in the analysis are included in the \protect\hyperlink{supporting-information}{Supporting Information}. The raw anatomical data and source code will be archived on Zenodo upon publication.
+The final data set and phylogeny used in the analysis are included in the {[}Supporting Information{]}. The raw anatomical data and source code will be archived on Zenodo upon publication.
 
 \clearpage
 
-\hypertarget{supporting-information}{%
-\section{Supporting Information}\label{supporting-information}}
+\hypertarget{online-appendix}{%
+\section{Online Appendix}\label{online-appendix}}
 
-\renewcommand\thefigure{S\arabic{figure}}    
-\renewcommand\thetable{S\arabic{table}}    
+\renewcommand\thefigure{A\arabic{figure}}    
+\renewcommand\thetable{A\arabic{table}}    
 \setcounter{figure}{0}    
 \setcounter{table}{0}
-
-\textbf{Note S1:} Final fully resolved bifurcating phylogenetic tree of 711 taxa in Newick format.
 
 \begin{longtable}[]{@{}ll@{}}
 \caption{\label{tab:sources}Primary sources of stomatal anatomical data and the taxa covered by each source.}\tabularnewline
@@ -573,9 +459,9 @@ Source & Taxa \\
 
 \clearpage
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
+\hypertarget{literature-cited}{%
+\section*{Literature Cited}\label{literature-cited}}
+\addcontentsline{toc}{section}{Literature Cited}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
