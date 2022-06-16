@@ -23,10 +23,10 @@ Found 2 columns that contain only undetermined values which will be treated as m
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Polygonum_46786_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Polygonum_46786_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Polygonum_46786_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Polygonum_46786_outaln_names1.reduced
 
 Alignment has 2 completely undetermined sites that will be automatically removed from the input data
 
@@ -90,7 +90,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Polygonum_46786_outpart -s ../../alignments/Polygonum_46786_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Polygonum_46786_outpart -s ../../alignments/Polygonum_46786_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Polygonum_46786/clusters/cluster3.aln.rn
@@ -102,23 +102,23 @@ Base frequencies: 0.265 0.217 0.237 0.280
 Partition: 2 with name: Polygonum_46786/clusters/cluster1.aln.rn
 Base frequencies: 0.206 0.346 0.302 0.146 
 
-Inference[0]: Time 15.191346 GAMMA-based likelihood -14149.188569, best rearrangement setting 5
-alpha[0]: 0.808066 rates[0] ac ag at cg ct gt: 1.030844 0.930858 0.619665 0.344487 1.063792 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.850025 2.429498 0.213271 0.674532 3.022134 1.000000 alpha[2]: 0.305708 rates[2] ac ag at cg ct gt: 0.726716 1.672687 1.505950 0.303521 3.183795 1.000000 
+Inference[0]: Time 41.159472 GAMMA-based likelihood -14129.997984, best rearrangement setting 5
+alpha[0]: 0.841899 rates[0] ac ag at cg ct gt: 1.017600 0.924086 0.614179 0.349600 1.058833 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.850025 2.429498 0.213271 0.674533 3.022135 1.000000 alpha[2]: 0.306073 rates[2] ac ag at cg ct gt: 0.730408 1.706621 1.474723 0.305044 3.203393 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -14148.067836 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Polygonum_46786/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -14129.054779 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Polygonum_46786/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -14148.067836 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -14129.054779 .... 
 
-Final GAMMA-based Score of best tree -14148.067559
+Final GAMMA-based Score of best tree -14129.054779
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Polygonum_46786/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Polygonum_46786/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Polygonum_46786/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Polygonum_46786/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Polygonum_46786/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Polygonum_46786/RAxML_bestTree.T22.PARTITION.2
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Polygonum_46786/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Polygonum_46786/RAxML_bestTree.T22.PARTITION.2
 
-Overall execution time: 23.443450 secs or 0.006512 hours or 0.000271 days
+Overall execution time: 50.696820 secs or 0.014082 hours or 0.000587 days
 

@@ -32,10 +32,10 @@ Found 28 columns that contain only undetermined values which will be treated as 
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Scabiosa_87007_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Scabiosa_87007_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Scabiosa_87007_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Scabiosa_87007_outaln_names1.reduced
 
 Alignment has 28 completely undetermined sites that will be automatically removed from the input data
 
@@ -115,7 +115,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Scabiosa_87007_outpart -s ../../alignments/Scabiosa_87007_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Scabiosa_87007_outpart -s ../../alignments/Scabiosa_87007_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Scabiosa_87007/clusters/cluster6.aln.rn
@@ -134,112 +134,112 @@ Partition: 4 with name: Scabiosa_87007/clusters/cluster2.aln.rn
 Base frequencies: 0.318 0.175 0.190 0.317 
 
 
-WARNING the alpha parameter with a value of 13.070049 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 13.070039 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 12.747065 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 12.747069 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 12.942949 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
+WARNING the alpha parameter with a value of 12.942950 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.217775 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 30.217658 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 29.477007 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 29.477018 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 29.945842 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
+WARNING the alpha parameter with a value of 29.945845 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 4.097591 GAMMA-based likelihood -7067.868301, best rearrangement setting 10
-alpha[0]: 30.217775 rates[0] ac ag at cg ct gt: 0.000100 22.849820 0.000100 0.000100 0.000100 1.000000 alpha[1]: 29.477007 rates[1] ac ag at cg ct gt: 0.317634 1.547120 0.212631 1.330749 1.489404 1.000000 alpha[2]: 29.945842 rates[2] ac ag at cg ct gt: 1.483131 1.179043 0.422438 1.187441 1.067890 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 0.812934 0.625195 1.478081 0.406013 3.318992 1.000000 alpha[4]: 0.020000 rates[4] ac ag at cg ct gt: 0.276199 1.964160 0.473558 0.485860 0.596862 1.000000 
+Inference[0]: Time 3.895260 GAMMA-based likelihood -7067.867577, best rearrangement setting 10
+alpha[0]: 30.217658 rates[0] ac ag at cg ct gt: 0.000100 22.853556 0.000100 0.000100 0.000100 1.000000 alpha[1]: 29.477018 rates[1] ac ag at cg ct gt: 0.317634 1.547121 0.212631 1.330750 1.489402 1.000000 alpha[2]: 29.945845 rates[2] ac ag at cg ct gt: 1.483130 1.179042 0.422438 1.187441 1.067890 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 0.812933 0.625194 1.478081 0.406012 3.319001 1.000000 alpha[4]: 0.020000 rates[4] ac ag at cg ct gt: 0.276199 1.964160 0.473558 0.485860 0.596862 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
 
-WARNING the alpha parameter with a value of 69.730411 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 69.738590 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 68.098996 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 68.098838 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.188845 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
+WARNING the alpha parameter with a value of 69.188824 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.631843 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 151.667559 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 148.053397 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 148.053032 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 150.585955 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
+WARNING the alpha parameter with a value of 150.585892 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 341.932151 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 341.509361 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 332.653286 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 332.652321 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 338.518576 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
+WARNING the alpha parameter with a value of 338.518908 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 758.335722 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 797.181745 estimated by RAxML for partition number 0 with the name "Scabiosa_87007/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 758.848317 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 758.846001 estimated by RAxML for partition number 1 with the name "Scabiosa_87007/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 772.405559 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
+WARNING the alpha parameter with a value of 772.407359 estimated by RAxML for partition number 2 with the name "Scabiosa_87007/clusters/cluster3.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0] final GAMMA-based Likelihood: -7067.052620 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Scabiosa_87007/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -7067.050459 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Scabiosa_87007/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -7067.052620 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -7067.050459 .... 
 
-Final GAMMA-based Score of best tree -7067.050671
+Final GAMMA-based Score of best tree -7067.048407
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Scabiosa_87007/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Scabiosa_87007/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Scabiosa_87007/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Scabiosa_87007/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Scabiosa_87007/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Scabiosa_87007/RAxML_bestTree.T22.PARTITION.4
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Scabiosa_87007/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Scabiosa_87007/RAxML_bestTree.T22.PARTITION.4
 
-Overall execution time: 7.906882 secs or 0.002196 hours or 0.000092 days
+Overall execution time: 5.282922 secs or 0.001467 hours or 0.000061 days
 

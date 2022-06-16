@@ -39,10 +39,10 @@ Found 35 columns that contain only undetermined values which will be treated as 
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Dubautia_4248_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Dubautia_4248_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Dubautia_4248_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Dubautia_4248_outaln_names1.reduced
 
 Alignment has 35 completely undetermined sites that will be automatically removed from the input data
 
@@ -146,7 +146,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Dubautia_4248_outpart -s ../../alignments/Dubautia_4248_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Dubautia_4248_outpart -s ../../alignments/Dubautia_4248_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Dubautia_4248/clusters/cluster6.aln.rn
@@ -174,12 +174,12 @@ Partition: 7 with name: Dubautia_4248/clusters/cluster1.aln.rn
 Base frequencies: 0.342 0.164 0.161 0.333 
 
 
-WARNING the alpha parameter with a value of 13.092623 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 13.092592 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 13.035275 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 13.035276 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -189,113 +189,108 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 13.122081 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
+WARNING the alpha parameter with a value of 13.122080 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.278002 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 30.278685 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.169491 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 30.169354 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 29.497968 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 29.497970 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.378443 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
+WARNING the alpha parameter with a value of 30.378532 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 70.034068 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 69.875591 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.714568 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 69.715399 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 68.135087 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 68.134869 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 70.229352 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
+WARNING the alpha parameter with a value of 70.226359 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 3.952358 GAMMA-based likelihood -10778.634093, best rearrangement setting 2
-alpha[0]: 70.034068 rates[0] ac ag at cg ct gt: 53.664458 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 3.773846 0.000100 3.329049 0.000100 0.000100 1.000000 alpha[2]: 69.714568 rates[2] ac ag at cg ct gt: 0.000100 0.000100 1.177629 0.000100 0.000100 1.000000 alpha[3]: 68.135087 rates[3] ac ag at cg ct gt: 1.058996 4.943537 0.000100 4.705496 5.070702 1.000000 alpha[4]: 0.067010 rates[4] ac ag at cg ct gt: 1.043397 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[5]: 0.692823 rates[5] ac ag at cg ct gt: 1.633136 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[6]: 70.229352 rates[6] ac ag at cg ct gt: 0.000100 0.000100 3.738668 14.925313 0.000100 1.000000 alpha[7]: 0.127148 rates[7] ac ag at cg ct gt: 0.527197 2.491460 0.601123 2.129182 2.635247 1.000000 
+Inference[0]: Time 1.228945 GAMMA-based likelihood -10778.634093, best rearrangement setting 2
+alpha[0]: 69.875591 rates[0] ac ag at cg ct gt: 53.664454 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 3.773846 0.000100 3.329049 0.000100 0.000100 1.000000 alpha[2]: 69.715399 rates[2] ac ag at cg ct gt: 0.000100 0.000100 1.177629 0.000100 0.000100 1.000000 alpha[3]: 68.134869 rates[3] ac ag at cg ct gt: 1.058996 4.943537 0.000100 4.705496 5.070702 1.000000 alpha[4]: 0.066957 rates[4] ac ag at cg ct gt: 1.043397 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[5]: 0.692686 rates[5] ac ag at cg ct gt: 1.633136 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[6]: 70.226359 rates[6] ac ag at cg ct gt: 0.000100 0.000100 3.738668 14.925313 0.000100 1.000000 alpha[7]: 0.127148 rates[7] ac ag at cg ct gt: 0.527197 2.491460 0.601123 2.129182 2.635247 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
 
-WARNING the alpha parameter with a value of 152.262998 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 151.880742 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.810360 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 151.812533 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 148.122493 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 148.121810 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 153.003331 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
+WARNING the alpha parameter with a value of 152.997612 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 164.650210 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 174.958480 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 341.355931 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 341.357702 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 332.794386 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 332.793729 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 344.147007 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
+WARNING the alpha parameter with a value of 344.123802 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 123.293038 estimated by RAxML for partition number 0 with the name "Dubautia_4248/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 779.159978 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 778.701076 estimated by RAxML for partition number 2 with the name "Dubautia_4248/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 759.175506 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 759.192461 estimated by RAxML for partition number 3 with the name "Dubautia_4248/clusters/cluster2.aln.rn"
-is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
-You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
-
-
-WARNING the alpha parameter with a value of 785.970966 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
+WARNING the alpha parameter with a value of 785.130412 estimated by RAxML for partition number 6 with the name "Dubautia_4248/clusters/cluster7.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -344,17 +339,17 @@ WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for p
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0] final GAMMA-based Likelihood: -10777.331587 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Dubautia_4248/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -10777.331587 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Dubautia_4248/RAxML_result.T22
 
 
 Starting final GAMMA-based thorough Optimization on tree 0 likelihood -10777.331587 .... 
 
 Final GAMMA-based Score of best tree -10777.331587
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Dubautia_4248/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Dubautia_4248/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Dubautia_4248/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Dubautia_4248/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Dubautia_4248/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Dubautia_4248/RAxML_bestTree.T22.PARTITION.7
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Dubautia_4248/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Dubautia_4248/RAxML_bestTree.T22.PARTITION.7
 
-Overall execution time: 10.728501 secs or 0.002980 hours or 0.000124 days
+Overall execution time: 2.616712 secs or 0.000727 hours or 0.000030 days
 

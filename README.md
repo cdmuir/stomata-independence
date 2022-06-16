@@ -47,7 +47,7 @@ source("r/install-packages.R")
 
 To fit **brms** model, set up [**cmdstanr**](https://mc-stan.org/cmdstanr/).
 
-To infer phylogenies in RAxML using code in script `raxml/run-raxml.sh`, you will need to follow instructions here: [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)
+To infer phylogenies in RAxML using code in script `raxml/run-raxml.sh`, you will need to follow instructions to install **raxmlHPC-PTHREADS-SSE3** here: [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)
 
 **Not recommended:** To get sequence clusters and alignments using [PyPHLAWD](https://github.com/FePhyFoFum/PyPHLAWD), you will need to follow directions to set up PyPHLAWD, blast, and download the GenBank plant and fungal sequence data base. Scripts for this are not in this repository because they require a bunch of dependencies to work and the database is too large. However, the output is deposited here for inspection.
 
@@ -65,7 +65,7 @@ git clone git@github.com:cdmuir/stomatal-independence.git
 
 ### Software requirements
 
-At minimum, you will need [R](https://cran.r-project.org/) installed on your machine. Install additional packages by running `r/install-packages.R`.
+At minimum, you will need [R](https://cran.r-project.org/) version 4.0 or greater installed on your machine. Install additional packages by running `r/install-packages.R`.
 
 ### Rendering manuscript with pre-saved outout
 

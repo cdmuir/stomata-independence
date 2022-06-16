@@ -493,10 +493,10 @@ Found 460 columns that contain only undetermined values which will be treated as
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Artemisia_4219_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Artemisia_4219_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Artemisia_4219_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Artemisia_4219_outaln_names1.reduced
 
 Alignment has 460 completely undetermined sites that will be automatically removed from the input data
 
@@ -608,7 +608,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Artemisia_4219_outpart -s ../../alignments/Artemisia_4219_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Artemisia_4219_outpart -s ../../alignments/Artemisia_4219_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Artemisia_4219/clusters/cluster3.aln.rn
@@ -638,23 +638,23 @@ Base frequencies: 0.278 0.202 0.196 0.323
 Partition: 8 with name: Artemisia_4219/clusters/cluster1.aln.rn
 Base frequencies: 0.223 0.268 0.267 0.241 
 
-Inference[0]: Time 437.130468 GAMMA-based likelihood -29307.230409, best rearrangement setting 25
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.774806 1.015267 0.018321 0.410923 1.002594 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.404039 1.839593 0.121061 1.012807 2.738195 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.874971 1.429131 0.512681 1.274903 2.102870 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 1.708145 0.527844 0.075879 0.288015 0.714543 1.000000 alpha[4]: 0.052790 rates[4] ac ag at cg ct gt: 0.953777 1.339459 0.520030 0.891427 0.752071 1.000000 alpha[5]: 0.210918 rates[5] ac ag at cg ct gt: 1.222122 0.363682 0.305854 0.443689 0.619894 1.000000 alpha[6]: 0.375352 rates[6] ac ag at cg ct gt: 1.228684 2.915192 1.310482 1.034760 5.412862 1.000000 alpha[7]: 0.020000 rates[7] ac ag at cg ct gt: 0.979368 1.695827 0.135311 0.844919 1.247061 1.000000 alpha[8]: 0.516756 rates[8] ac ag at cg ct gt: 1.204596 2.803756 1.073506 0.637669 4.882828 1.000000 
+Inference[0]: Time 478.384319 GAMMA-based likelihood -29316.553184, best rearrangement setting 15
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.773269 1.051211 0.018225 0.409772 0.998053 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.404028 1.839578 0.121060 1.012796 2.737473 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.924066 1.350853 0.482675 1.203892 1.982068 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 1.708142 0.527844 0.075879 0.288014 0.714542 1.000000 alpha[4]: 0.052779 rates[4] ac ag at cg ct gt: 0.953679 1.339324 0.519988 0.891365 0.752015 1.000000 alpha[5]: 0.212033 rates[5] ac ag at cg ct gt: 1.222084 0.363699 0.306003 0.443491 0.619848 1.000000 alpha[6]: 0.375352 rates[6] ac ag at cg ct gt: 1.228684 2.915192 1.310482 1.034760 5.412861 1.000000 alpha[7]: 0.020000 rates[7] ac ag at cg ct gt: 0.979365 1.695833 0.135309 0.844926 1.247056 1.000000 alpha[8]: 0.515851 rates[8] ac ag at cg ct gt: 1.205939 2.822353 1.084586 0.637929 4.871554 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -29305.811193 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Artemisia_4219/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -29314.289153 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Artemisia_4219/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -29305.811193 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -29314.289153 .... 
 
-Final GAMMA-based Score of best tree -29305.807093
+Final GAMMA-based Score of best tree -29307.002095
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Artemisia_4219/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Artemisia_4219/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Artemisia_4219/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Artemisia_4219/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Artemisia_4219/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Artemisia_4219/RAxML_bestTree.T22.PARTITION.8
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Artemisia_4219/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Artemisia_4219/RAxML_bestTree.T22.PARTITION.8
 
-Overall execution time: 508.942031 secs or 0.141373 hours or 0.005891 days
+Overall execution time: 530.023018 secs or 0.147229 hours or 0.006135 days
 

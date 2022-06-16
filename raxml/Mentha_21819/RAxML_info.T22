@@ -58,7 +58,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Mentha_21819_outpart -s ../../alignments/Mentha_21819_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Mentha_21819_outpart -s ../../alignments/Mentha_21819_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Mentha_21819/clusters/cluster3.aln.rn
@@ -71,42 +71,42 @@ Partition: 2 with name: Mentha_21819/clusters/cluster2.aln.rn
 Base frequencies: 0.278 0.209 0.230 0.284 
 
 
-WARNING the alpha parameter with a value of 13.098998 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 13.098996 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.322468 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 30.322466 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 0.698176 GAMMA-based likelihood -3939.677811, best rearrangement setting 5
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.000100 3.116520 0.152466 0.554853 2.434589 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.888346 0.835960 0.575392 0.804790 1.971446 1.000000 alpha[2]: 30.322468 rates[2] ac ag at cg ct gt: 0.000100 0.000100 0.000100 0.000100 20.963496 1.000000 
+Inference[0]: Time 0.784662 GAMMA-based likelihood -3939.678333, best rearrangement setting 5
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.000100 3.116527 0.152467 0.554855 2.434593 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.888348 0.835960 0.575391 0.804792 1.971446 1.000000 alpha[2]: 30.322466 rates[2] ac ag at cg ct gt: 0.000100 0.000100 0.000100 0.000100 20.963616 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
 
-WARNING the alpha parameter with a value of 70.097204 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 70.097995 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 152.695379 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
+WARNING the alpha parameter with a value of 152.697238 estimated by RAxML for partition number 2 with the name "Mentha_21819/clusters/cluster2.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0] final GAMMA-based Likelihood: -3939.410572 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Mentha_21819/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -3939.411057 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Mentha_21819/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -3939.410572 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -3939.411057 .... 
 
-Final GAMMA-based Score of best tree -3939.410155
+Final GAMMA-based Score of best tree -3939.410666
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Mentha_21819/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Mentha_21819/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Mentha_21819/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Mentha_21819/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Mentha_21819/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Mentha_21819/RAxML_bestTree.T22.PARTITION.2
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Mentha_21819/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Mentha_21819/RAxML_bestTree.T22.PARTITION.2
 
-Overall execution time: 1.673205 secs or 0.000465 hours or 0.000019 days
+Overall execution time: 3.270432 secs or 0.000908 hours or 0.000038 days
 

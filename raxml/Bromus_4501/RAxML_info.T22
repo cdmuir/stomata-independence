@@ -68,10 +68,10 @@ Found 64 columns that contain only undetermined values which will be treated as 
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Bromus_4501_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Bromus_4501_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Bromus_4501_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Bromus_4501_outaln_names1.reduced
 
 Alignment has 64 completely undetermined sites that will be automatically removed from the input data
 
@@ -159,7 +159,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Bromus_4501_outpart -s ../../alignments/Bromus_4501_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Bromus_4501_outpart -s ../../alignments/Bromus_4501_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Bromus_4501/clusters/cluster1.aln.rn
@@ -180,23 +180,23 @@ Base frequencies: 0.205 0.277 0.260 0.257
 Partition: 5 with name: Bromus_4501/clusters/cluster6.aln.rn
 Base frequencies: 0.324 0.148 0.167 0.361 
 
-Inference[0]: Time 39.621118 GAMMA-based likelihood -20566.789565, best rearrangement setting 15
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.900258 3.768253 1.081937 0.516980 3.532737 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.531535 1.491431 0.501119 0.322582 1.163839 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 1.096852 3.238563 0.671141 0.404906 1.440626 1.000000 alpha[3]: 0.538168 rates[3] ac ag at cg ct gt: 0.686067 2.335572 1.891116 0.342514 4.085680 1.000000 alpha[4]: 0.467260 rates[4] ac ag at cg ct gt: 0.923453 1.708958 1.178514 0.320944 2.928440 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 3.256030 2.889365 1.661437 1.469931 3.069430 1.000000 
+Inference[0]: Time 38.929928 GAMMA-based likelihood -20566.792852, best rearrangement setting 15
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.900258 3.768255 1.081937 0.516980 3.532738 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 0.531532 1.491432 0.501120 0.322581 1.163838 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 1.096870 3.239139 0.671138 0.404895 1.440682 1.000000 alpha[3]: 0.538168 rates[3] ac ag at cg ct gt: 0.686067 2.335571 1.891117 0.342514 4.085680 1.000000 alpha[4]: 0.467260 rates[4] ac ag at cg ct gt: 0.923454 1.708959 1.178514 0.320944 2.928444 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 3.256028 2.889366 1.661439 1.469929 3.069428 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -20566.093264 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Bromus_4501/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -20566.096527 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Bromus_4501/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -20566.093264 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -20566.096527 .... 
 
-Final GAMMA-based Score of best tree -20566.091572
+Final GAMMA-based Score of best tree -20566.095324
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Bromus_4501/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Bromus_4501/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Bromus_4501/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Bromus_4501/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Bromus_4501/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Bromus_4501/RAxML_bestTree.T22.PARTITION.5
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Bromus_4501/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Bromus_4501/RAxML_bestTree.T22.PARTITION.5
 
-Overall execution time: 60.726673 secs or 0.016869 hours or 0.000703 days
+Overall execution time: 49.670048 secs or 0.013797 hours or 0.000575 days
 

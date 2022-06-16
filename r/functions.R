@@ -1,3 +1,10 @@
+# Calculations of gsmax follow Sack and Buckley 2016 ----
+biophysical_constant <- function(D_wv, v) D_wv / v
+
+morphological_constant <- function(c, h, j) {
+  (pi * c ^ 2) / (j ^ 0.5 * (4 * h * j + pi * c))
+}
+
 # Functions for taxon name resolution ----
 
 choose_matched_name <- function(matched_name, user_supplied_name) {
@@ -150,6 +157,15 @@ get_ncbi_name = function(aln) {
   } else {
     nms = id2name(uid, db = "ncbi")
   }
+
+  # For some reason NCBI doesn't return all names (randomly). Go back and fill in
+  # names until all there. This won't work if there >1000 missing, but that seems
+  # unlikely
+  missing = which(sapply(nms, nrow) == 0)
+  while(length(missing) > 0) {
+    nms[missing] = id2name(uid[missing], db = "ncbi")
+    missing = which(sapply(nms, nrow) == 0)
+  }
   
   nms
   
@@ -166,7 +182,7 @@ rename_alignment = function(aln_prefix, aln_names, overwrite) {
 
   if (!file.exists(nms_file) | overwrite) {
   
-    nms = get_ncbi_name(aln)
+    nms = get_ncbi_name(aln) 
     write_rds(nms, nms_file)
     message(bold(green(glue("  ...done. Lookup table saved in '{nms_file}'", 
                             nms_file = nms_file))))
@@ -177,7 +193,10 @@ rename_alignment = function(aln_prefix, aln_names, overwrite) {
   }
 
   aln[seq(1, length(aln), 2)] = imap_chr(unname(nms), ~{
-    name = str_replace_all(.x$name, " ", "_")
+    name = str_replace_all(.x$name, " ", "_") |>
+      # remove illegal characters in FASTA that sometimes appear
+      str_remove_all("\\[") |>
+      str_remove_all("\\]")
     str_replace(aln[[.y * 2 - 1]], .x$id, name)
   })
 
@@ -220,8 +239,8 @@ write_raxml_command = function(clade_num, raxml_dir, aln_prefix) {
   # Write commands for RAxML in shell script
   glue(
     "cd {raxml_dir}/{clade_num}
-  raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../{aln_prefix}_outpart -s ../../{aln_prefix}_outaln_names1 -n T22
-    raxmlHPC -f I -m GTRGAMMA -p 12345 -t RAxML_bestTree.T22 -n T23
+  raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../{aln_prefix}_outpart -s ../../{aln_prefix}_outaln_names1 -n T22
+  raxmlHPC-PTHREADS-SSE3 -T 10 -f I -m GTRGAMMA -p 12345 -t RAxML_bestTree.T22 -n T23
   cd ../..
 \n", raxml_dir = raxml_dir, clade_num = clade_num, aln_prefix = aln_prefix
   ) |>
@@ -607,4 +626,233 @@ extract_contrasts = function(phy) {
   
   ret
   
+}
+
+# Functions for numerical integration to determine Cov(d,s) ----
+# This models d (log stomatal density) and s (log stomatal size) when the
+# developmental function is fixed (A and B are constants), but stomatal index 
+# (I) and meristem size (M) can evolve. The model assumes that logit(I) and 
+# log(M) are bivariate normally distributed with mean vector Mu and covariance
+# matrix Sigma.
+
+# Probability density of d
+fd = function(
+    d,
+    A, B, Mu, Sigma,
+    log = TRUE
+) {
+  # integrate over all possible logit_I for each d
+  ret = map_dbl(d, function(.x, A, B, Mu, Sigma) {
+    log(integrate(
+      function(logit_I, D, A, B, Mu, Sigma) {
+        # get m from logit_I and d
+        I = plogis(logit_I)
+        i = log(I)
+        a = log(A)
+        d = log(D)
+        m = i - a - d - log(I * B + (1 - I))
+        exp(dmvn(cbind(logit_I, m), Mu, Sigma, log = TRUE))
+      },
+      lower = -Inf, upper = Inf,
+      D = exp(.x), A = A, B = B, Mu = Mu, Sigma = Sigma
+    )$value)
+  }, A = A, B = B, Mu = Mu, Sigma = Sigma)
+  
+  if (log) {
+    return(ret) 
+  } else {
+    return(exp(ret))
+  }
+  
+}
+
+# Probability density of s
+fs = function(
+    s,
+    A, B, Mu, Sigma,
+    log = TRUE
+) {
+  # integrate over all possible logit_I for each s
+  ret = map_dbl(s, function(.x, A, B, Mu, Sigma) {
+    log(integrate(
+      function(logit_I, S, A, B, Mu, Sigma) {
+        # get m from logit_I and d
+        I = plogis(logit_I)
+        i = log(I)
+        a = log(A)
+        b = log(B)
+        s = log(S)
+        m = s - a - b
+        exp(dmvn(cbind(logit_I, m), Mu, Sigma, log = TRUE))
+      },
+      lower = -Inf, upper = Inf,
+      S = exp(.x), A = A, B = B, Mu = Mu, Sigma = Sigma
+    )$value)
+  }, A = A, B = B, Mu = Mu, Sigma = Sigma)
+  
+  if (log) {
+    return(ret) 
+  } else {
+    return(exp(ret))
+  }
+  
+}
+
+# Expected value of d
+Ed = function(A, B, Mu, Sigma) {
+  integrate(
+    function(d, A, B, Mu, Sigma) {
+      d * exp(fd(d, A = A, B = B, Mu = Mu, Sigma = Sigma, log = TRUE))
+    }, 
+    lower = -Inf, upper = Inf,
+    A = A, B = B, Mu = Mu, Sigma = Sigma
+  )$value
+}
+
+# Expected value of s
+Es = function(A, B, Mu, Sigma) {
+  integrate(
+    function(s, A, B, Mu, Sigma) {
+      s * exp(fs(s, A = A, B = B, Mu = Mu, Sigma = Sigma, log = TRUE))
+    }, 
+    lower = -Inf, upper = Inf,
+    A = A, B = B, Mu = Mu, Sigma = Sigma
+  )$value
+}
+
+# Expected value of d^2
+Ed2 = function(A, B, Mu, Sigma) {
+  integrate(
+    function(d, A, B, Mu, Sigma) {
+      d ^ 2 * exp(fd(d, A = A, B = B, Mu = Mu, Sigma = Sigma, log = TRUE))
+    }, 
+    lower = -Inf, upper = Inf,
+    A = A, B = B, Mu = Mu, Sigma = Sigma
+  )$value
+}
+
+# Expected value of s^2
+Es2 = function(A, B, Mu, Sigma) {
+  integrate(
+    function(s, A, B, Mu, Sigma) {
+      s ^ 2 * exp(fs(s, A = A, B = B, Mu = Mu, Sigma = Sigma, log = TRUE))
+    }, 
+    lower = -Inf, upper = Inf,
+    A = A, B = B, Mu = Mu, Sigma = Sigma
+  )$value
+}
+
+# Variance of d
+Var_d = function(A, B, Mu, Sigma) {
+  # Var(X) = E[X^2] - E[X] ^ 2
+  Ed2(A, B, Mu, Sigma) - Ed(A, B, Mu, Sigma) ^ 2
+}
+
+# Variance of s
+Var_s = function(A, B, Mu, Sigma) {
+  # Var(X) = E[X^2] - E[X] ^ 2
+  Es2(A, B, Mu, Sigma) - Es(A, B, Mu, Sigma) ^ 2
+}
+
+# Expected value of d * s
+Eds = function(A, B, Mu, Sigma) {
+  integrate(
+    function(m, A, B, Mu, Sigma) {
+      map_dbl(m, function(.x, A, B, Mu, Sigma) {
+        
+        integrate(function(logit_I, m, A, B, Mu, Sigma) {
+          i = plogis(logit_I, log.p = TRUE)
+          s = m + log(A) + log(B)
+          d = i - log(A) - m - log(exp(i + log(B)) + (1 - exp(i)))
+          d * s * exp(dmvn(cbind(logit_I, m), Mu, Sigma, log = TRUE))
+        }, 
+        lower = -Inf, upper = Inf,
+        m = .x, A = A, B = B, Mu = Mu, Sigma = Sigma
+        )$value
+      }, A = A, B = B, Mu = Mu, Sigma = Sigma)
+    }, 
+    lower = -Inf, upper = Inf,
+    A = A, B = B, Mu = Mu, Sigma = Sigma
+  )$value
+}
+
+# Covariance of d and s
+Cov_ds = function(A, B, Mu, Sigma) {
+  # Cov(X,Y) = E[XY] - E[X] E[Y]
+  Eds(A, B, Mu, Sigma) - Ed(A, B, Mu, Sigma) * Es(A, B, Mu, Sigma)
+}
+
+# Covariance matrix
+Sigma_ds = function(A, B, Mu, Sigma) {
+  matrix(c(Var_d(A, B, Mu, Sigma), rep(Cov_ds(A, B, Mu, Sigma), 2), 
+           Var_s(A, B, Mu, Sigma)), ncol = 2)
+}
+
+# I probably don't need these functions for anything, but keeping here in case
+# Mu = c(mean of logit_I, mean of m)
+# Sigma[1,1] = Var(logit_I)
+# Sigma[1,2] = Sigma[2,1] = Cov(logit_I, m)
+# Sigma[2,2] = Var(m)
+
+# fi(x|m) := dist of logit_I at a given m
+dlogit_I_m = function(logit_I, m, Mu, Sigma, log = TRUE) {
+  rho = cov2cor(Sigma)[1, 2]
+  dnorm(
+    logit_I, 
+    Mu[1] + rho * sqrt(Sigma[1, 1] / Sigma[2, 2]) * (m - Mu[2]), 
+    (1 - rho ^ 2) * Sigma[1,1],
+    log = log
+  )
+  
+}
+
+# fm(x|logit_I) := dist of m at a given logit_I
+dm_logit_I = function(m, logit_I, Mu, Sigma, log = TRUE) {
+  rho = cov2cor(Sigma)[1, 2]
+  dnorm(
+    m, 
+    Mu[2] + rho * sqrt(Sigma[2, 2] / Sigma[1, 1]) * (logit_I - Mu[1]), 
+    (1 - rho ^ 2) * Sigma[2, 2],
+    log = log
+  )
+  
+}
+
+# Probability density function of logit_I with i ~ Normal(mu_i, sigma_i)
+f_logitI = function(logit_I, mu_i, sigma_i) {
+  
+  # Normalization scalar
+  ns = integrate(function(logit_I, mu_i, sigma_i) {
+    i = plogis(logit_I, log.p = TRUE)
+    exp(dnorm(i, mu_i, sigma_i, log = TRUE) -
+          pnorm(0, mu_i, sigma_i, log = TRUE))
+  }, lower = -Inf, upper = Inf, mu_i = mu_i, sigma_i = sigma_i,
+  subdivisions = 1000L, abs.tol = 1e-16)$value
+  
+  i = plogis(logit_I, log.p = TRUE)
+  exp(dnorm(i, mu_i, sigma_i, log = TRUE) -
+        pnorm(0, mu_i, sigma_i, log = TRUE) - log(ns))
+  
+}
+
+# Expected value of logit_I with i ~ Normal(mu_i, sigma_i)
+# This is slightly off, but I can't figure out why
+E_logitI = function(mu_i, sigma_i) {
+  integrate(function(logit_I, mu_i, sigma_i) {
+    logit_I * f_logitI(logit_I, mu_i, sigma_i)
+  }, lower = -Inf, upper = Inf, mu_i = mu_i, sigma_i = sigma_i)$value
+}
+
+# Expected value of logit_I ^ 2 with i ~ Normal(mu_i, sigma_i)
+# This is slightly off, but I can't figure out why
+E_logitI2 = function(mu_i, sigma_i) {
+  integrate(function(logit_I, mu_i, sigma_i) {
+    logit_I ^ 2 * f_logitI(logit_I, mu_i, sigma_i)
+  }, lower = -Inf, upper = Inf, mu_i = mu_i, sigma_i = sigma_i)$value
+}
+
+# Variance of logit_I  with i ~ Normal(mu_i, sigma_i)
+# This is slightly off, but I can't figure out why
+Var_logitI = function(mu_i, sigma_i) {
+  E_logitI2(mu_i, sigma_i) - E_logitI(mu_i, sigma_i) ^ 2
 }

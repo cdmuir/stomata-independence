@@ -24,12 +24,12 @@ RAxML tree rooting algorithm
 
 RAxML was called as follows:
 
-raxmlHPC -f I -m GTRGAMMA -p 12345 -t RAxML_bestTree.T22 -n T23 
+raxmlHPC-PTHREADS-SSE3 -f I -m GTRGAMMA -p 12345 -t RAxML_bestTree.T22 -n T23 
 
 
 RAxML-rooted tree using subtree length-balance printed to file:
-/Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Polygonum_46786/RAxML_rootedTree.T23
+/Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Polygonum_46786/RAxML_rootedTree.T23
 
 
-Time for tree rooting: 0.141137
+Time for tree rooting: 0.073040
 

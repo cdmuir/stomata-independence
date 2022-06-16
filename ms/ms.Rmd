@@ -20,7 +20,7 @@ fontsize: 12pt
 linestretch: 1.7
 link-citations: yes
 bst: ../template/amnat.bst
-bibliography: stomata-independence.bib
+bibliography: stomata-independence-1.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -29,6 +29,7 @@ knitr::opts_knit$set(root.dir = "..")
 ```
 
 ```{r}
+library(checkmate)
 library(dplyr)
 library(glue)
 library(lubridate)
@@ -38,6 +39,11 @@ library(stringr)
 library(tibble)
 
 source("r/functions.R")
+
+# Hack to fix bibliography issues with export from Zotero
+read_lines("ms/stomata-independence.bib") |>
+  str_replace_all("de Boer", "{de Boer}") |>
+  write_lines("ms/stomata-independence-1.bib")
 
 # Initial size of data set
 stomata_anatomy1 = stomata_anatomy |> 
@@ -83,9 +89,11 @@ n_tax3 = nrow(trimmed_data)
 # 07_make-pairs ----
 pair_div = read_rds("objects/pair_div.rds")
 n_pair = nrow(pair_div)
+pair_div_genome = read_rds("objects/pair_div_genome.rds")
+n_pair_genome = nrow(pair_div_genome)
 
-# 10_fit-pairs ----
-fit = read_rds("objects/fit.rds")
+# 10_fit-models1 ----
+fit12 = read_rds("objects/fit12.rds")
 
 # 14_plot-h1 ----
 h1_parameters = read_rds("objects/h1_parameters.rds") |>
@@ -105,8 +113,34 @@ h2_parameters = read_rds("objects/h2_parameters.rds") |>
     interval = glue("95\\% HPD interval $[{lower},{upper}]$")
   )
 
-# 17_summarize-fit ----
-mo = read_rds("objects/modeloutput.rds")
+# 17_summarize-fit1 ----
+h12o = read_rds("objects/h12output.rds")
+
+# 18_fit-models2 ----
+fit3 = read_rds("objects/fit3.rds")
+
+# 19_prepare-plotting2.R ----
+h3_hpd = read_rds("objects/h3_hpd.rds")
+h3_hpd_density = h3_hpd |>
+  filter(name == "diff_density") |>
+  mutate(across(where(is.numeric), round, digits = 1)) |>
+  transmute(s = glue("{value} [{.lower},{.upper}]"))
+
+h3_hpd_length = h3_hpd |>
+  filter(name == "diff_length") |>
+  mutate(across(where(is.numeric), round, digits = 1)) |>
+  transmute(s = glue("{value} [{.lower},{.upper}]"))
+
+# 21_summarize-fit2 ----
+h3o = read_rds("objects/h3output.rds")
+
+# Assert that all details about fit12 and fit3 are identical
+assert_true(as.character(fit12$version$cmdstan) == as.character(fit3$version$cmdstan))
+assert_true(as.character(fit12$version$brms) == as.character(fit3$version$brms))
+assert_true(as.character(fit12$version$cmdstanr) == as.character(fit3$version$cmdstanr))
+assert_true(length(fit12$fit@stan_args) == length(fit3$fit@stan_args))
+assert_true(fit12$fit@stan_args[[1]][["warmup"]] == fit3$fit@stan_args[[1]][["warmup"]])
+assert_true(fit12$fit@stan_args[[1]][["iter"]] == fit3$fit@stan_args[[1]][["iter"]])
 
 ```
 
@@ -114,7 +148,7 @@ mo = read_rds("objects/modeloutput.rds")
 <!-- % For Am Nat, moved to "template/amnat_preamble.text" -->
 <!-- \begin{flushleft} -->
 <!-- {\Large -->
-<!-- \textbf\newline{Developmental integration cannot explain major features of stomatal anatomical evolution in seed plants} -->
+<!-- \textbf\newline{Packing limits and developmental integration are not sufficient to explain stomatal anatomical evolution in flowering plants} -->
 <!-- } -->
 <!-- \newline -->
 <!-- \\ -->
@@ -128,7 +162,7 @@ mo = read_rds("objects/modeloutput.rds")
 <!-- Dongliang Xiong\textsuperscript{6} -->
 <!-- \\ -->
 <!-- \bigskip -->
-<!-- \bf{1} School of Life Sciences, University of Hawaii at M\=anoa, Honolulu, HI 96822, USA \\ -->
+<!-- \bf{1} School of Life Sciences, University of Hawaiʻi at M\=anoa, Honolulu, HI 96822, USA \\ -->
 <!-- \bf{2} Research Group on Plant Biology under Mediterranean Conditions, Departament de Biologia, Universitat de les Illes Balears, Ctra. Valldemossa km 7.5, E-07122, Palma, Spain \\ -->
 <!-- \bf{3} School of Biological Sciences, Washington State University, Pullman, WA 99164-4236, USA \\ -->
 <!-- \bf{4} Departamento de Botánica, Instituto de Biología, Universidad Nacional Autónoma de México, Apartado Postal 70‑367, 04510 Mexico City, Mexico \\ -->
@@ -144,11 +178,11 @@ mo = read_rds("objects/modeloutput.rds")
 
 \bigskip
 
-\textit{Manuscript elements}: Figure 1, figure 2, figure 3, figure 4, figure 5, table 1, online appendix A (including Notes A1, table A1, table A2, and table A3).
+\textit{Manuscript elements}: Figure 1, figure 2, figure 3, figure 4, figure 5, figure 6, table 1, online appendix A (including Notes A1, notes A2, notes A3, figure A1, figure A2, figure A3, table A1, table A2, and table A3).
 
 \bigskip
 
-\textit{Keywords}: adaptation, amphistomy, developmental integration, leaf, phylogenetic comparative methods, stomata
+\textit{Keywords}: adaptation, amphistomy, developmental integration, leaf, packing limits, phylogenetic comparative methods, stomata
 
 \bigskip
 
@@ -156,7 +190,7 @@ mo = read_rds("objects/modeloutput.rds")
 
 \bigskip
 
-\textit{Word Count}: 4,704
+\textit{Word Count}: <!--4,704-->
 
 \bigskip
 
@@ -167,17 +201,33 @@ mo = read_rds("objects/modeloutput.rds")
 
 # Abstract
 
-Developmental integration can cause traits to covary over macroevolutionary time and in some cases prevent populations from reaching their adaptive optima. Developmental integration between stomatal size and density may contribute to two major features of stomatal anatomical evolution: inverse size-density scaling and bimodal stomatal ratio. If these patterns result from developmental integration, we predicted that in amphistomatous leaves 1) stomatal size and density should covary similarly on both abaxial and adaxial surfaces and 2) stomatal traits (size and density) on each surface should covary isometrically. We synthesized data on stomatal density and length from amphistomatous leaves of `r n_tax3` terrestrial seed plant taxa mostly from the literature. We estimated the covariance in divergence between stomatal traits from `r n_pair` phylogenetically independent contrasts using a robust Bayesian model. Adaxial stomatal density, but not length, is evolutionarily labile and not strongly integrated with stomatal length or abaxial stomatal density. Hence, developmental integration alone cannot explain inverse size-density scaling nor bimodal stomatal  ratio. Quasi-independent evolution of stomatal anatomical traits facilitates largely unfettered access to fitness optima. If stomatal anatomical traits are near their current fitness optimum, this implies that limits on trait (co)variance result from selective rather than developmental constraints. However, we cannot rule out that developmental integration is important in some lineages. Future research should identify the mechanistic basis of (dis)integration in stomatal development.
+Functional and developmental constraints on phenotypic variation may cause traits to covary over millions of years and slow populations from reaching their adaptive optima. Alternatively, trait covariation may result from selective constraint if some trait combinations and generally maladaptive. Quantifying the relative contribution of functional, developmental, and selective constraints on phenotypic variation is a longstanding goal of macroevolution, but it is often difficult to distinguish different types of constraints. The stomatal anatomy of leaves with stomata on both surfaces (amphistomatous) present a unique opportunity to test the significance of functional and developmental constraints on phenotypyic evolution at broad phylogenetic scales. The key insight is that stomata on each leaf surface encounter the same functional and developmental constraints, but potentially very different selective constraints. If stomatal traits on each surface evolve differently, this implies that independent evolution is possible and functional or developmental constraints alone likely do not explain covariance between stomatal anatomical traits. Packing limits and cell-size-mediated developmental integration are hypothesized to constrain variation in stomatal anatomy. We tested this synthesizing data on stomatal density and length from amphistomatous leaves of `r n_tax3` terrestrial flowering plant taxa mostly from the literature. We estimated the covariance in divergence between stomatal traits from `r n_pair` phylogenetically independent contrasts using a robust Bayesian model. Contrary to packing limit and developmental integration hypotheses, stomatal anatomy on each surface diverged partially independently. To better understand the global variation in ecologically important traits like stomata will likely require adaptive explanations for what constrains phenotypic (co)variation.
 
 \newpage{}
 
 # Introduction
 
-The ability for traits to evolve independently of one another is a necessary prerequisite for adaptation to complex environments [@lewontin_adaptation_1978]. If traits can evolve independently and there is sufficient genetic variation, then selection should move populations toward their multivariate phenotypic optimum. Adaptive evolution may be constrained if traits cannot evolve independently because they are developmentally integrated. Developmentally integrated traits have a "disposition for covariation" [@armbruster_integrated_2014], meaning that evolutionary divergence between lineages in one character will be tightly associated with divergence in another character. Allometry is a classic example of developmental integration that may constrain phenotypic evolution (reviewed in @pelabon_evolution_2014). Strong allometric covariation between traits within populations can constrain macroevolutionary divergence for long periods of time depending on the strength and direction of selection [@lande_quantitative_1979]. However, developmental integration does not necessarily hamper adaptation, and can even accelerate adaptive evolution when trait covariation is aligned with the direction of selection [@hansen_is_2003]. For example, fusion of floral parts increases their developmental integration which may increase the rate and precision of multivariate adaptation to specialist pollinators (Berg’s rule) [@berg_general_1959; @berg_ecological_1960; @conner_raissa_2014; @armbruster_covariance_1999]. In this study we are interested in quantifying the strength of developmental integration in stomatal anatomy and whether developmental integration might hamper or accelerate adaptive evolution.
+The ability for traits to evolve independently of one another is a necessary prerequisite for adaptation to complex environments [@lewontin_adaptation_1978]. If traits can evolve independently and there is sufficient genetic variation, then selection should move populations toward their multivariate phenotypic optimum. Yet divergence in one trait often covaries with other traits and covariance can persist for millions of years [@schluter_adaptive_1996]. Covariance is "a rough local measure of the strength of constraint" [@maynard_smith_developmental_1985] that can be broken down into functional, developmental, and selective constraints. Functional constraints are "limitations imposed by time, energy, or the laws of physics" [@arnold_constraints_1992]. In other words, certain trait combinations are not physically or geometrically possible. A classic example is shell coiling among invertebrate lineages in which the morphospace of possible phenotypes is constrained by hard geometrical limits [@raup_geometric_1966; @mcghee_theoretical_1999]. Within the space of possible phenotypes, developmental constraints can "bias...the production of variant phenotypes or [place] a limitation on phenotypic variability" [@maynard_smith_developmental_1985]. For example, Fibonacci phyllotaxis may arise from a packing constraint of primordia on the developing apex [@mitchison_phyllotaxis_1977; @reinhardt_law_2022; but see @niklas_role_1988 for an adaptive explanation]. Natural selection constrains phenotypic variation by preventing maladaptive forms from evolving. Selection causes trait covariation because 'missing' trait combinations are maladaptive. Understanding phenotypic constraint is challenging, but a useful starting point is determining whether phenotypic covariation can be explained by functional or developmental constraints [@mcghee_theoretical_1999; @mcghee_geometry_2007; @olson_plant_2019]. If phenotypic covariation is inconsistent with functional and developmental constraints, this provides a strong impetus to test for selective constraint.
 
-Stomata are microscopic pores on the leaf or other photosynthetic surfaces of most land plants formed by a pair of guard cells. Here we limit our focus to stomatal traits on leaves within terrestrial seed plants, primarily angiosperms. The density, size, and patterning of stomata on a leaf set the maximum stomatal conductance to CO$_2$ diffusing into a leaf and the amount of water that transpires from it [@sack_hydrology_2003; @franks_effect_2001; @galmes_leaf_2013]. Plants typically operate below their anatomical maximum by dynamically regulating stomatal aperture. Even though operational stomatal conductance determines the realized photosynthetic rate and water-use efficiency, anatomical parameters are useful in that they set the range of stomatal function [@de_boer_optimal_2016] and are correlated with actual stomatal function under natural conditions [@murray_consistent_2020].
+In this study, we will address packing problems and developmental integration, specific forms of functional and developmental constraint relevant to our study system, stomatal anatomy. We introduce these concepts generally in this paragraph. Packing a number objects into a finite space is common functional constraint on organisms. Regular geometries that appear in nature such as helices and hexagons (think DNA and honeycombs) are often optimal solutions to packing problems [@mackenzie_proving_1999; @maritan_optimal_2000]. Notice that functional constraint does not preclude selection, but the presence of a packing limit changes the range of possible phenotypes. Developmental integration is a form of developmental constraint on multivariate phenotypic evolution and we use them interchangeably in this study. Developmentally integrated traits have a "disposition for covariation" [@armbruster_integrated_2014], meaning that evolutionary divergence between lineages in one trait will be tightly associated with divergence in another trait. Allometry is a classic, albeit contested, example of developmental integration that may constrain phenotypic evolution [reviewed in @pelabon_evolution_2014]. Strong allometric covariation between traits within populations can constrain macroevolutionary divergence for long periods of time depending on the strength and direction of selection [@lande_quantitative_1979]. However, developmental integration does not necessarily hamper adaptation, and can even accelerate adaptive evolution when trait covariation is aligned with the direction of selection [@hansen_is_2003]. For example, fusion of floral parts increases their developmental integration which may increase the rate and precision of multivariate adaptation to specialist pollinators [Berg’s rule, @berg_general_1959; @berg_ecological_1960; @conner_raissa_2014; @armbruster_covariance_1999].
 
-Two salient features of stomatal anatomy have been recognized for decades but we do not yet understand the evolutionary forces that generate and maintain them. We denote these two features as “inverse size-density scaling” and “bimodal stomatal ratio”  (Fig. \ref{fig:concepts}). Inverse size-density scaling refers to the negative interspecific correlation between the size of the stomatal apparatus and the density of stomata [@weiss_untersuchungen_1865; @franks_maximum_2009; @de_boer_optimal_2016; @sack_developmental_2016; @liu_scaling_2021]. Across species, leaves with smaller stomata tend to pack them more densely, but there is significant variation about this general trend (Fig. \ref{fig:concepts}a). Bimodal stomatal ratio refers to the observation that the ratio of stomatal density on the adaxial (upper) surface to the density on the abaxial (lower) has distinct modes (Fig. \ref{fig:concepts}b). Stomata are most often found only on the lower leaf surface (hypostomy), but occur on both surfaces (amphistomy) in some species [@metcalfe_anatomy_1950; @parkhurst_adaptive_1978; @mott_adaptive_1982], especially herbaceous plants from open, high light habitats [@salisbury_i_1928; @mott_adaptive_1982; @gibson_structure-function_1996; @smith_associations_1998; @jordan_using_2014; @muir_making_2015; @bucher_stomatal_2017; @muir_light_2018]. @muir_making_2015 described bimodal stomatal ratio formally but the pattern is apparent in earlier comparative studies of the British flora (*cf.* @peat_comparative_1994 Fig 1). For both features, we limit our focus in this study to interspecific variation in mean trait values and do not seek to understand intraspecifc variation.
+Biologists have studied phenotypic constraints for decades, but progress is challenging because many multivariate phenotypes are too complex or poorly understood to quantitatively distinguish functional, developmental, and selective constraints over macroevolutionary timescales. Stomatal anatomy on the leaves of land plants provide an exceptional opportunity because 1) there are 1000s of species to compare and 2) the main packing constraints and developmental steps are analytically tractable. This means it is possible to derive quantitative predictions and test their generality using large comparative data sets representing millions of year of evolutionary history. A heretofore unappreciated fact about stomata is that many leaves have stomata on both lower and upper surfaces. The packing and developmental constraints are the same for stomata on each surface, but the selective constraints may potentially differ. Therefore, if packing and developmental constraints dominate, stomatal anatomy on each surface should diverge in concert. Failure to do so implies that independent evolution is possible and that selective constraints most likely explain at least some of the covariance between traits. Phylogenetic comparisons of stomatal anatomy provide a statistically powerful, general, and elegant way to distinguish different phenotypic constraints that would be impossible in many other traits with as much ecological importance. The next sections provides background information on stomatal anatomy, how it varies, and why functional or developmental constraints might be important. Readers not interested in this background may skip ahead to hypotheses and predictions.
+
+## The adaptive significance and ecological distribution of variation in stomatal anatomy
+
+Stomata are microscopic pores formed by a pair of guard cells that regulate gas exchange (CO$_2$ gain and water vapor loss) on the leaf or other photosynthetic surfaces of most land plants. Stomata originated once in the history of land plants around 500 Ma, diversified rapidly in density and size, and have been maintained in most lineages except some bryophytes and aquatic plants [recently reviewed @clark_origin_2022]. Stomata respond physiologically by opening and closing in response to light, humidity, temperature, circadian rhythm, and plant water status [@hetherington_role_2003; @lawson_guard_2020]. On this short time scale, the stomatal size, density, and distribution on a mature leaf do not change, so the maximum rate of is fixed. At somewhat longer timescales, the plant may respond to environmental cues such as light and CO$_2$ by altering stomatal anatomy in new leaves [@casson_influence_2008]. Physiological responses (aperture change) and plastic responses (new leaves with changed anatomy) may be alternative strategies for plants to acclimate to environmental change [@haworth_co-ordination_2013]. Finally, stomatal anatomy can evolve due to inherited changes in stomatal development. Plastic and genetic changes in stomatal anatomy are likely both ecologically important, but most studies do not use a common garden design that would tease apart their relative contribution.
+
+We focus on anatomical variation in the density, size, and patterning of stomata on a leaf because these factors set the maximum stomatal conductance to CO$_2$ diffusing into a leaf and the amount of water that transpires from it [@sack_hydrology_2003; @franks_effect_2001; @galmes_leaf_2013; @harrison_influence_2020]. Plants typically operate below their anatomical maximum by dynamically regulating stomatal aperture. Even though operational stomatal conductance determines the realized photosynthetic rate and water-use efficiency, anatomical parameters are useful in that they set the range of stomatal function [@de_boer_optimal_2016] and are correlated with actual stomatal function under natural conditions [@murray_consistent_2020]. All else being equal, larger, more densely packed, but evenly spaced stomata increase gas exchange [@franks_maximum_2009; @dow_physiological_2014; @lehmann_effects_2015]. Smaller stomata may also be able to respond more rapidly than larger stomata, proving the ability of leaves to track short duration environmental change [@drake_smaller_2013]. Stomata are most often found only on the lower leaf surface (hypostomy), but occur on both surfaces (amphistomy) in some species [@metcalfe_anatomy_1950; @parkhurst_adaptive_1978; @mott_adaptive_1982]. Amphistomatous leaves have a second parallel pathway from the substomatal cavities through the leaf internal airspace to sites of carboxylation in the mesophyll [@parkhurst_adaptive_1978; @gutschick_photosynthesis_1984]. Thus amphistomatous leaves have lower resistance to diffusion through the airspace which increases the photosynthetic rate [@parkhurst_intercellular_1990]. If total stomatal and other conductances to CO$_2$ supply could be held constant, then an amphistomatous leaf will have a greater conductance than am otherwise identical hypostomatous leaf. The magnitude of the advantage depends on upon the resistance to diffusion through the internal airspace, which is variable among species. 
+
+The adaptive significance and ecological distribution of leaves with different stomatal anatomies is complex and there is much yet to learn. Seed plants posses a wider range of stomatal anatomies than ferns and fern allies, which are restricted to having large stomata, at low density, only on the lower surface [@de_boer_optimal_2016]. In general, trees and shrubs have greater stomatal density than herbs, but there is a of lot variation within growth forms depending on the ecological niche [@salisbury_i_1928; @kelly_plant_1995]. A commonly observed trend is that leaves from higher light environments tend to have greater stomatal density [@salisbury_i_1928; @gibson_structure-function_1996]. This may explain why, perhaps counterintuitively, plants in dry environments tend to have more stomata. Drier habitats are more open, enabling plants with higher stomatal density can photosynthesize more when water is available, but close stomata during drought [@liu_variation_2018]. Over recent human history, stomatal density has tended to decline within species as atmospheric CO$_2$ concentrations have risen [@woodward_stomatal_1987; @royer_stomatal_2001]. It is unclear whether most of this change is plastic or genetic, but the overall direction is consistent with the hypothesis that plants decrease gas exchange as CO$_2$ availability increases.
+
+The adaptive significance of variation in stomatal ratio is uncertain, but we have some clues based on the distribution of hypo- and amphistomatous leaves. Despite the fact that amphistomy can increase photosynthesis, most leaves are hypostomatous, suggesting that the benefits of amphistomy. Amphistomy should increase photosynthesis most under saturating-light conditions where CO$_2$ supply limits photosynthesis. This may explain why amphistomatous leaves are most common in high light habitats [@salisbury_i_1928; @mott_adaptive_1982; @gibson_structure-function_1996; @smith_associations_1998; @jordan_using_2014; @muir_making_2015; @bucher_stomatal_2017], especially in herbs [@muir_light_2018]. However, the light environment alone cannot explain why hypostomatous leaves predominate in shade plants [@muir_is_2019], suggesting that we need to understand the costs of upper stomata better. Upper stomata increase the susceptibility to rust pathogens in *Populus* [@mckown_association_2014; @mckown_role_2019; @fetter_growthdefense_2021]. Amphistomy may also cause the palisade mesophyll to dry out under strong vapor pressure deficits [@buckley_how_2015]. Other hypotheses about the adaptive significance of stomatal ratio are discussed in @muir_making_2015 and @drake_two_2019.
+
+## Major features of stomatal anatomical macroevolution
+
+Two salient features of stomatal anatomy have been recognized for decades but we do not yet understand the evolutionary forces that generate and maintain them. We denote these two features as “inverse size-density scaling” and “bimodal stomatal ratio” (Fig. \ref{fig:concepts}). Inverse size-density scaling refers to the negative interspecific correlation between the size of the stomatal apparatus and the density of stomata [@weiss_untersuchungen_1865; @franks_maximum_2009; @de_boer_optimal_2016; @sack_developmental_2016; @liu_scaling_2021]. Across species, leaves with smaller stomata tend to pack them more densely, but there is significant variation about this general trend (Fig. \ref{fig:concepts}a). Stomatal size and density determine the maximum stomatal conductance to CO$_2$ and water vapor but also take up space on the epidermis, which could be costly for both construction and maintenance. Natural selection should favor leaves that have enough stomata of sufficient size to supply CO$_2$ for photosynthesis. Hence leaves with few, small stomata and high photosynthetic rates do not exist because they would not supply enough CO$_2$. Conversely, excess stomata or extra large stomata beyond the optimum may result in stomatal interference where the CO$_2$ concentration gradient around one stomate merges with that of its neighbor [@zeiger_stomatal_1987; @lehmann_effects_2015], incur metabolic costs [@deans_optimization_2020], and/or risk hydraulic failure [@henry_stomatal_2019]. The distribution of stomata and density may therefore represent the combinations that ensure enough, but not too much, stomatal conductance. @franks_maximum_2009 further hypothesized that the evolution of small stomata in angiosperms enabled increased stomatal conductance while minimizing the epidermal area allocated to stomata. 
+
+A striking feature of the interspecific variation in stomatal ratio is that trait values are not uniformly distributed, but strongly bimodal \ref{fig:concepts}b. Bimodal stomatal ratio refers to the observation that the ratio of stomatal density on the adaxial (upper) surface to the density on the abaxial (lower) has distinct modes (Fig. \ref{fig:concepts}b). Amphistomy occurs most often in herbaceous plants from open, high light habitats [@salisbury_i_1928; @mott_adaptive_1982; @gibson_structure-function_1996; @smith_associations_1998; @jordan_using_2014; @muir_making_2015; @bucher_stomatal_2017; @muir_light_2018]. @muir_making_2015 described bimodal stomatal ratio formally but the pattern is apparent in earlier comparative studies of the British flora (*cf.* @peat_comparative_1994 Fig 1).
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{../figures/concepts.pdf}
@@ -185,37 +235,47 @@ Two salient features of stomatal anatomy have been recognized for decades but we
 \label{fig:concepts}
 \end{figure}
 
-Given the significance of stomata for plant function and global vegetation modeling, we would like to understand whether these major anatomical features are shaped primarily by adaptive or nonadaptive evolutionary forces. We briefly review adaptive hypotheses for both inverse size-density scaling and bimodal stomatal ratio. Then we discuss how developmental integration might contribute to these features, in addition to or in lieu of adaptive evolution. Stomatal size and density determine the maximum stomatal conductance to CO$_2$ and water vapor but also take up space on the epidermis, which could be costly for both construction and maintenance. Natural selection should favor leaves that have enough stomata of sufficient size to supply CO$_2$ for photosynthesis. Hence leaves with few, small stomata and high photosynthetic rates do not exist because they would not supply enough CO$_2$. Conversely, excess stomata or extra large stomata beyond the optimum may result in stomatal interference [@zeiger_stomatal_1987], incur metabolic costs [@deans_optimization_2020], and/or risk hydraulic failure [@henry_stomatal_2019]. The distribution of stomata and density may therefore represent the combinations that ensure enough, but not too much, stomatal conductance. @franks_maximum_2009 further hypothesized that the evolution of small stomata in angiosperms enabled increased stomatal conductance while minimizing the epidermal area allocated to stomata. 
+## Packing limits, developmental integration, and stomatal anatomy
 
-Developmental integration between stomatal size and density, mediated by meristematic cell volume, could also explain inverse size-density scaling. If the size of both guard cells and the size of pavement cells between stomata are determined by initial meristematic cell volume, then changes in cell volume early in leaf development would cause both increased stomatal size and lower density [@brodribb_unified_2013]. This type of developmental integration would not hinder adaptive evolution when the main axes of selection were aligned with the developmental correlation. For example, if higher maximum stomatal conductance were achieved primarily by increasing stomatal density and decreasing stomatal size as proposed by @franks_maximum_2009, then developmental integration might accelerate the response to selection compared to a case where stomatal size and density are completely independent.
+Given the significance of stomata for plant function and global vegetation modeling [@berry_stomata:_2010], we would like to understand what factors constrain their anatomical variation. Could packing limits and developmental integration explain? We limit our focus in this study to interspecific variation in mean trait values and do not study understand intraspecifc variation here.
 
-The adaptive significance of variation in stomatal ratio is unknown, but we have some clues based on the distribution of hypo- and amphistomatous leaves. The functional significance of amphistomy is that it adds a second parallel pathway from the substomatal cavities through the leaf internal airspace to sites of carboxylation in the mesophyll [@parkhurst_adaptive_1978; @gutschick_photosynthesis_1984]. Thus amphistomatous leaves have lower resistance to diffusion through the airspace which increases the photosynthetic rate [@parkhurst_intercellular_1990]. Despite this amphistomy advantage, most leaves are hypostomatous, suggesting that the benefits of amphistomy in terms of increased photosynthesis usually do not outweigh the costs of stomata on the upper surface. Amphistomy should increase photosynthesis under saturating-light conditions where CO$_2$ supply limits photosynthesis. This may explain why amphistomatous leaves are most common in high light habitats [@salisbury_i_1928; @mott_adaptive_1982; @gibson_structure-function_1996; @smith_associations_1998; @jordan_using_2014; @muir_making_2015; @bucher_stomatal_2017], especially in herbs [@muir_light_2018]. However, the light environment alone cannot explain why hypostomatous leaves predominate in shade plants [@muir_is_2019], suggesting that we need to understand the costs of upper stomata better. Upper stomata increase the susceptibility to rust pathogens in *Populus* [@mckown_association_2014; @mckown_role_2019; @fetter_growthdefense_2021]. Amphistomy may also cause the palisade mesophyll to dry out under strong vapor pressure deficits [@buckley_how_2015]. Other hypotheses about the adaptive significance of stomatal ratio are discussed in @muir_making_2015 and @drake_two_2019.
+Packing constraints and developmental integration could explain inverse size-density scaling. The density and size of a stomata on a planar leaf surface can be viewed as a packing problem where the total area allocated to stomata cannot exceed the total leaf area. This is a functional, or geometric, constraint because certain combinations of large size and high density are not physically possible. This functional constraint cannot explain why combinations of low density and small size are rare, but may explain why stomatal size must decrease when density increase as the leaf runs out of space. The packing limit of functional stomata is less than the entire leaf area, but the exact value is unclear. The realized upper limit is close to 1/3 or 1/2 [@de_boer_optimal_2016; @sack_developmental_2016; @liu_scaling_2021].
 
-A striking feature of the interspecific variation in stomatal ratio is that trait values are not uniformly distributed, but strongly bimodal. @muir_making_2015 derived general conditions in which bimodality arises because adaptive optima are restricted to separate regimes, but this model has not been tested. An alternative hypothesis is that stomatal traits on the ab- and adaxial surfaces are developmentally integrated because stomatal development is regulated the same way on each surface. In hypostomatous leaves, stomatal development is turned off in the adaxial surface. In amphistomatous leaves, stomatal development proceeds on both surfaces, but evolutionary changes in stomatal development affect traits on both surfaces because they are tethered by a shared developmental program. This model of developmental integration would lead to a bimodal trait distribution because leaves would either be hypostomatous (stomatal ratio equal to 0) or have similar densities on each surface (stomatal ratio approximately 0.5). To our knowledge, this hypothesis has not been put forward in the literature but came about during discussion with one of us (Muir, personal communication with EJ Edwards).
+Guard cell size and spacing between stomata (the inverse of density) are developmentally intertwined because guard cells and epidermal pavement cells between stomata develop from the same meristem. Before guard cell meristemoids form via asymmetric cell division [@dow_patterning_2014], the size of guard and epidermal cells are influenced by meristematic cell volume and expansion. Evolutionary shifts in meristematic cell volume or expansion rate could cause both increased stomatal size and lower density because epidermal cells between stomata are larger [@brodribb_unified_2013]. For example, larger genomes increase meristematic cell volume [@simova_geometrical_2012], setting a lower bound on final cell volume. Although different expansion rates in guard and epidermal pavement cells can reduce the correlation in their final size, the fact that species with larger genomes tend toward having larger stomata and lower density may indicate an effect of development integration of stomatal anatomy [@beaulieu_genome_2008; @simonin_genome_2018; @roddy_scaling_2020]. Developmental integration in this case would not hinder adaptive evolution when the main axes of selection were aligned with the developmental correlation. For example, if higher maximum stomatal conductance were achieved primarily by increasing stomatal density and decreasing stomatal size as proposed by @franks_maximum_2009, then developmental integration might accelerate the response to selection compared to a case where stomatal size and density are completely independent.
 
-We reasoned that the developmental hypotheses for inverse size-density scaling and bimodal stomatal ratio could be tested using amphistomatous leaves. Since both leaf surfaces are formed from the same genome and meristematic cells, if developmental integration is strong we would expect similar patterns of trait covariation in the abaxial and adaxial surface (see below for specific predictions). Conversely, if traits covary differently on each surface it would indicate that stomatal anatomical traits can be developmentally disintegrated. Analogously, variation in the genetic correlation and interspecific divergence of sexually dimorphic traits in dioecious species demonstrate that integration is not fixed and can be modified by selection [@barrett_sexual_2013]. Below we reiterate the hypotheses and specific predictions for amphistomatous leaves:
+@muir_making_2015 derived general conditions in which bimodality arises because adaptive optima are restricted to separate regimes, but this model has not been tested. An alternative hypothesis is that stomatal traits on the ab- and adaxial surfaces are developmentally integrated because stomatal development is regulated the same way on each surface. In hypostomatous leaves, stomatal development is turned off in the adaxial surface. In amphistomatous leaves, stomatal development proceeds on both surfaces, but evolutionary changes in stomatal development affect traits on both surfaces because they are tethered by a shared developmental program. This is a developmental constraint because the fact that stomatal development is the same on each surface constrains the type of variation available for selection. Developmental integration would lead to a bimodal trait distribution because leaves would either be hypostomatous (stomatal ratio equal to 0) or have similar densities on each surface (stomatal ratio approximately 0.5). To our knowledge, this hypothesis has not been put forward in the literature.
+
+## Hypotheses and predictions
+
+The overarching question is whether major features of stomatal anatomy in terrestrial angiosperms are consistent with packing constraints and developmental integration mediated by cell size. Since stomata on both surfaces of amphistomatous leaves are subject to the same functional and developmental constraints, if these constraints are most important we predict similar patterns of trait covariation on abaxial and adaxial surfaces. Conversely, if traits covary differently on each surface it would indicate that stomatal anatomical traits can evolve independently and selective constraints like contribute to covariation. Analogously, variation in the genetic correlation and interspecific divergence of sexually dimorphic traits in dioecious species demonstrate that integration is not fixed and can be modified by selection [@barrett_sexual_2013]. We framed specific hypotheses and predictions around how functional or developmental constraints might explain either inverse size-density scaling or bimodal stomatal ratio.
 
 \noindent {\bf{Inverse size-density scaling}}
 
-- *Hypothesis*: Meristematic cell volume mediates developmental integration between stomatal size and density 
+Both packing limits and developmental integration could contribute to inverse size-density scaling. If limits on the fraction of epidermal area occupied by stomata constrains that combinations of stomatal size and density that are evolutionarily accessible, then we predict that evolutionary divergence in stomatal size and/or density will decrease as the fraction of epidermal area occupied by stomata increases. Furthermore, if divergence slows as epidermal area occupied by stomata because of a packing limit, it should slow down the same way for both ab- and adaxial surfaces.
 
-- *Prediction*: Amphistomatous leaves will exhibit identical size-density scaling on each surface
+The second hypothesis is the cell size mediates developmental integration between stomatal size and density. If developmental integration is the primary reason for inverse size-density scaling, then amphistomatous leaves will exhibit identical size-density scaling on each surface. If the stomatal size and density scale differently on each surface, this implies that they can evolve independently and that selective constraints likely explain some of their covariance. Furthermore, we predicted that divergence in genome size, which is strongly associated with meristematic cell volume [@simova_geometrical_2012], would covary with stomatal size and density similarly on each surface.
 
 \noindent {\bf{Bimodal stomatal ratio}}
 
-- *Hypothesis*: Stomatal traits on both leaf surfaces are developmentally integrated because they follow the same developmental program
+If the developmental integration hypothesis is correct, it also implies stomatal size and density will diverge in concert on each surface because the developmental function is fixed. Therefore we predict that divergence of stomatal traits on one surface will be isometric with divergence in stomatal traits on the other surface. This type of developmental integration limits the expression of variation that could give rise to a bimodal stomatal ratio. Suppose that in the hypostomatous leaves, stomatal development is completely suppressed. In amphistomatous leaves, stomatal development proceeds identically on each surface because the developmental function is identical. This would lead to a tendency for equal density on each surface.
 
-- *Prediction*: Evolutionary divergence in stomatal traits on one surface will be isometric with divergence in stomatal traits on the other surface
+We formalized these hypotheses into a mathematical framework to derive quantitative predictions that we tested in a phylogenetic comparative framework by compiling stomatal anatomy data from the literature for a broad range of flowering plants.
 
-We tested these predictions in a phylogenetic comparative framework by compiling stomatal anatomy data from the literature for a broad range of seed plants. 	
+<!--- not using I think
+In species where stomata occupy a large fraction of the epidermis, divergence will be limited by the fact that any increases in stomatal size and/or density may be deleterious because they increase stomatal area beyond an upper bound. Since less area of the adaxial (upper) surface is typically allocated to stomata, there are more ways to evolve without exceeding an upper bound in stomatal area allocation, which should increase the rate of divergence in adaxial stomatal traits. We tested this prediction with the same data set.
+-->
 
 # Materials and Methods
 
-Unless otherwise mentioned, we performed all data wrangling and statistical analyses in *R* version `r as.character(getRversion())` [@r_core_team_r:_2021]. Source code is publically available on GitHub (https://github.com/cdmuir/stomata-independence) and will be archived on Zenodo upon publication.
+Unless otherwise mentioned, we performed all data wrangling and statistical analyses in *R* version `r as.character(getRversion())` [@r_core_team_r:_2022]. Source code is publicly available on GitHub (https://github.com/cdmuir/stomata-independence) and will be archived on Zenodo upon publication.
+
+## Theory: divergence with and without developmental constraint
+
+Developmental integration could shape patterns of phenotypic macroevolution, but a major hindrance to progress is that verbal models do not make precise, quantitative predictions that distinguish it from alternatives. An advantage of testing developmental integration in stomata is that their development is well studied [@bergmann_stomatal_2007; @dow_patterning_2014; @sack_developmental_2016]. We can leverage that knowledge to build a developmental function and derive equations for phenotypic (co)variance caused by developmental integration. If observed patterns of evolution are inconsistent with developmental integration, theory may also help identify which parameters lead to developmental disintegration. We integrated and extended stomatal development models to predict how stomatal density and length would diverge if stomatal development were constrained and how those predictions would change if stomatal development were unconstrained. We summarize our methods verbally here and direct readers interested in the mathematical details to Notes A1. A graphical summary is provided in Fig. \@ref(fig:developmental-integration). We imposed constraint by assuming the stomatal developmental function is constrained. The developmental function maps cell size prior to differentiation onto stomatal size and density using two parameters. The first parameter describes how cell volume is apportioned between epidermal cells and guard cell meristemoids during asymmetric cell division [@dow_patterning_2014]. The second parameter is stomatal index [@salisbury_i_1928; @sack_developmental_2016], which is determined by amplifying and spacing divisions after asymmetric cell division [@dow_patterning_2014]. When these parameters are fixed, divergence in stomatal size and density is determined by divergence in meristematic cell volume and expansion prior to asymmetric division. We relaxed this constraint by treating parameters of the developmental function as random variables that can diverge between species. We used random variable algebra to derive predicted (co)variance in divergence between stomatal length and density [see @lynch_genetics_1998 for key random variable algebra theorems]. 
 
 ## Data synthesis
 
-We searched the literature for studies that measured stomatal density and stomatal size, either guard cell length or stomatal pore length, for both abaxial and adaxial leaf surfaces. In other words, we did not include studies unless they reported separate density and size values for each surface. We did not record leaf angle because it is typically not reported, but we presume that for the vast majority of taxa that the abaxial is the lower surface and the adaxial is the upper surface. This is reversed in resupinate leaves, but to the best of our knowledge, our synthesis did not include resupinate leaves. We refer to guard cell length as stomatal length and converted stomatal pore length to stomatal length assuming guard cell length is twice pore length [@sack_developmental_2016]. Table \@ref(tab:traits) lists focal traits and symbols.
+We searched the literature for studies that measured stomatal density and stomatal size, either guard cell length or stomatal pore length, for both abaxial and adaxial leaf surfaces. In other words, we did not include studies unless they reported separate density and size values for each surface. We did not record leaf angle because it is typically not reported, but we presume that for the vast majority of taxa that the abaxial is the lower surface and the adaxial is the upper surface. This is reversed in resupinate leaves, but to the best of our knowledge, our synthesis did not include resupinate leaves. None of the species with resupinate leaves listed by @chitwood_conflict_2012 are in our data set. We refer to guard cell length as stomatal length and converted stomatal pore length to stomatal length assuming guard cell length is twice pore length [@sack_developmental_2016]. Table \@ref(tab:traits) lists focal traits and symbols.
 
 ```{r, traits}
 
@@ -230,31 +290,46 @@ tribble(
 
 ```
 
-Data on stomatal anatomy are spread over a disparate literature and we have not attempted an exhaustive synthesis of amphistomatous leaf stomatal anatomy. We began our search by reviewing papers that cited key studies of amphistomy [@parkhurst_adaptive_1978; @mott_adaptive_1982; @muir_making_2015]. We supplemented these by searching Clarivate *Web of Science* for "guard cell length" because most studies that report guard cell length also report stomatal density, whereas the reverse is not true. We identified additional studies by reviewing the literature cited of papers we found and through haphazard discovery. The final data set contained `r nrow(stomata_anatomy1)` observations of stomatal density and length from `r length(unique(stomata_anatomy1$source_id))` taxa and `r length(unique(stomata_anatomy1$source))` primary studies (Table \@ref(tab:sources)). However, many of these data were excluded if taxonomic name and phylogenetic placement could not be resolved (see below). Finally, we included some previously unpublished data. Stomatal size data were collected on grass species previously described  [@pathare_increased_2020]. We also included a previously unpublished set of 14 amphistomatous wild tomato species (*Solanum* sect. *Lycopersicum* and sect. *Lycopersicoides*) grown in pots under outdoor summer Mediterranean conditions previously described [@muir_unpublished_2021]. We took ab- and adaxial epidermal imprints using clear nail polish of the mid-portion of the lamina away from major veins on the terminal leaflet of the youngest, fully expanded leaf from 1-5 replicates per taxon. With a brightfield light microscope, we counted stomata in three fields of view and divided by area to obtain density and measured the average guard cell length to estimate stomatal size. The data set is publicly available as an *R* package **ropenstomata** (https://github.com/cdmuir/ropenstomata). It will be deposited on Dryad and archived on Zenodo upon publication.
+Data on stomatal anatomy are spread over a disparate literature and we have not attempted an exhaustive synthesis of amphistomatous leaf stomatal anatomy. We began our search by reviewing papers that cited key studies of amphistomy [@parkhurst_adaptive_1978; @mott_adaptive_1982; @muir_making_2015]. We supplemented these by searching Clarivate *Web of Science* for "guard cell length" because most studies that report guard cell length also report stomatal density, whereas the reverse is not true. We identified additional studies by reviewing the literature cited of papers we found and through opportunistic discovery. The final data set contained `r nrow(stomata_anatomy1)` observations of stomatal density and length from `r length(unique(stomata_anatomy1$source_id))` taxa and `r length(unique(stomata_anatomy1$source))` primary studies (Table \@ref(tab:sources)). However, many of these data were excluded if taxonomic name and phylogenetic placement could not be resolved (see below). Finally, we included some unpublished data. Stomatal size data were collected on grass species described in @pathare_increased_2020. We also included unpublished data on 14 amphistomatous wild tomato species (*Solanum* sect. *Lycopersicum* and sect. *Lycopersicoides*) grown in pots under outdoor summer Mediterranean conditions described in @muir_unpublished_2022. We took ab- and adaxial epidermal imprints using clear nail polish of the mid-portion of the lamina away from major veins on the terminal leaflet of the youngest, fully expanded leaf from 1-5 replicates per taxon. With a brightfield light microscope, we counted stomata in three 0.571 mm$^2$ fields of view and divided by the total area to estimate density. We measured the average guard cell length of 60 stomata, 20 per field of view, to estimate stomatal size. The data set is publicly available as an *R* package **ropenstomata** (https://github.com/cdmuir/ropenstomata). We collected data on genome size from the Angiosperm DNA C-values database [@leitch_angiosperm_2019; @pellicer_plant_2020]. When multiple ploidy levels were available for a taxon, we chose the lowest one for consistency. All data will be deposited on Dryad and archived on Zenodo upon publication.
 
-## Phylogeny
-
-We resolved taxonomic names using the R package **taxize** version `r packageVersion("taxize")` [@chamberlain_taxize_2013]. We queried taxonomic names supplied by the original study authors on `r str_extract(file.info("processed-data/taxize_output.rds")$ctime, "^[0-9]{4}-[0-9]{2}-[0-9]{2}")` from the following sources: `r taxize_source_ref`. We retained the maximum scoring matched name with taxize score $\ge 0.75$ (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from `r n_tax1` to `r n_tax2` taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
-
-We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018 ; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducated molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa (Notes A1). Seven taxa are gymnosperms; the vast majority are angiosperms. 
+<!-- notes on Plant C-values
+Citation: Leitch IJ, Johnston E, Pellicer J, Hidalgo O, Bennett MD. 2019. Angiosperm DNA C-values database (release 9.0, Apr 2019) https://cvalues.science.kew.org/
+accessed 2022-03-26 and 27
+When multiple ploidy levels were available, chose the lowest one
+-->
 
 ## Phylogenetically independent contrasts
 
-We extracted `r n_pair` phylogenetically independent taxon pairs (Table \ref{tab:pair_div}). A fully resolved, bifurcating four-taxon phylogeny can have two basic topologies: $\tt{((A,B),(C,D))}$ or $\tt{((A,B),C),D))}$. Taxon pairs include all comparisons of $\tt{A}$ with $\tt{B}$ and $\tt{C}$ with $\tt{D}$ in each four-taxon clade. We extracted pairs using the `extract_sisters()` function in R package **diverge** version `r packageVersion("diverge")` [@anderson_diverge_2021] and custom scripts (see source code). Taxon pairs are the most closely related pairs in our data set, but not usually the most closely related species in nature. For each pair we calculated phylogenetically independent contrasts [@felsenstein_phylogenies_1985] as the difference in the log$_{10}$-transformed trait value. Contrasts are denoted as $\Delta \text{log(trait)}$. We log-transformed traits for normality because like many morphological and anatomical traits they are strongly right-skewed. Log-transformation also helps compare density and length, which are measured on different scales, because log-transformed values quantify proportional rather than absolute divergence. We only used pairs of terminal taxa rather than the entire tree for two reasons. First, even in whole-tree methods, approximately half of the data comes from divergence at the tips, so we do not lose much statistical power. Second, using a taxon-pair method obviates making strong assumptions about multivariate trait evolution process homogeneity throughout seed plant evolution. Homogeneity is biologically unlikely and it is difficult to fit more complex models reliably with only data from extant taxa.
+We generated an ultrametric, bifurcating phylogeny of `r n_tax3` taxa by resolving and removing ambiguous taxonomic names, placing taxa on the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018; @zanne_three_2014], and resolving polytomies using published sequence data. The complete methodology is described in the online supplement (Notes A2).
+
+From this phylogeny, we extracted `r n_pair` phylogenetically independent taxon pairs (Table \ref{tab:pair_div}). A fully resolved, bifurcating four-taxon phylogeny can have two basic topologies: $\tt{((A,B),(C,D))}$ or $\tt{((A,B),C),D))}$. Taxon pairs include all comparisons of $\tt{A}$ with $\tt{B}$ and $\tt{C}$ with $\tt{D}$ in each four-taxon clade. We extracted pairs using the `extract_sisters()` function in R package **diverge** version `r packageVersion("diverge")` [@anderson_diverge_2021] and custom scripts (see source code). Taxon pairs are the most closely related pairs in our data set, but they are mostly not sister taxa in the sense of being the two most closely related taxa in the tree of life. For each pair we calculated phylogenetically independent contrasts [@felsenstein_phylogenies_1985] as the difference in the log$_{10}$-transformed trait value [see @beaulieu_genome_2008 for a similar approach]. Contrasts are denoted as $\Delta \text{log(trait)}$. We log-transformed traits for normality because like many morphological and anatomical traits they are strongly right-skewed. Log-transformation also helps compare density and length, which are measured on different scales, because log-transformed values quantify proportional rather than absolute divergence. 
+
+<!-- Explanation for using pairs rather than whole tree. Removed based on feeedback from Reviewer 2
+We only used pairs of terminal taxa rather than the entire tree for two reasons. First, even in whole-tree methods, approximately half of the data comes from divergence at the tips, so we do not lose much statistical power. Second, using a taxon-pair method obviates making strong assumptions about multivariate trait evolution process homogeneity throughout flowering plant evolution. Homogeneity is biologically unlikely and it is difficult to fit more complex models reliably with only data from extant taxa.
+-->
 
 ## Parameter estimation
 
-Both hypotheses make predictions about trait covariance matrices or parameters derived from them (see next subsections). We estimated the $4 \times 4$ covariance matrix of phylogenetically independent contrasts between log-transformed values of $\Delta \text{log}(D_\mathrm{ab})$, $\Delta \text{log}D_\mathrm{ad})$, $\Delta \text{log}(L_\mathrm{ab})$, and $\Delta \text{log}(L_\mathrm{ad})$ using a distributional multiresponse robust Bayesian approach. We denote variances as $\text{Var}[\Delta \text{log(trait)}]$ and covariances as $\text{Cov}[\Delta \text{log(trait}_1),\Delta \text{log(trait}_2)]$. The statistical model also accounts for differences in mean trait values between surfaces. 
+All hypotheses make predictions about trait (co)variance matrices or parameters derived from them (see Notes A1 and subsections below). Within and among species covariation is a hallmark of developmental integration [@armbruster_multilevel_1988], but other evolutionary processes also lead to covariance. Distinguishing between them requires deriving predictions and testing whether observed covariance is consistent with one hypothesis or another. We estimated the $4 \times 4$ covariance matrix of phylogenetically independent contrasts between log-transformed values of $\Delta \text{log}(D_\mathrm{ab})$, $\Delta \text{log}(D_\mathrm{ad})$, $\Delta \text{log}(L_\mathrm{ab})$, and $\Delta \text{log}(L_\mathrm{ad})$ using a distributional multiresponse robust Bayesian approach. See Table \ref{tab:traits} for variable definitions. We denote variances as $\text{Var}[\Delta \text{log(trait)}]$ and covariances as $\text{Cov}[\Delta \text{log(trait}_1),\Delta \text{log(trait}_2)]$. The statistical model also accounts for differences in mean trait values between surfaces. We used a multivariate $t$-distribution rather than a Normal distribution because estimates using the former are more robust to exceptional trait values [@lange_robust_1989]. We also estimated whether the variance in trait divergence increases with time. Under many trait evolution models (e.g. Brownian motion), interspecific variance increases through time. To account for this, we included time since taxon-pair divergence as an explanatory variable affecting the trait covariance matrix, but not the trait mean. 
 
-We used a multivariate $t$-distribution rather than a Normal distribution because estimates using the former are more robust to exceptional trait values. Exceptional trait values are common in biology and can distort estimates of central tendency and variance. The $t$-distribution is more robust because it has fatter tails (more kurtosis) than the Normal distribution. The $\nu$ parameter of the $t$-distribution describes how fat the tails are. As $\nu \to \infty$, the $t$-distribution converges to the Normal distribution. We estimated $\nu$ from the data, meaning that if exceptional values are absent from the data, the model will be nearly equivalent to standard Normal regression.
 
-We also estimated whether the variance in trait divergence increases with time. Under many trait evolution models (e.g. Brownian motion), interspecific variance increases through time. To account for this, we included time since taxon-pair divergence as an explanatory variable affecting the trait covariance matrix, but not the trait mean. 
+<!-- Explanation of t-distribution. Removed based on feedback from Reviewer 2
+Exceptional trait values are common in biology and can distort estimates of central tendency and variance. The $t$-distribution is more robust because it has fatter tails (more kurtosis) than the Normal distribution. The $\nu$ parameter of the $t$-distribution describes how fat the tails are. As $\nu \to \infty$, the $t$-distribution converges to the Normal distribution. We estimated $\nu$ from the data, meaning that if exceptional values are absent from the data, the model will be nearly equivalent to standard Normal regression.
+-->
 
-We fit the model in Stan `r str_extract(as.character(fit$version$cmdstan), "^2.[1-2][0-9]")` [@stan_development_team_stan_2021] using the R packages **brms** version `r as.character(fit$version$brms)` [@burkner_brms_2017; @burkner_advanced_2018] with a **cmdstanr** version `r as.character(fit$version$cmdstanr)` backend [@gabry_cmdstanr_2021]. It ran on `r length(fit$fit@stan_args)` parallel chains for `r fit$fit@stan_args[[1]][["warmup"]]` warm-up iterations and `r fit$fit@stan_args[[1]][["iter"]] - fit$fit@stan_args[[1]][["warmup"]]` sampling iterations. All parameters converged ($\hat{R} \approx 1$) and the effective sample size from the posterior exceeded 1000 [@vehtari_rank-normalization_2021]. We used the posterior median for point estimates and calculated uncertainty with the 95\% highest posterior density (HPD) interval from the posterior distribution.
+For the packing limit hypothesis, we tested whether the variance in stomatal trait divergence, $\textrm{Var}[\Delta~\textrm{log(trait)}]$, decreases as stomatal allocation increases. The fraction of epidermal area allocated to stomata ($f_S$) is the product of stomatal density and area occupied by a stomatal apparatus. Because guard cell shape is similar most plant lineages except grasses, the area can be well approximated from guard cell length as $A = j L ^ 2$ where $j = 0.5$ for most species with kidney-shaped guard cells and $j = 0.125$ for grasses with dumbbell-shaped guard cells [@sack_developmental_2016]. For each contrast, we calculated the average $f_S$ on each surface between those two taxa for use as our explanatory variable. The statistical model allowed the effect of $f_S$ on $\textrm{Var}[\Delta~\textrm{log(trait)}]$ to vary between traits and leaf surfaces. We also included time since taxon-pair divergence as an explanatory variable and used a multivariate $t$-distribution as described above. 
 
-## Is size-density scaling the same on both leaf surfaces?
+We fit all models in Stan `r str_extract(as.character(fit12$version$cmdstan), "^2.[1-2][0-9]")` [@stan_development_team_stan_2022] using the R packages **brms** version `r as.character(fit12$version$brms)` [@burkner_brms_2017; @burkner_advanced_2018] with a **cmdstanr** version `r as.character(fit12$version$cmdstanr)` backend [@gabry_cmdstanr_2022]. It ran on `r length(fit12$fit@stan_args)` parallel chains for `r fit12$fit@stan_args[[1]][["warmup"]]` warm-up iterations and `r fit12$fit@stan_args[[1]][["iter"]] - fit12$fit@stan_args[[1]][["warmup"]]` sampling iterations. All parameters converged ($\hat{R} \approx 1$) and the effective sample size from the posterior exceeded 1000 [@vehtari_rank-normalization_2021]. We used the posterior median for point estimates and calculated uncertainty with the 95\% highest posterior density (HPD) interval from the posterior distribution.
 
-We tested the first hypothesis by estimating the covariance between divergence in stomatal length and stomatal density on each leaf surface. If size and density are developmentally integrated, we predict the covariance matrices will not be significantly different. Specifically, the 95\% HPD intervals of the difference in covariance parameters should not include 0 if:
+## Hypothesis testing
+
+### Does divergence slow as epidermal space fills?
+
+We tested the packing limit hypothesis by estimating the effect of $f_S$ on $\textrm{Var}[\Delta~\textrm{log(trait)}]$ for each trait and leaf surface. If there is an upper bound on $f_S$, we predict the effect of $f_S$ on $\textrm{Var}[\Delta~\textrm{log(trait)}]$ will be $<0$. Specifically, the 95\% HPD intervals should not include 0. Further, the coefficient should be the same on each surface, so the 95\% HPD intervals for difference should encompass 0.
+
+### Is size-density scaling the same on both leaf surfaces?
+
+We tested the whether the covariance between divergence in stomatal length and stomatal density on each leaf surface is the same. If size and density are developmentally integrated, we predict the covariance matrices will not be significantly different. Specifically, the 95\% HPD intervals of the difference in covariance parameters should not include 0 if:
 
 \begin{gather}\label{eq:prediction1}
 \text{Var}[\Delta \text{log}(D_\text{ab})] \ne \text{Var}[\Delta \text{log}(D_\text{ad})] \\
@@ -262,28 +337,50 @@ We tested the first hypothesis by estimating the covariance between divergence i
 \text{Cov}[\Delta \text{log}(L_\text{ab}), \Delta \text{log}(D_\text{ab})] \ne \text{Cov}[\Delta \text{log}(L_\text{ad}), \Delta \text{log}(D_\text{ad})]
 \end{gather}
 
-## Do abaxial and adaxial stomatal traits evolve isometrically?
+### Do abaxial and adaxial stomatal traits evolve isometrically?
 
 If stomatal traits on each surface are developmentally integrated then divergence in the trait on one surface should result in a 1:1 (isometric) change in the trait on the other surface. Furthermore, there should be relatively little variation away from a 1:1 relationship. Conversely, if traits can evolve independently then the change in the trait on one surface should be uncorrelated with changes on the other. We tested for isometry by estimating the standardized major axis (SMA) slope of change in the abaxial trait against change in the adaxial trait for both stomatal length and stomatal density. If change on each surface is isometric, then the HPD intervals for the slope should include 1. We used the coefficient of determination, $r^2$, to quantify the strength of integration, where a value of 1 is complete integration and a value of 0 is complete disintegration. 
 
 # Results
 
+## Theory: from development integration to disintegration
+
+We asked how divergence in stomatal length and density would covary if the developmental function were constrained and compared it to their divergence when the developmental function can evolve. When the developmental function is constrained this means that allocation to guard cell meristemoids during asymmetric division and stomatal index are fixed (see Notes A1 for mathematical description). Under these assumptions, divergence in stomatal length and density is mediated entirely by divergence in meristematic cell volume and expansion prior to differentiation. Developmental integration is strong because divergence in density is perfectly negatively correlated with divergence in size. In contrast, stomatal length and density can diverge independently when the developmental function is not fixed. Divergence in asymmetric cell division affects stomatal size independently of density; divergence in stomatal index affects stomatal density independently of size. Divergence in the developmental function causes developmental disintegration because stomatal density and size can diverge independently. Developmental disintegration is greatest when asymmetric cell division and/or stomatal index diverge more than meristematic cell volume and expansion. The three main conclusions are that 1) developmental constraint leads to developmental integration; 2) different (co)variance in divergence of stomatal length and density on each surface implies the developmental function is not fixed; and 3) divergence in different components of the developmental function affect stomatal length and density differently. See Notes A1 and Table \@ref(tab:predictions) for more a complete derivation and detailed predictions.
+
+## Divergence in stomatal traits slows as $f_S$ increases
+
+The variance in trait divergence decreases the fraction of epidermal area allocated to stomata, $f_S$, increases (Figs. \ref{fig:h3}, \ref{fig:fs-sigma}). The effect of $f_S$ was strongest for $D_\text{ad}$ and 95% HPD intervals did not overlap 0 for 3 of 4 comparisons (Table \ref{tab:h3output}). Variance in divergence for $D_\text{ad}$ declined more rapidly with $f_S$ than that for $D_\text{ab}$ (difference and 95% HPD interval in slope, log-link scale: `r h3_hpd_density`). Variance in length divergence declined similarly with $f_S$ on both surfaces (difference and 95% HPD interval in slope, log-link scale: `r h3_hpd_length`).
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/h3.pdf}
+\caption{Evolutionary divergence slows down as epidermal space fills up. The shaded area in each facet indicates the estimate of where 95\% of the `r n_pair` phylogenetically independent contrasts fall as a function of the fraction of epidermal area allocated to stomata per surface. Each point is the absolute value of  $\Delta~\textrm{log(trait)}$ for stomatal density (left facets) or length (right facets) on the adaxial (upper facets) and abaxial (lower facets) surface. The fraction of epidermal area allocated to stomata is the average value per surface between the two taxa in each contrast. Divergence in anatomical traits is more variable when stomata occupy a smaller area, especially for adaxial stomatal density (upper left facet). See Table \ref{tab:h3output} for all parameter estimates and confidence intervals.}
+\label{fig:h3}
+\end{figure}
+
 ## Adaxial stomatal density is more variable, but size-density covariance is similar on both surfaces
 
-Stomatal length negatively covaries with stomatal density similarly on both surfaces, but on the adaxial surface there are many more taxa that have low stomatal density and small size compared to the abaxial surface (Fig. \ref{fig:h1_raw}). In principle, this pattern could arise either because size-density covariance differs or the variance in adaxial stomatal density increases faster than that for abaxial stomatal density. Also note that the interspecific variance increases with time since divergence for all traits (Table \ref{tab:modeloutput}), but the covariance matrix structure did not change qualitatively over time (results not shown). For consistency, we therefore report estimates conditional on time since divergence set to 0. Across pairs, we estimate that the covariance between size and density is similar. The median estimate is $\text{Cov}[\Delta \text{log}(L_\text{ad}), \Delta \text{log}(D_\text{ad})] - \text{Cov}[\Delta \text{log}(L_\text{ab}), \Delta \text{log}(D_\text{ab})] = `r dplyr::filter(h1_parameters, name == "diff_cov")[["estimate"]]`$, but 0 is within the range of uncertainty (`r dplyr::filter(h1_parameters, name == "diff_cov")[["interval"]]`). However the variance in adaxial stomatal density is significantly greater than the abaxial stomatal density [Fig. \ref{fig:h1}]). We estimate $\text{Var}[\Delta \text{log}(D_\text{ad})]$ is $`r dplyr::filter(h1_parameters, name == "diff_sigma2_d")[["estimate"]]`$ (`r dplyr::filter(h1_parameters, name == "diff_sigma2_d")[["interval"]]`) greater than $\text{Var}[\Delta \text{log}(D_\text{ab})]$. The variance in stomatal length was similar for both surfaces, with an estimate of $`r dplyr::filter(h1_parameters, name == "diff_sigma2_l")[["estimate"]]`$ (`r dplyr::filter(h1_parameters, name == "diff_sigma2_l")[["interval"]]`).
-
+Stomatal length negatively covaries with stomatal density similarly on both surfaces, but on the adaxial surface there are many more taxa that have low stomatal density and small size compared to the abaxial surface (Fig. \ref{fig:h1_raw}). In principle, this pattern could arise either because size-density covariance differs or the variance in adaxial stomatal density increases faster than that for abaxial stomatal density. The interspecific variance increases with time since divergence for all traits (Table \ref{tab:h12output}). For consistency, we therefore report estimates conditional on time since divergence set to 0. Across pairs, we estimate that the covariance between size and density is similar. The median estimate is $\text{Cov}[\Delta \text{log}(L_\text{ad}), \Delta \text{log}(D_\text{ad})] - \text{Cov}[\Delta \text{log}(L_\text{ab}), \Delta \text{log}(D_\text{ab})] = `r dplyr::filter(h1_parameters, name == "diff_cov")[["estimate"]]`$, but 0 is within the range of uncertainty (`r dplyr::filter(h1_parameters, name == "diff_cov")[["interval"]]`). However the variance in adaxial stomatal density is significantly greater than the abaxial stomatal density [Fig. \ref{fig:h1}]). We estimate $\text{Var}[\Delta \text{log}(D_\text{ad})]$ is $`r dplyr::filter(h1_parameters, name == "diff_sigma2_d")[["estimate"]]`$ (`r dplyr::filter(h1_parameters, name == "diff_sigma2_d")[["interval"]]`) greater than $\text{Var}[\Delta \text{log}(D_\text{ab})]$. The variance in stomatal length was similar for both surfaces, with an estimate of $`r dplyr::filter(h1_parameters, name == "diff_sigma2_l")[["estimate"]]`$ (`r dplyr::filter(h1_parameters, name == "diff_sigma2_l")[["interval"]]`).
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{../figures/h1-raw.pdf}
-\caption{Inverse size-density scaling in a synthesis of amphistomatous leaf traits across `r n_tax3` taxa. The panels show the relationship between stomatal length ($x$-axis) and stomatal density ($y$-axis) on a log-log scale for values measured on the abaxial leaf surface (left) and the adaxial leaf surface (right). To avoid overplotting of points, we used a hexbin plot in which the shade of the hexagonal bin indicates the number of points in that bin. Whiter shades indicate more points (see scale to the right).}
+\caption{Inverse size-density scaling in a synthesis of amphistomatous leaf traits across `r n_tax3` taxa. The panels show the relationship between stomatal length ($x$-axis) and stomatal density ($y$-axis) on a log-log scale for values measured on the abaxial leaf surface (left) and the adaxial leaf surface (right).}
 \label{fig:h1_raw}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{../figures/h1.pdf}
-\caption{Evolutionary divergence in adaxial stomatal density is more variable, but covariance between density and length is similar on both surfaces. (a) Data from `r n_pair` phylogenetically independent contrasts of change in log(stomatal length) ($x$-axis) and log(stomatal density) ($y$-axis) for abaxial (left panel) and adaxial (right panel) leaf surfaces. Each contrast is shown by black points and every contrast appears on both panels. Grey ellipses are the model-estimated 95\% covariance ellipses. The negative covariance is similar for both surfaces but the breadth in the $y$-direction is larger for adaxial traits, indicating greater evolutionary divergence in log(stomatal density). (b) Parameter estimates (points), 66\% (thick lines), and 95\% HPD intervals for estimates of trait (co)variance. Grey points and lines represent ab- and adaxial values; black points and lines represent the estimated difference in (co)variance between surfaces. Only the variance for stomatal density (middle panel) is significantly greater for the adaxial surface (95\% HPD interval does not overlap the dashed line at 0). Reported paremeter estimates are conditioned on zero time since divergence between taxa (see \protect\hyperlink{results}{Results}).}
-\label{fig:h1}
+  \caption{(Caption next page.)}
+  \label{fig:h1}
 \end{figure}
+\addtocounter{figure}{-1}
+
+\begin{figure} [t!]
+\caption{(Previous page.) Evolutionary divergence in adaxial stomatal density is more variable, but covariance between density and length is similar on both surfaces. (a) Data from `r n_pair` phylogenetically independent contrasts of change in log(stomatal length) ($x$-axis) and log(stomatal density) ($y$-axis) for abaxial (left panel) and adaxial (right panel) leaf surfaces. Each contrast is shown by black points and every contrast appears on both panels. Grey ellipses are the model-estimated 95\% covariance ellipses. The negative covariance is similar for both surfaces but the breadth in the $y$-direction is larger for adaxial traits, indicating greater evolutionary divergence in log(stomatal density). (b) Parameter estimates (points), 66\% (thick lines), and 95\% HPD intervals for estimates of trait (co)variance. Grey points and lines represent ab- and adaxial values; black points and lines represent the estimated difference in (co)variance between surfaces. Only the variance for stomatal density (middle panel) is significantly greater for the adaxial surface (95\% HPD interval does not overlap the dashed line at 0). Reported parameter estimates are conditioned on zero time since divergence between taxa (see \protect\hyperlink{results}{Results}).}
+\end{figure}
+
+## Genome size is associated with stomatal length on both surfaces
+
+We analyzed a smaller set of `r n_pair_genome` contrasts with data on both genome size and stomatal anatomy. Consistent with previous studies [@beaulieu_genome_2008; @jordan_environmental_2015; @simonin_genome_2018], increased genome size was associated with increased stomatal length on both surfaces (Fig. \ref{fig:genome}). The association between genome size and stomatal density was negative, as expected, but weaker. Only the slope for adaxial stoamtal density was significantly less than 0 (Fig. \ref{fig:genome}).
 
 ## Stomatal density on each surface is less integrated than stomatal length
 
@@ -291,25 +388,34 @@ The relationship between stomatal density on each leaf surface is visually more 
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{../figures/h2-raw.pdf}
-\caption{Relationship stomatal density and length on each leaf surface in a synthesis of amphistomatous leaf traits across `r n_tax3` taxa. The panels show the relationship between the abaxial trait value ($x$-axis) and the adaxial trait value ($y$-axis) on a log-log scale for stomatal density (left) and stomatal length (right). To avoid overplotting of points, we used a hexbin plot in which the shade of the hexagonal bin indicates the number of points in that bin. Whiter shades indicate more points (see scale to the right). The dashed line in across the middle is the 1:1 line for reference.}
+\caption{Relationship between stomatal density and length on each leaf surface in a synthesis of amphistomatous leaf traits across `r n_tax3` taxa. The panels show the relationship between the abaxial trait value ($x$-axis) and the adaxial trait value ($y$-axis) on a log-log scale for stomatal density (left) and stomatal length (right). The dashed line in across the middle is the 1:1 line for reference.}
 \label{fig:h2_raw}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=\textwidth]{../figures/h2.pdf}
-\caption{Developmental integration in stomatal length is much stronger than stomatal density between the surfaces of amphistomatous leaves (a) Data from `r n_pair` phylogenetically independent contrasts of change in the abaxial trait value ($x$-axis) against change in the adaxial trait value ($y$-axis) for log(stomatal density) (left panel) and log(stomatal length) (right panel). Each contrast is shown by black points and every contrast appears on both panels. Dashed grey lines are 1:1 lines for reference. Solid grey lines and ribbon the fitted SMA slope and 95\% HPD interval. (b) The SMA slope (left panel) is significantly less than 1 (isometry, top dashed line) for density but very close to isometric for length. The coefficient of determination ($r^2$, right panel) is also much greater for length than density. The points are parameter estimates with 66\% (thick lines) and 95\% HPD intervals. Reported paremeter estimates are conditioned on zero time since divergence between taxa (see \protect\hyperlink{results}{Results}).}
+\caption{Developmental integration in stomatal length is much stronger than stomatal density between the surfaces of amphistomatous leaves (a) Data from `r n_pair` phylogenetically independent contrasts of change in the abaxial trait value ($x$-axis) against change in the adaxial trait value ($y$-axis) for log(stomatal density) (left panel) and log(stomatal length) (right panel). Each contrast is shown by black points and every contrast appears on both panels. Dashed grey lines are 1:1 lines for reference. Solid grey lines and ribbon the fitted SMA slope and 95\% HPD interval. (b) The SMA slope (left panel) is significantly less than 1 (isometry, top dashed line) for density but very close to isometric for length. The coefficient of determination ($r^2$, right panel) is also much greater for length than density. The points are parameter estimates with 66\% (thick lines) and 95\% HPD intervals. Reported parameter estimates are conditioned on zero time since divergence between taxa (see \protect\hyperlink{results}{Results}).}
 \label{fig:h2}
 \end{figure}
 
 # Discussion
 
-Developmental integration leads to trait covariation and may hinder adaptation by preventing traits from evolving independently towards a multivariate phenotypic optimum. Two major features of stomatal anatomical variation at the macroevolutionary scale, inverse size-density scaling and bimodal stomatal ratio, may be shaped by developmental integration between pavement and guard cell size on both leaf surfaces. In this study, we took advantage of the fact that amphistomatous leaves produce stomata on both abaxial (usually lower) and adaxial (usually upper) surfaces to test predictions of developmental integration hypotheses using a global phylogenetic comparison of seed plants, albeit mostly angiosperms. Contrary to developmental integration hypotheses, adaxial stomatal density ($D_\text{ad}$) evolves somewhat independently of adaxial stomatal length ($L_\text{ad}$) and abaxial stomatal density ($D_\text{ab}$). Hence, inverse size-density scaling and bimodal stomatal ratio cannot be attributed entirely to developmental integration. Quasi-independent evolution of traits should enable lineages to reach their fitness optimum, implying that selection is most likely a major constraint on the variation in stomatal anatomy in seed plants. Future research should test whether developmental integration is more or less important in certain lineages and identify the mechanistic basis of developmental disintegration where it occurs on the plant tree of life.
+<!--
+Jordan_environmental_2014 might be useful ref on genome size and stomatal size when I write about this
+-->
 
-## Does developmental integration lead to inverse size-density scaling?
+Packing limits and developmental integration are potential constraints on stomatal anatomical evolution in land plants that may hinder adaptation by preventing traits from evolving independently towards a multivariate phenotypic optimum. Two major features of stomatal anatomical variation at the macroevolutionary scale, inverse size-density scaling and bimodal stomatal ratio, may be shaped by packing limits or developmental integration between epidermal pavement and guard cell size. In this study, we took advantage of the fact that amphistomatous leaves produce stomata on both abaxial (usually lower) and adaxial (usually upper) surfaces to test predictions of packing and developmental integration hypotheses using a global phylogenetic comparison of flowering plants. These constraints should result in similar (co)variance in divergence of stomatal traits on each surface (Notes A1), whereas selective constraints could differ between surfaces. 
 
-If stomatal size and density are both determined by meristematic cell volume [@brodribb_unified_2013], then we predicted inverse size-density scaling would evolve with the same (co)variance for both ab- and adaxial leaf surfaces. Contrary to this prediction, there are many combinations of stomatal density and length found on adaxial leaf surfaces that are absent from abaxial leaf surfaces (Fig. \ref{fig:h1_raw}). In principle, the different relationship between traits on each surface could be caused by different evolutionary variance in stomatal density ($\text{Var}[\Delta \text{log}(D_\text{ab})] \ne \text{Var}[\Delta \text{log}(D_\text{ad})]$) and/or covariance ($\text{Cov}[\Delta \text{log}(L_\text{ab}), \Delta \text{log}(D_\text{ab})] \ne \text{Cov}[\Delta \text{log}(L_\text{ad}), \Delta \text{log}(D_\text{ad})]$) on each surface. However, the covariance relationship between density and length is similar on each surface, whereas the evolutionary variance in adaxial stomatal density is significantly higher than that for abaxial density ($\text{Var}[\Delta \text{log}(D_\text{ab})] < \text{Var}[\Delta \text{log}(D_\text{ad})]$; Fig. \ref{fig:h1}). Given that the average stomatal length is usually about the same on each surface (see below), these results imply that plants can often evolve stomatal densities on each surface without a concomitant change in size. 
+Neither packing limits nor developmental integration were sufficient to explain the observed patterns of divergence in stomatal traits. Although evolutionary divergence slowed as the allocation to stomata $f_S$ increased, the effect of $f_S$ was different on each surface (Fig. \ref{fig:h3} and \ref{fig:fs-sigma}; Table \ref{tab:h3output}). The contrasting pattern of divergence on each surface is inconsistent with a common packing limit and suggests instead that selective constraints act differently on lower and upper stomata. Contrary to the developmental integration hypotheses, the greater variance in stomatal density compared to length on the adaxial surface indicates that density is more labile on this surface, though traits on each surface are not completely decoupled (Fig. \ref{fig:h1}, \ref{fig:h2}; Table \ref{tab:h12output}). Consistent with the developmental integration hypotheses, divergence in stomatal length on each surface evolves isometrically at that same rate, suggesting that guard cell dimensions may not be able to evolve independently on each surface (Fig. \ref{fig:h2}). The evolutionary lability of stomatal density, despite constraints on size, show that inverse size-density scaling and bimodal stomatal ratio cannot be attributed entirely to developmental integration. Combinations of small stomata and low density that are not found on the abaxial surface are found on the adaxial surface, indicating that these rare trait combinations are developmentally accessible. This is a critical starting point in determining which processes limit phenotypic variation over macroevolution [@mcghee_theoretical_1999; @olson_plant_2019]. Establishing that traits can evolve quasi-independently is necessary but not sufficient to show that selective constraints are the primary process shaping phenotypic evolution. Packing limits and developmental integration may bias phenotypic evolution, even if they do not preclude certain stomatal trait combinations. Therefore, future research will need to combine stomatal developmental (dis)integration with biophysical models of how stomatal anatomy would vary adaptively [@olson_how_2015]. Although these questions and approaches apply to any phenotype, stomata will be a useful trait because of their ecological significance and broad application to most land plants.
 
-The disintegration of stomatal size and density on adaxial leaf surfaces implies that the inverse size-density scaling on abaxial surfaces [@weiss_untersuchungen_1865; @franks_maximum_2009; @de_boer_optimal_2016; @sack_developmental_2016; @liu_scaling_2021] is not a developmental *fait accompli*. The lability of $D_\text{ad}$ may explain why there is so much putatively adaptive variation in the trait along light gradients [@muir_light_2018] and in coordination with other anatomical traits that vary among precipitation habitats [@pathare_increased_2020]. It also suggests that the relationship between genome size and stomatal anatomy at macroevolutionary scales [@roddy_scaling_2020] may not be causal. Genome size sets a minimum on meristematic cell volume [@simova_geometrical_2012], but the decoupling of size and density on the adaxial surface suggests that meristematic cell volume is probably not a strong constraint on the final size of pavement and guard cells.
+## Do packing limits and developmental integration lead to inverse size-density scaling?
+
+Stomata cannot occupy more than the entire leaf surface, but realistically there is probably an upper packing limit below this hard bound. If this packing limit drives inverse size-density scaling, we should observe that divergence in stomatal size and density decrease as this limit is approached. Near the limit, large changes that reduce $f_S$ are possible, but changes that increase $f_S$ must be small so as not to exceed the limit. Furthermore, the same packing limit should apply to both ab- and adaxial leaf surfaces. Although we observe that divergence decreases with $f_S$, the relationship is not the same on both surfaces  (Fig. \ref{fig:h3} and \ref{fig:fs-sigma}; Table \ref{tab:h3output}). This implies that other factors constrain stomatal size and density before they approach a packing limit.
+
+If stomatal size and density are integrated by cell size [@brodribb_unified_2013], then we predicted inverse size-density scaling would evolve with the same (co)variance for both ab- and adaxial leaf surfaces (Notes A1). Contrary to this prediction, there are many combinations of stomatal density and length found on adaxial leaf surfaces that are absent from abaxial leaf surfaces (Fig. \ref{fig:h1_raw}). In principle, the different relationship between traits on each surface could be caused by different evolutionary variance in stomatal density ($\text{Var}[\Delta \text{log}(D_\text{ab})] \ne \text{Var}[\Delta \text{log}(D_\text{ad})]$) and/or covariance ($\text{Cov}[\Delta \text{log}(L_\text{ab}), \Delta \text{log}(D_\text{ab})] \ne \text{Cov}[\Delta \text{log}(L_\text{ad}), \Delta \text{log}(D_\text{ad})]$) on each surface. However, the covariance relationship between density and length is similar on each surface, whereas the evolutionary variance in adaxial stomatal density is significantly higher than that for abaxial density ($\text{Var}[\Delta \text{log}(D_\text{ab})] < \text{Var}[\Delta \text{log}(D_\text{ad})]$; Fig. \ref{fig:h1}). Given that the average stomatal length is usually about the same on each surface (see below), these results imply that plants can often evolve stomatal densities on each surface without a concomitant change in size. Based on our theoretical analysis, we interpret these results to mean that cell divisions affecting stomatal index are less evolutionarily constrained than the asymmetric cell division preceding the guard cell meristemoid (Fig. \ref{fig:developmental-integration}; Table \ref{tab:predictions})
+
+The disintegration of stomatal size and density on adaxial leaf surfaces implies that the inverse size-density scaling on abaxial surfaces [@weiss_untersuchungen_1865; @franks_maximum_2009; @de_boer_optimal_2016; @sack_developmental_2016; @liu_scaling_2021] is not a developmental *fait accompli*. The lability of $D_\text{ad}$ may explain why there is so much putatively adaptive variation in the trait along light gradients [@muir_light_2018] and in coordination with other anatomical traits that vary among precipitation habitats [@pathare_increased_2020]. There is a tension between our results and recent findings that genome size, which is strongly correlated with meristematic cell volume [@simova_geometrical_2012], correlates strongly with mature guard cell size as well as the size and packing density of mesophyll cells [@roddy_scaling_2020; @theroux-rancourt_maximum_2021]. However, most plant species are far from their minimum cell size as determined by genome size [@roddy_scaling_2020; Fig. \ref{fig:h1_raw}]. Genome size explains 31-54% of stomatal density across the major groups of terrestrial plants [@simonin_genome_2018] but there is a huge variation in stomatal density and stomatal length in angiosperms with rather similar genome size [*c.f.* Fig. 2 in @simonin_genome_2018]. In our data, we find that genome size more strongly related to stomatal size than density (Fig. \ref{fig:genome}). Yet the decoupling of size and density on the adaxial surface suggests that meristematic cell volume is probably not a strong constraint on the final size of pavement and guard cells because of different division and expansion rates after the asymmetric cell division stage. A possible resolution is that meristematic cell volume limits the range of variation in species with exceptionally large genome, but most species can modify stomatal size and density independently of each other to optimize photosynthesis [e.g. @jordan_environmental_2015]. [MAC and Jeroni - do you want to add *Limonium* discussion here?]
+
 
 ## Does developmental integration lead to bimodal stomatal ratio?
 
@@ -317,7 +423,7 @@ We predicted that if abaxial and adaxial stomata are developmentally integrated 
 
 ## Limitations and future research
 
-The ability of adaxial stomatal density to evolve independently of stomatal size and abaxial stomatal density is not consistent with the hypothesis that developmental integration is the primary cause leading to inverse size-density scaling or bimodal stomatal ratio. However, there are two major limitations of this study that should be addressed in future work. First, while $D_\text{ab}$ can diverge independently of other stomatal traits globally, we cannot rule out that developmental integration is important in some lineages. For example, Berg's rule observes that vegetative and floral traits are often developmentally integrated, but integration can be broken when selection favors flowers for specialized pollination [@berg_general_1959; @berg_ecological_1960; @conner_raissa_2014]. Analogously, developmental integration between stomatal anatomical traits could evolve in some lineages, due to selection or other evolutionary forces, but become less integrated in other lineages. For example, $D_\text{ab}$ and $D_\text{ad}$ are positively genetically correlated in *Oryza* [@ishimaru_identification_2001; @rae_elucidating_2006], suggesting developmental integration may contribute to low variation in stomatal ratio between species of this genus [@giuliani_coordination_2013]. A second major limitation is that covariation in traits like stomatal length, which appear to be developmentally integrated on each surface, could be caused by other processes. For example, since stomatal size affects the speed and mechanics of stomatal closure [@drake_smaller_2013; @harrison_influence_2020], there may be strong selection for similar stomatal size throughout the leaf to harmonize rates of stomatal closure. Coordination between epidermal and mesophyll development may also constrain how independently stomatal traits on each surface can evolve [@dow_disruption_2017; @lundgren_mesophyll_2019].
+The ability of adaxial stomatal density to evolve independently of stomatal size and abaxial stomatal density is not consistent with packing limits or developmental integration as the primary cause leading to inverse size-density scaling or bimodal stomatal ratio. However, there are two major limitations of this study that should be addressed in future work. First, while $D_\text{ab}$ can diverge independently of other stomatal traits globally, we cannot rule out that developmental integration is important in some lineages. That is, developmental constraints are often localized to particular clades but not universal [@maynard_smith_developmental_1985]. For example, Berg's rule observes that vegetative and floral traits are often developmentally integrated, but integration can be broken when selection favors flowers for specialized pollination [@berg_general_1959; @berg_ecological_1960; @conner_raissa_2014]. Other traits evince developmental modularity, such as the independent evolution leaf and petal venation [@roddy_uncorrelated_2013]. Analogously, developmental integration between stomatal anatomical traits could evolve in some lineages, due to selection or other evolutionary forces, but become less integrated in other lineages. For example, $D_\text{ab}$ and $D_\text{ad}$ are positively genetically correlated in *Oryza* [@ishimaru_identification_2001; @rae_elucidating_2006], suggesting developmental integration may contribute to low variation in stomatal ratio between species of this genus [@giuliani_coordination_2013]. A second major limitation is that covariation in traits like stomatal length, which appear to be developmentally integrated on each surface, could be caused by other processes. For example, since stomatal size affects the speed and mechanics of stomatal closure [@drake_smaller_2013; @harrison_influence_2020], there may be strong selection for similar stomatal size throughout the leaf to harmonize rates of stomatal closure. Coordination between epidermal and mesophyll development may also constrain how independently stomatal traits on each surface can evolve [@dow_disruption_2017; @lundgren_mesophyll_2019; @theroux-rancourt_maximum_2021].
 
 Future research should identify the mechanistic basis of developmental disintegration between $D_\text{ab}$ and $D_\text{ad}$. Multiple reviews of stomatal development conclude that stomatal traits are independently controlled on each surface [@lake_longdistance_2002; @bergmann_stomatal_2007], but we do not know much about linkage between ab-adaxial polarity and stomatal development [@kidner_signaling_2010; @pillitteri_mechanisms_2012]. Systems that have natural variation in stomatal ratio should allow us to study how developmental disintegration evolves. Quantitative genetic studies in *Brassica oleracea* L., *Oryza sativa* L., *Populus trichocarpa* Torr. \& A. Gray ex Hook., *Populus* interspecific crosses, and *Solanum* interspecific crosses, typically find partial independence of $D_\text{ab}$ and $D_\text{ad}$; some loci affect both traits, but some loci only affect density on one surface and/or genetic correlations are weak [@ishimaru_identification_2001; @ferris_leaf_2002; @hall_relationships_2005; @rae_elucidating_2006; @laza_quantitative_2010; @chitwood_quantitative_2013; @mckown_association_2014; @muir_quantitative_2014; @porth_evolutionary_2015; @fetter_growthdefense_2021]. For example, *Populus trichocarpa* populations have putatively adaptive genetic variation in $D_\text{ad}$. Populations are more amphistomatous at Northern latitudes with shorter growing seasons that may select for faster carbon assimilation [@mckown_association_2014; @kaluthota_higher_2015; @porth_evolutionary_2015]. Genetic variation in key stomatal development transcription factors is associated with latitudinal variation in $D_\text{ad}$, which should help reveal mechanistic basis of developmental disintegration between surfaces [@mckown_role_2019].
 
@@ -325,7 +431,9 @@ Future research should identify the mechanistic basis of developmental disintegr
 
 <!-- # Acknowledgements -->
 
-<!-- We thank Jacob Watts for comments on earlier versions of this manuscript. -->
+<!-- EJ Edwards proposed the idea of how developmental integration could explain bimodal stomatal ratio. Students in the University of Hawaiʻi BIOL 470: Evolutionary Biology course helped enter data from the literature. We thank Matt Pennell and Jacob Watts for comments on earlier versions of this manuscript. Jen Lau, Risa Sargent, Adam Roddy, and an anonymous reviewer provided helpful comments on an earlier version of this manuscript. -->
+
+<!-- CDM was supported by an Evo-Devo-Eco Network (EDEN) research exchange (NSF IOS #0955517). The research was supported by project AGL2013-42364-R  (Plan Nacional, Spain) and UIB Grant 15/2105 awarded to JG. We acknowledge Miquel Truyols and collaborators of the UIB Experimental Field and Greenhouses for their technical support. -->
 
 <!-- # Author Contribution -->
 
@@ -333,7 +441,7 @@ Future research should identify the mechanistic basis of developmental disintegr
 
 # Data avaibility
 
-The final data set and phylogeny used in the analysis are included in the [Supporting Information]. The raw anatomical data and source code will be archived on Zenodo upon publication.
+The final data set and phylogeny used in the analysis are included in the Online Appendix. The raw anatomical data and source code will be archived on Zenodo upon publication.
 
 \clearpage
 
@@ -341,13 +449,310 @@ The final data set and phylogeny used in the analysis are included in the [Suppo
 
 \renewcommand\thefigure{A\arabic{figure}}    
 \renewcommand\thetable{A\arabic{table}}    
+\renewcommand\theequation{A\arabic{equation}}    
 \setcounter{figure}{0}    
 \setcounter{table}{0}    
+\setcounter{equation}{0}    
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/fs-sigma.pdf}
+\caption{The variance in evolutionary divergence ($y$-axis, $\textrm{Var}[\Delta~\textrm{log(trait)}]$) declines the fraction of epidermal space allocated to stomata per surface ($x$-axis, $f_S$) increases. Within each ribbon, the middle line is the median estimate and the outer lines are the 95\% HPD intervals. The slope is significantly less than 0 for adaxial stomatal density and stomatal length of both surface (Table \ref{tab:h3output}). Results for the standard deviation, which is the square-root of the variance, are shown.}
+\label{fig:fs-sigma}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/genome.pdf}
+\caption{Evolutionary divergence in genome size (2C DNA content) is associated with guard cell length, but less so stomatal density. (a) Data from `r n_pair_genome` phylogenetically independent contrasts of change in log(2C DNA) ($x$-axis) and change in log(trait) ($y$-axis) for abaxial (lower panels) and adaxial (upper panels) leaf surfaces. Each contrast is shown by black points and every contrast appears on all panels. Black lines are the median predicted trait divergence and grey ribbons are the model-estimated 95\% HPD confidence bands. (b) Parameter estimates (points), 66\% (thick lines), and 95\% HPD intervals for estimates of the effect of change in log(2C DNA) on change in log(trait). HPD intervals that do not overlap zero indicate that divergence in genome size is associated with divergence in stomatal anatomy. Reported parameter estimates are conditioned on zero time since divergence between taxa (see \protect\hyperlink{results}{Results}).}
+  \label{fig:genome}
+\end{figure}
+
+\clearpage
+
+\begin{center}
+  Table A1 is a csv file uploaded with this manuscript and will be included as an online supplement upon publication.
+\end{center}
+
+\begin{table}
+\caption{\label{tab:pair_div}Final data set of `r n_pair` taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny (Notes A3). $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
+\end{table}
+
+```{r}
+# write supporting information table
+write_csv(pair_div, "ms/tableA2.csv")
+```
+
+\begin{table}[ht]
+\caption{\label{tab:h3output} Parameter estimates and 95\% highest posterior density (HPD) intervals for the effect of  $f_S$ on trait divergence. For each trait ($D_\mathrm{ab}$, $D_\mathrm{ad}$, $L_\mathrm{ab}$, $L_\mathrm{ad}$) we estimated the coefficient of $f_S$ on the standard deviation of $\Delta \text{log(trait)}$ on a log-link scale. Other model parameter estimates and confidence intervals can be found in the saved model output located in the archived online repository (see \protect\hyperlink{results}{Data avaibility}).}
+\begin{center}
+\begin{tabular}{lll}
+
+  \toprule
+  Trait(s) & Estimate & 95\% HPD interval \\
+  \midrule
+  
+  \multicolumn{3}{l}{Effect of $f_S$ on standard deviation of $\Delta \text{log(trait)}$} \\
+  \multicolumn{3}{l}{log-link scale} \\
+  \\
+  $D_\mathrm{ab}$ & `r h3o$fs["D_ab", "value"]`  & `r h3o$fs["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h3o$fs["D_ad", "value"]`  & `r h3o$fs["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h3o$fs["L_ab", "value"]`  & `r h3o$fs["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h3o$fs["L_ad", "value"]`  & `r h3o$fs["L_ad", "hdi"]`  \\
+  \\
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:h12output} Parameter estimates and 95\% highest posterior density (HPD) intervals for the (co)variance of trait divergence. For each trait ($D_\mathrm{ab}$, $D_\mathrm{ad}$, $L_\mathrm{ab}$, $L_\mathrm{ad}$) we estimated the average (median) divergence between taxon pairs, denoted $\Delta \text{log(trait)}$. See Table \ref{tab:traits} for symbol definitions. The second section is the standard deviation of $\Delta \text{log(trait)}$. The third section is the estimated coefficient of pair age (millions of years) on the standard deviation on a log-link scale. The fourth section is the estimated correlation coefficient between $\Delta \text{log(trait)}$ of all pairwise trait combinations. The final section is the estimated $\nu$ family of the Student $t$ distribution.}
+\begin{center}
+\begin{tabular}{lll}
+
+  \toprule
+  Trait(s) & Estimate & 95\% HPD interval \\
+  \midrule
+  
+  \multicolumn{3}{l}{Average $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}$ & `r h12o$mu["D_ab", "value"]`  & `r h12o$mu["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h12o$mu["D_ad", "value"]`  & `r h12o$mu["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h12o$mu["L_ab", "value"]`  & `r h12o$mu["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h12o$mu["L_ad", "value"]`  & `r h12o$mu["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Standard deviation of $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}$ & `r h12o$sigma["D_ab", "value"]`  & `r h12o$sigma["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h12o$sigma["D_ad", "value"]`  & `r h12o$sigma["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h12o$sigma["L_ab", "value"]`  & `r h12o$sigma["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h12o$sigma["L_ad", "value"]`  & `r h12o$sigma["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Effect of pair age on standard deviation of $\Delta \text{log(trait)}$} \\
+  \multicolumn{3}{l}{log-link scale} \\
+  \\
+  $D_\mathrm{ab}$ & `r h12o$age["D_ab", "value"]`  & `r h12o$age["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h12o$age["D_ad", "value"]`  & `r h12o$age["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h12o$age["L_ab", "value"]`  & `r h12o$age["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h12o$age["L_ad", "value"]`  & `r h12o$age["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Correlation between $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}-D_\mathrm{ad}$ & 
+  `r h12o$cor["D_ab-D_ad", "value"]`  & `r h12o$cor["D_ab-D_ad", "hdi"]`  \\
+  $D_\mathrm{ab}-L_\mathrm{ab}$ & 
+  `r h12o$cor["D_ab-L_ab", "value"]`  & `r h12o$cor["D_ab-L_ab", "hdi"]`  \\
+  $D_\mathrm{ab}-L_\mathrm{ad}$ & 
+  `r h12o$cor["D_ab-L_ad", "value"]`  & `r h12o$cor["D_ab-L_ad", "hdi"]`  \\
+  $D_\mathrm{ad}-L_\mathrm{ab}$ & 
+  `r h12o$cor["D_ad-L_ab", "value"]`  & `r h12o$cor["D_ad-L_ab", "hdi"]`  \\
+  $D_\mathrm{ad}-L_\mathrm{ad}$ & 
+  `r h12o$cor["D_ad-L_ad", "value"]`  & `r h12o$cor["D_ad-L_ad", "hdi"]`  \\
+  $L_\mathrm{ab}-L_\mathrm{ad}$ & 
+  `r h12o$cor["L_ab-L_ad", "value"]`  & `r h12o$cor["L_ab-L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Student $t$ family parameter $\nu$} \\
+  \\
+  $-$ & `r h12o$nu["nu", "value"]`  & `r h12o$nu["nu", "hdi"]`  \\
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\clearpage
+
+## Notes A1: Theory connecting developmental function, constraint, and integration
+
+Below we provide a conceptual background to motivate the derivation of a stomatal developmental function. We then derive predictions for how stomatal size and density should diverge with or without developmental constraint. We then explain why comparing evolutionary divergence of lower and upper stomatal anatomy provides an important additional line of evidence on the contribution of developmental integration to phenotypic macroevolution. Fig. \ref{fig:developmental-integration} is a graphical summary of our analysis.
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/developmental-integration.pdf}
+\caption{Graphical summary describing contrasting predictions of developal integration and disintegration hypotheses. Meristematic cell volume and expansion determine the epidermal (white squares) and guard meristemoid (blue triangles) cell sizes before final differentiation into stomata. Because the developmental function is fixed, larger meristematic cell volume and greater expansion result in larger stomata at lower density (Species A); smaller meristematic cell volume and less expansion result in smaller stomata at higher density (Species B). Stomatal size and density can evolve independently if the developmental function is not fixed. Species C diverges in size but not density by allocating less volume to the guard meristemoid during asymmetic cell division. Species D diverges in density but not size by increasing stomatal index.}
+\label{fig:developmental-integration}
+\end{figure}
+
+### Conceptual background
+
+Developmental integration in stomatal anatomy is plausible because epidermal pavement cells and stomata share an early developmental history, originating from the same leaf meristem tissue. If all other factors are held constant, meristematic cell volume, which is largely determined by genome size [@simova_geometrical_2012], and early expansion rate increase both epidermal cell and stomatal area proportionally. This mechanically decreases stomatal density because the same number of stomata per epidermal cell (stomatal index) are spread farther apart by larger epidermal cells. Developmental integration between stomatal size and density arises naturally if meristematic cell volume and/or expansion rate evolve, but the remaining steps of stomatal development are fixed. As described in detail below, we mathematically formalize these later steps in stomatal development into a 'developmental function' inspired by @wagner_multivariate_1989. Wagner's used a developmental function to map genetic variance onto phenotypic variance. The developmental function can cause a disposition for phenotypic covariance, depending on the amount of pleiotropy. For example, genetic changes in a growth factor could be highly pleiotropic, simultaneously altering the size of many tissues. Wagner used the developmental function to model microevolution, but if we suppose that the developmental function is fixed over long time periods, it can be used to predict macroevolutionary divergence under developmental constraint. If the developmental function is fixed or highly constrained, species may never possess the genetic variation to access regions of phenotypic space. If the developmental function itself can evolve readily, then traits should be able to evolve independently given sufficient time for mutation, selection, and divergence. Finding that the developmental function is malleable would lend less credence to the importance of developmental constraint and lend more credence to selective hypotheses.
+
+The stomatal developmental function is probably not fixed, potentially allowing for independent evolution of stomatal size and density. The conceptual model of stomatal development by @dow_patterning_2014 identifies three key cell division types that could shape stomatal density and size. First, asymmetric division of undifferentiated epidermal cells forms the guard cell meristemoid. Larger allocation to and/or greater expansion of the meristemoid as it matures to a guard mother cell increases stomatal size without affecting density. Second, spacing divisions in developing epidermal cells increase stomatal density and index while maintaining spacing. Third, amplifying divisions generate more epidermal cells without further differentiation of stomata, decreasing stomatal density and index. Changing the probability of spacing and amplifying divisions affects stomatal density without changing size.
+
+Below we formalize these models of developmental (dis)integration to address the following two questions:
+
+1. How would stomatal size and density (co)diverge if the developmental function is fixed? We refer to this as the 'developmental integration' hypothesis.
+
+2. How would stomatal size and density (co)diverge if the developmental function is not fixed? We refer to this as the 'developmental disintegration' hypothesis.
+
+### Theory
+
+#### A developmental function for stomatal size and density
+
+In this section we derive a stomatal developmental function by extending the model of @sack_developmental_2016 in two ways. First, we provide an explicit, albeit simple, map from meristematic cell volume to stomatal size and density. Second, we use random variable algebra [@lynch_genetics_1998] to derive expectations for the variance in stomatal anatomy among species.  @sack_developmental_2016 consider three anatomical properties of a leaf surface, the projected epidermal cell area $E$, the area of the stomatal apparatus $S$, and the stomatal index $I$: 
+
+$$I = \frac{n_S}{n_S + n_E}$$
+$n_S$ and $n_E$ are the number of stomatal and other epidermal cells, respectively, on the leaf surface. Throughout this we appendix we focus on stomatal size ($S$) rather than guard cell length ($L$) because it is mathematically simpler. For comparison with our data on $L$, we derive predictions using the fact that $S = j L^2$ where $j=0.5$ for non-grasses and 0.125 for grasses [@sack_developmental_2016]. 
+
+Next, we assume that the area of epidermal cells and stomata are proportional to the meristematic cell volume $M$:
+
+\begin{align}
+  E = & A M \\
+  S = & B E = A B M
+  \label{eq:eq1}
+\end{align}
+
+The coefficient $A$ is determined by the early cell expansion and division rates, which we do not model explicitly. $B$ is determined by the placement of the asymmetric cell division generating the guard mother cell [@bergmann_stomatal_2007] and subsequent expansion of the guard cell meristemoid. For example, in *Arabidopsis thaliana*, the cell volume of shoot meristematic cells is approximately 200 $\mu\textrm{m}^3$ [@price_correlations_1973] and the epidermal and stomatal sizes are roughly 1000 and 250 $\mu\textrm{m}^2$ [@dow_integrated_2014]. Therefore $A = \frac{1000~\mu\textrm{m}^3}{200 ~\mu\textrm{m}^2} = 5 \frac{\mu\textrm{m}^3}{\mu\textrm{m}^2}$ and $B = \frac{250~\mu\textrm{m}^3}{1000 ~\mu\textrm{m}^2} = 0.25$.
+
+Following @sack_developmental_2016 the stomatal density as a function of $E$, $S$, and $I$ is:
+
+$$D = \frac{I}{IS + (1 - I) E}$$
+
+For analytical tractability, we use he first-order Taylor series approximation around $I = 0$ because $I$ is typically much closer to 0 than 1:
+
+$$D \approx \frac{I}{E}$$
+
+Below we show that this approximation accurately models the correlation in divergence between stomatal size and density by comparing it to random simulations (Fig. \@reg{fig:check-approximation}.
+
+Substituting Eqn. \ref{eq:eq1} into the above expression we obtain
+
+$$D \approx \frac{I}{A M}$$
+
+Now we can can derive a developmental function to map from $M$ to $S$ and $D$. We assume that $M$ is determined by genome size [@simova_geometrical_2012] and, possibly, other genetic and environmental factors that we do not track explicitly in our model. As with our empirical analysis, we work with the log-transformed values of $S$ and $D$ to linearize the developmental function. For brevity, let the lowercase variables be the log-transformed values of their uppercase counterparts (e.g. $d = \textrm{log}(D)$). With these assumptions, we obtain:
+
+\begin{align}
+  d = & i - a - m \\
+  s = & a + b + m 
+  \label{eq:dev-fun}
+\end{align}
+
+### Hypotheses
+
+To address the two overarching questions posed above, we will use the theory in the previous section to derive predictions for two hypotheses. The developmental integration hypothesis can be thought of as a null hypothesis for how stomatal size and density diverge when the developmental function is fixed. The second hypothesis relaxes this constraint.
+
+1. Developmental integration hypothesis: the stomatal developmental function is fixed; divergence in stomatal size and density is caused only by divergence in meristematic cell volume and early expansion rate. 
+
+2. Developmental disintegration hypothesis: the stomatal developmental function is not fixed;  divergence in stomatal size and density is caused by the combined divergence in meristematic cell volume, early expansion, and later cell divisions, the asymmetric, spacing, amplifying divisions discussed in the Conceptual background.
+
+#### Developmental integration hypothesis
+
+Under this hypothesis, meristematic cell volume and expansion rate integrate stomatal size and density because the developmental function is constrained. We know that meristematic cell volume can evolve as a product of genome size, so a natural null hypothesis is that $m$ varies but the developmental parameters $a$, $b$, and $i$ in Eqn. \ref{eq:dev-fun} are constant or vary little relative to $m$. Let the divergence between taxa $i$ and $j$ be:
+
+\begin{align}
+  \Delta d = & d_j - d_i = (i_j - a_j - m_j) - (i_i - a_i - m_i) \\
+    = & \Delta i - \Delta a - \Delta m \\
+  \Delta s = & s_j - s_i = (a_j + b_j + m_j) - (a_i + b_i + m_i) \\
+    = & \Delta a + \Delta b + \Delta m 
+\end{align}
+
+When developmental parameters are fixed $\Delta a = \Delta b = \Delta i = 0$. This leads to integration between $s$ and $d$ mediated by $m$ because $\Delta s = \Delta m$, $\Delta d = -\Delta m$, and $\textrm{Cov}[\Delta s, \Delta d] = -\textrm{Var}[\Delta m]$. Strong developmental integration would also persist if $\Delta b = \Delta i = 0$ but $\Delta a \ne 0$. In that case, $\Delta s = \Delta a + \Delta m$, $\Delta d = -(\Delta a + \Delta m)$, and $\textrm{Cov}[\Delta s, \Delta d] = -\textrm{Var}[\Delta a + \Delta m]$. In either case, the correlation between between $\Delta d$ and $\Delta s$ is $-1$ because $-\textrm{Cov}[\Delta s, \Delta d] = \textrm{Var}[\Delta d] = \textrm{Var}[\Delta s]$:
+
+\begin{equation}
+  \textrm{Corr}[\Delta d, \Delta s] = \frac{\textrm{Cov}[\Delta s, \Delta d]}{\sqrt{\textrm{Var}[\Delta d]} \sqrt{\textrm{Var}[\Delta s]}} = -1
+\end{equation}
+
+In summary, developmental constraint on stomatal index and allocation to guard mother cells during asymmetric cell division leads to developmental integration between stomatal size and density. Developmental integration can be mediated by either meristematic cell volume and/or epidermal cell expansion since they are colinear.
+
+#### Developmental disintegration hypothesis
+
+Here we show that developmental disintegration is mediated by divergence in stomatal index and asymmetric cell division. In conceptual models of stomatal development [@dow_patterning_2014], asymmetric division forms the meristemoid to the guard mother cell. After asymmetric division, spacing divisions increase stomatal density and index whereas amplifying divisions decrease both quantities. Above we assumed these processes were constrained; here we relax that assumption. First, we assume that $\Delta b = 0$ and $\Delta i \ne 0$. Further, we assume for simplicity that there is no covariance in divergence between $m$ and $i$ ($\textrm{Cov}[\Delta i, \Delta m] = 0$. Using random variable algebra, the (co)variance and correlation between divergence in stomatal density and size are:
+
+\begin{align}
+  \textrm{Var}[\Delta d] = & \textrm{Var}[\Delta i] + \textrm{Var}[\Delta m] \\
+  \textrm{Var}[\Delta s] = & \textrm{Var}[\Delta m] \\
+  \textrm{Cov}[\Delta d, \Delta s] = & -\textrm{Var}[\Delta m] \\
+  \textrm{Corr}[\Delta d, \Delta s] = & -\frac{\textrm{Var}[\Delta m]}{\sqrt{\textrm{Var}[\Delta i] + \textrm{Var}[\Delta m]}\sqrt{\textrm{Var}[\Delta m]}} \label{eq:corr-ds1}
+\end{align}
+
+Compared to the developmental integration hypothesis, variation in stomatal index leads to greater variation in stomatal density and disintegration (lower correlation) between density and size. The approximation in Eqn. \ref{eq:corr-ds1} matches simulated values well for realistic values of stomatal index (Fig. \ref{fig:check-approximation}).
+
+Next, we switch our assumptions such that $\Delta b \ne 0$ and $\Delta i = 0$. We again make the simplifying assumption that there is no covariance in divergence between $m$ and $b$ ($\textrm{Cov}[\Delta b, \Delta m] = 0$. The (co)variance and correlation between stomatal density and size are:
+
+\begin{align}
+  \textrm{Var}[\Delta d] = & \textrm{Var}[\Delta b] + \textrm{Var}[\Delta m] \\
+  \textrm{Var}[\Delta s] = & \textrm{Var}[\Delta m] \\
+  \textrm{Cov}[\Delta d, \Delta s] = & -\textrm{Var}[\Delta m] \\
+  \textrm{Corr}[\Delta d, \Delta s] = & -\frac{\textrm{Var}[\Delta m]}{\sqrt{\textrm{Var}[\Delta m]}\sqrt{\textrm{Var}[\Delta b] + \textrm{Var}[\Delta m]}}
+\end{align}
+
+As with stomatal index, variation in asymmetric cell division also causes developmental disintegration. The key difference is that disintegration is driven by greater variation in stomatal size rather than density.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics{../figures/check-approximation.pdf}
+  \caption{(Caption next page.)}
+  \label{fig:check-approximation}
+\end{center}
+\end{figure}
+\addtocounter{figure}{-1}
+
+\begin{figure} [t!]
+\caption{(Previous page.) The approximation used to derive the correlation between log-transformed divergence in stomatal density and size ($\textrm{Corr}[\Delta d, \Delta s]$ in Eqn. \ref{eq:corr-ds1} matches simulated values. Each panel shows the relationship between approximate ($x$-axis) and calculated correlation values from $10^5$ random simulations per point ($y$-axis). The approximation is more accurate when the average stomatal index is low ($\mu_I = 0.1$) and less accurate when stomatal index is greater. Parameter values for simulations were $A = 5$, $B = 0.25$, $\mu_m = \textrm{log}[200~\mu\textrm{m}^3]$, $\sigma_{\Delta i} = 0.1$. The value of these parameters did not affect the results. The correlation changed based $\sigma_{\Delta m}$, which varied between 0.1 and 10 $\times~\sigma_{\Delta i}$).}
+\end{figure}
+
+### Predictions
+
+In this section, we summarize the predictions for each hypothesis (Table \@ref(tab:predictions)) and show they can be difficult to distinguish under certain parameter combinations. Comparing the divergence of stomatal density and size on each surface provides additional evidence that can help resolve competing hypotheses. We can convert predictions from stomatal size to length using the relationship from @sack_developmental_2016: $S = jL^2$ or $s = \textrm{log}(j) + 2 l$ on the log-transformed scale. It follows that $\Delta s = 2 \Delta l$, $\textrm{Var}[\Delta s] = 4 \textrm{Var}[\Delta l]$, and $\textrm{Corr}[\Delta d, \Delta s] = \textrm{Corr}[\Delta d, \Delta l]$.
+
+\begin{table}[ht]
+\caption{\label{tab:predictions}Key predictions about the (co)variance and correlation in divergence of log(stomatal density) ($\Delta d$) and log(stomatal size) ($\Delta s$) under the developmental integration and disintegration hypotheses. "Single surface" predictions apply to divergence in stomatal traits on either surface; "Both surfaces" predictions compare the divergence of traits on surface to that of the other. We further contrast two variants of the disintegration hypothesis, where either stomatal index ($\textrm{Var}[\Delta i] \ne 0$) or asymmetric cell division ($\textrm{Var}[\Delta b] \ne 0$) diverges.}
+\begin{center}
+\begin{tabular}{ccc}
+
+\toprule
+   & \multicolumn{2}{c}{Predictions} \\
+  Hypothesis & Single surface & Both surfaces \\
+  \midrule
+  
+  \multirow{3}{*}{Developmental integration} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d] = \textrm{Var}[\Delta s]$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d_\textrm{ab}] = \textrm{Var}[\Delta d_\textrm{ad}]$} \\
+& \multicolumn{1}{c}{$\textrm{Corr}[\Delta d, \Delta s] = -1$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta s_\textrm{ad}] = \textrm{Var}[\Delta s_\textrm{ad}]$} \\  
+& \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\textrm{Cov}[\Delta d_\textrm{ab},\Delta s_\textrm{ab}] = \textrm{Cov}[\Delta d_\textrm{ad},\Delta s_\textrm{ad}]$} \\  
+
+\midrule
+
+  \multirow{2}{*}{Developmental disintegration} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d] > \textrm{Var}[\Delta s]$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d_\textrm{ab}] \ne \textrm{Var}[\Delta d_\textrm{ad}]$} \\
+& \multicolumn{1}{c}{$0 < \textrm{Corr}[\Delta d, \Delta s] < -1$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta s_\textrm{ad}] = \textrm{Var}[\Delta s_\textrm{ad}]$} \\  
+ $\textrm{Var}[\Delta i] \ne 0$ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\textrm{Cov}[\Delta d_\textrm{ab},\Delta s_\textrm{ab}] \ne \textrm{Cov}[\Delta d_\textrm{ad},\Delta s_\textrm{ad}]$} \\  
+
+\midrule
+
+  \multirow{2}{*}{Developmental disintegration} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d] < \textrm{Var}[\Delta s]$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d_\textrm{ab}] = \textrm{Var}[\Delta d_\textrm{ad}]$} \\
+& \multicolumn{1}{c}{$0 < \textrm{Corr}[\Delta d, \Delta s] < -1$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta s_\textrm{ad}] \ne \textrm{Var}[\Delta s_\textrm{ad}]$} \\  
+ $\textrm{Var}[\Delta i] \ne 0$ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\textrm{Cov}[\Delta d_\textrm{ab},\Delta s_\textrm{ab}] \ne \textrm{Cov}[\Delta d_\textrm{ad},\Delta s_\textrm{ad}]$} \\  
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
+
+The sections above clarify that it is possible to use the (co)divergence in stomatal density and size to test whether developmental integration contributes to phenotypic macroevolution. The problem is that there are parameter combinations where the (co)divergence in stomatal density and size appear consistent with strong developmental integration even when there is no constraint on the developmental function. For illustration, consider an extreme example where there is no divergence in $m$ or $a$ ($\textrm{Var}[\Delta m] = \textrm{Var}[\Delta a] = 0$) and the (co)variance in $\Delta b$ and $\Delta i$ are aligned such that $\textrm{Var}[\Delta b] = \textrm{Var}[\Delta i] = -\textrm{Cov}[\Delta b, \Delta i]$). This leads to the same predictions as the maximally constrained model, even though there is no constraint:
+
+\begin{align}
+  \textrm{Var}[\Delta s] = & \textrm{Var}[\Delta b] \\
+  \textrm{Var}[\Delta d] = & \textrm{Var}[\Delta i] \\
+  \textrm{Cov}[\Delta d, \Delta s] = & \textrm{Cov}[\Delta b, \Delta i] \\
+  \textrm{Corr}[\Delta d, \Delta s] = & -1
+\end{align}
+
+Ideally, we would measure $\Delta b$ and $\Delta i$ to test whether they contribute significantly to divergence in stomatal density and size. This is challenging because comparative data on $b$ and $i$ is scarcer than that for $d$ and $s$. As a result, we can test whether $\Delta b$ and $\Delta i$ contribute in certain lineages but cannot directly quantify their relative importance for angiosperm macroevolution in general, as we attempt in this study.
+
+We therefore take an alternative approach, leveraging the fact that stomatal trait evolution on each surface provides an additional line of evidence. If the stomatal developmental function is constrained then stomatal size and density on each surface should diverge in concert. Conversely, if the stomatal size and density on each surface diverge independently, this provides strong evidence that the developmental function is not fixed. If the developmental function differs between leaf surfaces with identical genomes then it seems implausible that it could not diverge over macroevolutionary time if there were selection. In that case we should give less credence to any hypothesis which posits that the developmental function *cannot* evolve.
+
+\clearpage
+
+## Notes A2: Phylogeny
+
+We resolved taxonomic names using the R package **taxize** version `r packageVersion("taxize")` [@chamberlain_taxize_2013]. We queried taxonomic names supplied by the original study authors on `r str_extract(file.info("processed-data/taxize_output.rds")$ctime, "^[0-9]{4}-[0-9]{2}-[0-9]{2}")` from the following sources: `r taxize_source_ref`. We retained the maximum scoring matched name with taxize score $\ge 0.75$ (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from `r n_tax1` to `r n_tax2` taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
+
+We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS-SSE3 -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducted molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa (Notes A3).
 
 ```{r}
 library(ape)
-write.tree(trimmed_phy, "ms/notesA1.new")
+write.tree(trimmed_phy, "ms/notesA3.new")
 ```
+
+\clearpage
 
 ```{r, sources}
 library(ropenstomata)
@@ -358,73 +763,6 @@ stomata_anatomy_metadata |>
   knitr::kable(format = "markdown", caption = "Primary sources of stomatal anatomical data and the taxa covered by each source.")
 
 ```
-
-\clearpage
-
-\begin{table}
-\caption{\label{tab:pair_div}Final data set of `r n_pair` taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny (Note S1). $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
-\end{table}
-
-```{r}
-# write supporting information table
-write_csv(pair_div, "ms/tableS2.csv")
-```
-
-\begin{table}[ht]
-\caption{\label{tab:modeloutput} Parameter estimates and 95\% highest posterior density (HPD) intervals. For each trait ($D_\mathrm{ab}$, $D_\mathrm{ad}$, $L_\mathrm{ab}$, $L_\mathrm{ad}$) we estimated the average (median) divergence between taxon pairs, denoted $\Delta \text{log(trait)}$. See Table \ref{tab:traits} for symbol definitions. The second section is the standard deviation of $\Delta \text{log(trait)}$. The third section is the estimated coefficient of pair age (millions of years) on the standard devition on a log-link scale. The fourth section is the estimated correlation coefficient between $\Delta \text{log(trait)}$ of all pairwise trait combinations. The final section is the estimated $\nu$ family of the Student $t$ distribution.}
-\begin{center}
-\begin{tabular}{lll}
-
-  \toprule
-  Trait(s) & Estimate & 95\% HPD interval \\
-  \midrule
-  
-  \multicolumn{3}{l}{Average $\Delta \text{log(trait)}$} \\
-  \\
-  $D_\mathrm{ab}$ & `r mo$mu["D_ab", "value"]`  & `r mo$mu["D_ab", "hdi"]`  \\
-  $D_\mathrm{ad}$ & `r mo$mu["D_ad", "value"]`  & `r mo$mu["D_ad", "hdi"]`  \\
-  $L_\mathrm{ab}$ & `r mo$mu["L_ab", "value"]`  & `r mo$mu["L_ab", "hdi"]`  \\
-  $L_\mathrm{ad}$ & `r mo$mu["L_ad", "value"]`  & `r mo$mu["L_ad", "hdi"]`  \\
-  \\
-  \multicolumn{3}{l}{Standard deviation of $\Delta \text{log(trait)}$} \\
-  \\
-  $D_\mathrm{ab}$ & `r mo$sigma["D_ab", "value"]`  & `r mo$sigma["D_ab", "hdi"]`  \\
-  $D_\mathrm{ad}$ & `r mo$sigma["D_ad", "value"]`  & `r mo$sigma["D_ad", "hdi"]`  \\
-  $L_\mathrm{ab}$ & `r mo$sigma["L_ab", "value"]`  & `r mo$sigma["L_ab", "hdi"]`  \\
-  $L_\mathrm{ad}$ & `r mo$sigma["L_ad", "value"]`  & `r mo$sigma["L_ad", "hdi"]`  \\
-  \\
-  \multicolumn{3}{l}{Effect of pair age on standard deviation of $\Delta \text{log(trait)}$} \\
-  \multicolumn{3}{l}{log-link scale} \\
-  \\
-  $D_\mathrm{ab}$ & `r mo$age["D_ab", "value"]`  & `r mo$age["D_ab", "hdi"]`  \\
-  $D_\mathrm{ad}$ & `r mo$age["D_ad", "value"]`  & `r mo$age["D_ad", "hdi"]`  \\
-  $L_\mathrm{ab}$ & `r mo$age["L_ab", "value"]`  & `r mo$age["L_ab", "hdi"]`  \\
-  $L_\mathrm{ad}$ & `r mo$age["L_ad", "value"]`  & `r mo$age["L_ad", "hdi"]`  \\
-  \\
-  \multicolumn{3}{l}{Correlation between $\Delta \text{log(trait)}$} \\
-  \\
-  $D_\mathrm{ab}-D_\mathrm{ad}$ & 
-  `r mo$cor["D_ab-D_ad", "value"]`  & `r mo$cor["D_ab-D_ad", "hdi"]`  \\
-  $D_\mathrm{ab}-L_\mathrm{ab}$ & 
-  `r mo$cor["D_ab-L_ab", "value"]`  & `r mo$cor["D_ab-L_ab", "hdi"]`  \\
-  $D_\mathrm{ab}-L_\mathrm{ad}$ & 
-  `r mo$cor["D_ab-L_ad", "value"]`  & `r mo$cor["D_ab-L_ad", "hdi"]`  \\
-  $D_\mathrm{ad}-L_\mathrm{ab}$ & 
-  `r mo$cor["D_ad-L_ab", "value"]`  & `r mo$cor["D_ad-L_ab", "hdi"]`  \\
-  $D_\mathrm{ad}-L_\mathrm{ad}$ & 
-  `r mo$cor["D_ad-L_ad", "value"]`  & `r mo$cor["D_ad-L_ad", "hdi"]`  \\
-  $L_\mathrm{ab}-L_\mathrm{ad}$ & 
-  `r mo$cor["L_ab-L_ad", "value"]`  & `r mo$cor["L_ab-L_ad", "hdi"]`  \\
-  \\
-  \multicolumn{3}{l}{Student $t$ famil parameter $\nu$} \\
-  \\
-  $-$ & `r mo$nu["nu", "value"]`  & `r mo$nu["nu", "hdi"]`  \\
-
-\bottomrule
-
-\end{tabular}
-\end{center}
-\end{table}
 
 \clearpage
 

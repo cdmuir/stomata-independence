@@ -28,8 +28,8 @@ raxmlHPC -f I -m GTRGAMMA -p 12345 -t RAxML_bestTree.T22 -n T23
 
 
 RAxML-rooted tree using subtree length-balance printed to file:
-/Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Lotus_3867/RAxML_rootedTree.T23
+/Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Lotus_3867/RAxML_rootedTree.T23
 
 
-Time for tree rooting: 0.138181
+Time for tree rooting: 0.026952
 

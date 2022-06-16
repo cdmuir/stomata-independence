@@ -2,10 +2,10 @@ source("r/header.R")
 
 # Source saved data and objects ----
 pair_div = read_rds("objects/pair_div.rds")
-df_samples = read_rds("objects/df_samples.rds")
+df_samples12 = read_rds("objects/df_samples12.rds")
 
 # Prepare for plotting ----
-df_density = df_samples |>
+df_density = df_samples12 |>
   filter(pair_age == 0) |>
   select(
     b_abaxialstomataldensitymm2_Intercept,
@@ -18,7 +18,7 @@ df_density = df_samples |>
       b_adaxialstomataldensitymm2_Intercept * sma_slope
   ) 
 
-df_length = df_samples |>
+df_length = df_samples12 |>
   filter(pair_age == 0) |>
   select(
     b_abaxialstomatallengthum_Intercept,
@@ -75,11 +75,12 @@ gp_density = ggplot(pair_div, aes(abaxial_stomatal_density_mm2,
   ) +
   xlab(expression(paste(Delta, "abaxial"))) +
   ylab(expression(paste(Delta, "adaxial"))) +
-  ggtitle(expression(paste("log(stomtal density [pores m", m^-2, "])"))) +
+  ggtitle(expression(paste("log(stomatal density [pores m", m^-2, "])"))) +
   scale_x_continuous(limits = c(-2, 2)) +
   scale_y_continuous(limits = c(-2, 2)) +
   coord_equal() +
-  theme_cowplot()
+  theme_cowplot() +
+  theme(title = element_text(size = 12))
 
 gp_length = ggplot(pair_div, aes(abaxial_stomatal_length_um,
                            adaxial_stomatal_length_um)) +
@@ -100,11 +101,12 @@ gp_length = ggplot(pair_div, aes(abaxial_stomatal_length_um,
   ) +
   xlab(expression(paste(Delta, "abaxial"))) +
   ylab(expression(paste(Delta, "adaxial"))) +
-  ggtitle(expression(paste("log(stomtal length [", mu, "m])"))) +
+  ggtitle(expression(paste("log(stomatal length [", mu, "m])"))) +
   scale_x_continuous(limits = c(-0.5, 0.5)) +
   scale_y_continuous(limits = c(-0.5, 0.5)) +
   coord_equal() +
-  theme_cowplot()
+  theme_cowplot() +
+  theme(title = element_text(size = 12))
 
 h2_pairs = plot_grid(gp_density, gp_length, align = "hv")
 

@@ -5135,10 +5135,10 @@ Found 5131 columns that contain only undetermined values which will be treated a
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Oryza_4527_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Oryza_4527_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Oryza_4527_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Oryza_4527_outaln_names1.reduced
 
 Alignment has 5131 completely undetermined sites that will be automatically removed from the input data
 
@@ -6298,7 +6298,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Oryza_4527_outpart -s ../../alignments/Oryza_4527_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Oryza_4527_outpart -s ../../alignments/Oryza_4527_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Oryza_4527/clusters/cluster360.aln.rn
@@ -6722,7 +6722,7 @@ Partition: 139 with name: Oryza_4527/clusters/cluster233.aln.rn
 Base frequencies: 0.230 0.177 0.241 0.352 
 
 
-WARNING the alpha parameter with a value of 13.093175 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
+WARNING the alpha parameter with a value of 13.093172 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -6737,12 +6737,12 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 13.039591 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
+WARNING the alpha parameter with a value of 13.039589 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 13.023596 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
+WARNING the alpha parameter with a value of 13.023595 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -6752,37 +6752,37 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 13.107596 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
+WARNING the alpha parameter with a value of 13.107595 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.307067 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
+WARNING the alpha parameter with a value of 30.307198 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 19.821000 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
+WARNING the alpha parameter with a value of 19.820999 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.113754 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
+WARNING the alpha parameter with a value of 30.113782 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.205935 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
+WARNING the alpha parameter with a value of 30.205969 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.165510 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
+WARNING the alpha parameter with a value of 30.165471 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.132411 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
+WARNING the alpha parameter with a value of 30.132371 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -6797,187 +6797,187 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.344332 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
+WARNING the alpha parameter with a value of 30.344307 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 70.061670 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
+WARNING the alpha parameter with a value of 70.058794 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 44.090246 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
+WARNING the alpha parameter with a value of 44.090251 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.586549 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
+WARNING the alpha parameter with a value of 69.586745 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.794260 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
+WARNING the alpha parameter with a value of 69.793397 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.688384 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
+WARNING the alpha parameter with a value of 69.686769 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.619969 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
+WARNING the alpha parameter with a value of 69.621678 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 65.276981 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
+WARNING the alpha parameter with a value of 65.276975 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 44.241446 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 44.241447 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 70.150699 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
+WARNING the alpha parameter with a value of 70.151119 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 152.611032 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
+WARNING the alpha parameter with a value of 152.605664 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 99.871448 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
+WARNING the alpha parameter with a value of 99.871409 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.515957 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
+WARNING the alpha parameter with a value of 151.516252 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.988381 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
+WARNING the alpha parameter with a value of 151.986971 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.728908 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
+WARNING the alpha parameter with a value of 151.725036 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.581201 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
+WARNING the alpha parameter with a value of 151.585305 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 141.490821 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
+WARNING the alpha parameter with a value of 141.490803 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 100.712402 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 100.712405 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 152.821280 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
+WARNING the alpha parameter with a value of 152.822401 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 343.209339 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
+WARNING the alpha parameter with a value of 343.192508 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 219.191769 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
+WARNING the alpha parameter with a value of 219.191656 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 340.717714 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
+WARNING the alpha parameter with a value of 340.725443 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 341.757133 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
+WARNING the alpha parameter with a value of 341.756338 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 341.144838 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
+WARNING the alpha parameter with a value of 341.137647 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 340.856545 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
+WARNING the alpha parameter with a value of 340.866659 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 317.453485 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
+WARNING the alpha parameter with a value of 317.453413 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 221.765662 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 221.765668 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 343.696189 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
+WARNING the alpha parameter with a value of 343.697726 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 783.279454 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
+WARNING the alpha parameter with a value of 783.087929 estimated by RAxML for partition number 0 with the name "Oryza_4527/clusters/cluster360.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 494.598420 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
+WARNING the alpha parameter with a value of 494.598530 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 777.506034 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
+WARNING the alpha parameter with a value of 777.593169 estimated by RAxML for partition number 26 with the name "Oryza_4527/clusters/cluster231.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 779.819195 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
+WARNING the alpha parameter with a value of 779.912257 estimated by RAxML for partition number 38 with the name "Oryza_4527/clusters/cluster244.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 778.372503 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
+WARNING the alpha parameter with a value of 778.595249 estimated by RAxML for partition number 71 with the name "Oryza_4527/clusters/cluster361.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 777.709458 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
+WARNING the alpha parameter with a value of 777.546705 estimated by RAxML for partition number 81 with the name "Oryza_4527/clusters/cluster362.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 723.686131 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
+WARNING the alpha parameter with a value of 723.687567 estimated by RAxML for partition number 91 with the name "Oryza_4527/clusters/cluster476.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 501.215776 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
+WARNING the alpha parameter with a value of 501.215848 estimated by RAxML for partition number 125 with the name "Oryza_4527/clusters/cluster6.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 784.379397 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
+WARNING the alpha parameter with a value of 784.361852 estimated by RAxML for partition number 139 with the name "Oryza_4527/clusters/cluster233.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -6987,7 +6987,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 999.822262 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
+WARNING the alpha parameter with a value of 999.822256 estimated by RAxML for partition number 7 with the name "Oryza_4527/clusters/cluster425.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7251,8 +7251,8 @@ WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for p
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 2389.301815 GAMMA-based likelihood -343903.741756, best rearrangement setting 5
-alpha[0]: 1000.000000 rates[0] ac ag at cg ct gt: 0.000100 23.294614 0.000100 36.855537 0.000100 1.000000 alpha[1]: 0.892203 rates[1] ac ag at cg ct gt: 0.940570 3.309661 0.751568 0.787287 1.467773 1.000000 alpha[2]: 0.200340 rates[2] ac ag at cg ct gt: 0.718115 2.091736 1.406222 1.013245 2.353830 1.000000 alpha[3]: 0.078173 rates[3] ac ag at cg ct gt: 1.217608 3.562752 1.061689 1.312565 3.520970 1.000000 alpha[4]: 0.732185 rates[4] ac ag at cg ct gt: 0.857675 3.026703 0.679763 0.527080 1.965351 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.261438 2.018425 0.694927 0.333067 2.932030 1.000000 alpha[6]: 0.332888 rates[6] ac ag at cg ct gt: 1.049545 5.702184 0.708217 1.828530 3.643952 1.000000 alpha[7]: 1000.000000 rates[7] ac ag at cg ct gt: 0.623227 5.976561 1.225841 2.279396 3.789197 1.000000 alpha[8]: 0.617997 rates[8] ac ag at cg ct gt: 0.939736 5.588286 1.383758 2.325574 5.598223 1.000000 alpha[9]: 0.191698 rates[9] ac ag at cg ct gt: 1.959797 1.884204 1.915920 1.456649 4.914941 1.000000 alpha[10]: 0.020000 rates[10] ac ag at cg ct gt: 2.043424 4.380140 1.918251 0.786412 5.885175 1.000000 alpha[11]: 0.020000 rates[11] ac ag at cg ct gt: 0.504965 2.676040 0.974824 1.145705 2.609602 1.000000 alpha[12]: 0.321416 rates[12] ac ag at cg ct gt: 1.246921 4.404329 0.916053 1.335691 4.099344 1.000000 alpha[13]: 0.867516 rates[13] ac ag at cg ct gt: 0.356857 3.718981 1.181436 1.543856 3.841901 1.000000 alpha[14]: 1.015646 rates[14] ac ag at cg ct gt: 1.015810 3.031120 0.954548 1.120153 2.904420 1.000000 alpha[15]: 0.046180 rates[15] ac ag at cg ct gt: 1.341882 4.806550 0.723038 0.128751 5.484606 1.000000 alpha[16]: 0.020000 rates[16] ac ag at cg ct gt: 0.000100 9.801093 13.925612 0.000100 24.059727 1.000000 alpha[17]: 0.020000 rates[17] ac ag at cg ct gt: 0.214465 1.263638 0.206395 0.912286 1.015967 1.000000 alpha[18]: 0.798815 rates[18] ac ag at cg ct gt: 1.627468 2.675180 1.660554 2.897481 3.431059 1.000000 alpha[19]: 0.798011 rates[19] ac ag at cg ct gt: 0.743926 3.650195 1.474102 1.868418 3.729687 1.000000 alpha[20]: 0.074207 rates[20] ac ag at cg ct gt: 1.668565 3.069434 0.677317 0.881730 5.238248 1.000000 alpha[21]: 0.972717 rates[21] ac ag at cg ct gt: 1.890084 4.534292 0.999196 1.828563 5.974787 1.000000 alpha[22]: 0.347950 rates[22] ac ag at cg ct gt: 0.889754 2.702989 0.658788 1.014668 3.938855 1.000000 alpha[23]: 0.703820 rates[23] ac ag at cg ct gt: 1.661177 4.414060 1.110401 1.338258 3.822850 1.000000 alpha[24]: 0.246256 rates[24] ac ag at cg ct gt: 1.590397 3.334591 1.360424 1.190589 5.562776 1.000000 alpha[25]: 0.164803 rates[25] ac ag at cg ct gt: 0.776967 3.121995 0.810232 1.275392 3.954018 1.000000 alpha[26]: 1000.000000 rates[26] ac ag at cg ct gt: 4.475671 9.724946 0.000100 13.678164 10.606997 1.000000 alpha[27]: 0.703313 rates[27] ac ag at cg ct gt: 0.962437 4.371667 0.938833 1.249087 4.050036 1.000000 alpha[28]: 0.497587 rates[28] ac ag at cg ct gt: 1.218159 3.820333 1.174009 0.696267 2.963751 1.000000 alpha[29]: 1.827475 rates[29] ac ag at cg ct gt: 0.542784 2.171101 0.316169 0.608312 1.888054 1.000000 alpha[30]: 0.759120 rates[30] ac ag at cg ct gt: 0.513013 3.538505 0.506274 0.769425 2.399063 1.000000 alpha[31]: 0.594198 rates[31] ac ag at cg ct gt: 1.540781 2.910463 0.978611 1.163360 3.259697 1.000000 alpha[32]: 0.711236 rates[32] ac ag at cg ct gt: 1.514769 4.641765 0.570394 2.473854 4.473754 1.000000 alpha[33]: 1.086208 rates[33] ac ag at cg ct gt: 0.443762 3.995021 0.680299 2.194146 6.056246 1.000000 alpha[34]: 0.198238 rates[34] ac ag at cg ct gt: 1.310873 2.746555 1.691585 0.616769 3.526983 1.000000 alpha[35]: 0.402410 rates[35] ac ag at cg ct gt: 0.350007 2.222032 0.437567 1.113354 2.980070 1.000000 alpha[36]: 0.544261 rates[36] ac ag at cg ct gt: 0.886835 2.400234 0.902511 1.174842 4.768415 1.000000 alpha[37]: 0.049291 rates[37] ac ag at cg ct gt: 1.661104 4.454408 1.243266 1.431846 3.596335 1.000000 alpha[38]: 1000.000000 rates[38] ac ag at cg ct gt: 0.000100 24.532796 0.000100 0.000100 72.315862 1.000000 alpha[39]: 0.540561 rates[39] ac ag at cg ct gt: 0.873769 3.689577 0.969806 1.371815 3.518000 1.000000 alpha[40]: 0.020000 rates[40] ac ag at cg ct gt: 0.329920 0.422834 0.259707 0.766153 0.623704 1.000000 alpha[41]: 0.104278 rates[41] ac ag at cg ct gt: 0.866349 3.945659 1.097127 1.678864 4.236222 1.000000 alpha[42]: 0.652796 rates[42] ac ag at cg ct gt: 1.036133 3.670652 0.457893 1.418427 3.135345 1.000000 alpha[43]: 0.268926 rates[43] ac ag at cg ct gt: 1.786813 5.233640 0.675435 0.960737 4.780512 1.000000 alpha[44]: 1.114484 rates[44] ac ag at cg ct gt: 1.350735 2.538628 0.928490 1.071480 3.659975 1.000000 alpha[45]: 0.020000 rates[45] ac ag at cg ct gt: 0.160531 1.023402 0.211615 0.148111 0.220416 1.000000 alpha[46]: 0.300395 rates[46] ac ag at cg ct gt: 0.750282 4.283087 1.081143 2.662194 3.819344 1.000000 alpha[47]: 1.177971 rates[47] ac ag at cg ct gt: 1.732647 4.734587 0.941402 1.264393 3.998433 1.000000 alpha[48]: 0.295741 rates[48] ac ag at cg ct gt: 0.421035 4.271237 1.081079 1.712838 7.393665 1.000000 alpha[49]: 0.232926 rates[49] ac ag at cg ct gt: 0.678102 2.540482 0.854413 0.800090 4.541960 1.000000 alpha[50]: 0.302546 rates[50] ac ag at cg ct gt: 0.991302 3.485524 0.709457 0.939821 5.058842 1.000000 alpha[51]: 0.252233 rates[51] ac ag at cg ct gt: 0.893607 2.207984 1.492872 0.887226 3.467058 1.000000 alpha[52]: 0.419921 rates[52] ac ag at cg ct gt: 1.164012 2.790445 0.517569 0.566391 4.054168 1.000000 alpha[53]: 0.256626 rates[53] ac ag at cg ct gt: 1.818141 4.385102 1.684275 1.511192 4.791837 1.000000 alpha[54]: 0.663032 rates[54] ac ag at cg ct gt: 1.453338 3.186279 1.414151 2.459043 3.185520 1.000000 alpha[55]: 0.470910 rates[55] ac ag at cg ct gt: 1.086003 2.917702 1.173925 1.345794 4.830292 1.000000 alpha[56]: 0.398582 rates[56] ac ag at cg ct gt: 1.958078 2.950082 0.746783 1.603190 2.445462 1.000000 alpha[57]: 6.995128 rates[57] ac ag at cg ct gt: 0.574037 1.301360 0.298760 0.162776 1.987113 1.000000 alpha[58]: 0.372471 rates[58] ac ag at cg ct gt: 0.652429 1.610363 0.612932 1.307767 1.922688 1.000000 alpha[59]: 0.020000 rates[59] ac ag at cg ct gt: 3.478722 2.998021 3.534691 0.000100 3.141511 1.000000 alpha[60]: 0.799992 rates[60] ac ag at cg ct gt: 0.569187 3.453789 0.573936 1.056856 2.840451 1.000000 alpha[61]: 0.691197 rates[61] ac ag at cg ct gt: 0.862521 2.864620 0.911182 1.771437 3.753801 1.000000 alpha[62]: 0.020000 rates[62] ac ag at cg ct gt: 0.511415 2.248984 0.782842 0.980835 1.856558 1.000000 alpha[63]: 0.310514 rates[63] ac ag at cg ct gt: 0.898928 3.267199 1.592058 1.182431 3.321063 1.000000 alpha[64]: 0.020000 rates[64] ac ag at cg ct gt: 0.353683 2.437410 0.922568 0.428928 2.027340 1.000000 alpha[65]: 0.291637 rates[65] ac ag at cg ct gt: 1.146937 2.592351 1.003970 1.396166 5.197529 1.000000 alpha[66]: 0.464510 rates[66] ac ag at cg ct gt: 0.586684 1.850784 0.208654 0.473316 1.844339 1.000000 alpha[67]: 0.020000 rates[67] ac ag at cg ct gt: 0.959433 3.101288 0.802842 0.875804 3.037298 1.000000 alpha[68]: 0.970547 rates[68] ac ag at cg ct gt: 0.472937 1.827973 0.837780 0.319949 1.722756 1.000000 alpha[69]: 0.020000 rates[69] ac ag at cg ct gt: 0.000100 5.435177 1.407078 0.015402 6.384191 1.000000 alpha[70]: 1.285058 rates[70] ac ag at cg ct gt: 1.004695 3.014765 0.859486 1.140553 4.877571 1.000000 alpha[71]: 1000.000000 rates[71] ac ag at cg ct gt: 0.000100 0.000123 0.000100 0.000127 1250.943412 1.000000 alpha[72]: 0.390368 rates[72] ac ag at cg ct gt: 0.717469 3.316086 1.217144 0.803834 3.303107 1.000000 alpha[73]: 1.349210 rates[73] ac ag at cg ct gt: 2.054230 3.818099 1.393982 1.119622 3.686242 1.000000 alpha[74]: 0.020000 rates[74] ac ag at cg ct gt: 1.054572 2.815022 1.399260 0.757669 1.897966 1.000000 alpha[75]: 0.419452 rates[75] ac ag at cg ct gt: 1.944967 3.163760 2.834455 2.344510 4.036469 1.000000 alpha[76]: 1.490970 rates[76] ac ag at cg ct gt: 1.088832 3.349781 0.414786 1.225703 3.059784 1.000000 alpha[77]: 0.020000 rates[77] ac ag at cg ct gt: 1.333468 2.099124 1.481265 2.699277 2.999230 1.000000 alpha[78]: 1.074296 rates[78] ac ag at cg ct gt: 1.222817 3.565035 1.348197 1.313783 3.138000 1.000000 alpha[79]: 0.173867 rates[79] ac ag at cg ct gt: 1.762975 4.470733 1.701596 1.777292 3.137827 1.000000 alpha[80]: 0.020000 rates[80] ac ag at cg ct gt: 0.293269 9.351055 3.245528 2.040997 5.346813 1.000000 alpha[81]: 1000.000000 rates[81] ac ag at cg ct gt: 0.000100 30.572465 0.000100 0.000100 48.155203 1.000000 alpha[82]: 0.020000 rates[82] ac ag at cg ct gt: 1.145158 2.282425 0.592533 1.189793 2.662678 1.000000 alpha[83]: 0.126036 rates[83] ac ag at cg ct gt: 0.988356 2.415801 0.681843 0.326997 2.009665 1.000000 alpha[84]: 0.373235 rates[84] ac ag at cg ct gt: 2.030159 3.359242 0.634524 2.801160 2.999803 1.000000 alpha[85]: 0.344794 rates[85] ac ag at cg ct gt: 1.400962 5.035138 0.915882 1.425589 3.828460 1.000000 alpha[86]: 0.411647 rates[86] ac ag at cg ct gt: 1.018848 2.183919 0.975985 1.971555 2.213239 1.000000 alpha[87]: 0.161236 rates[87] ac ag at cg ct gt: 0.582102 2.253547 2.140200 0.669866 2.591542 1.000000 alpha[88]: 0.676625 rates[88] ac ag at cg ct gt: 0.947412 2.636214 1.030983 2.111045 2.817148 1.000000 alpha[89]: 2.553278 rates[89] ac ag at cg ct gt: 0.731559 3.013822 0.662513 1.111270 2.549758 1.000000 alpha[90]: 0.020000 rates[90] ac ag at cg ct gt: 0.108650 1.666471 0.429050 1.250243 4.198442 1.000000 alpha[91]: 1000.000000 rates[91] ac ag at cg ct gt: 0.542563 2.987990 0.665962 0.177715 2.850343 1.000000 alpha[92]: 0.519455 rates[92] ac ag at cg ct gt: 1.476633 2.385207 0.602982 0.578959 2.756870 1.000000 alpha[93]: 0.020000 rates[93] ac ag at cg ct gt: 1.674834 2.906578 1.299489 0.768344 0.947019 1.000000 alpha[94]: 0.020000 rates[94] ac ag at cg ct gt: 1.915656 2.620945 1.028738 1.452020 4.361266 1.000000 alpha[95]: 0.020000 rates[95] ac ag at cg ct gt: 1.882919 4.087610 1.582149 3.897588 5.510228 1.000000 alpha[96]: 0.051956 rates[96] ac ag at cg ct gt: 1.133329 6.559397 1.037431 2.155357 6.770353 1.000000 alpha[97]: 0.273893 rates[97] ac ag at cg ct gt: 1.027219 3.986437 1.033537 1.388194 4.997209 1.000000 alpha[98]: 0.738927 rates[98] ac ag at cg ct gt: 1.381338 2.708416 0.953204 1.029718 3.693373 1.000000 alpha[99]: 0.020000 rates[99] ac ag at cg ct gt: 1.112924 4.354289 1.055629 0.953760 4.405704 1.000000 alpha[100]: 0.923378 rates[100] ac ag at cg ct gt: 1.682795 5.216423 1.554991 1.370579 4.564058 1.000000 alpha[101]: 2.040638 rates[101] ac ag at cg ct gt: 0.555642 2.360432 0.502002 0.454732 3.500945 1.000000 alpha[102]: 0.299508 rates[102] ac ag at cg ct gt: 0.422250 2.572241 0.505937 0.761307 3.743830 1.000000 alpha[103]: 0.509991 rates[103] ac ag at cg ct gt: 1.291853 3.769194 0.449654 0.951764 4.056864 1.000000 alpha[104]: 1.049791 rates[104] ac ag at cg ct gt: 1.126856 1.904839 0.663177 1.311199 3.579878 1.000000 alpha[105]: 0.157844 rates[105] ac ag at cg ct gt: 1.457106 4.595289 0.829267 1.832196 6.432735 1.000000 alpha[106]: 0.863333 rates[106] ac ag at cg ct gt: 1.627851 4.049027 1.373575 1.225735 3.986272 1.000000 alpha[107]: 0.238013 rates[107] ac ag at cg ct gt: 0.797857 3.126088 0.794977 0.971282 2.597980 1.000000 alpha[108]: 0.133335 rates[108] ac ag at cg ct gt: 1.304545 1.795190 0.737067 0.484068 3.780309 1.000000 alpha[109]: 0.489864 rates[109] ac ag at cg ct gt: 0.708439 2.934719 0.666534 0.389080 2.981350 1.000000 alpha[110]: 0.020000 rates[110] ac ag at cg ct gt: 8.545678 7.717509 0.861887 3.963925 10.185029 1.000000 alpha[111]: 0.239082 rates[111] ac ag at cg ct gt: 1.873000 6.689927 2.284632 1.786250 7.452355 1.000000 alpha[112]: 0.197102 rates[112] ac ag at cg ct gt: 0.883886 3.235036 1.168268 1.650735 6.083551 1.000000 alpha[113]: 0.272007 rates[113] ac ag at cg ct gt: 2.437123 3.645645 1.245543 1.900172 4.490460 1.000000 alpha[114]: 0.689928 rates[114] ac ag at cg ct gt: 1.387008 2.377906 0.948802 2.381549 3.896242 1.000000 alpha[115]: 0.720457 rates[115] ac ag at cg ct gt: 1.482658 3.621026 0.643675 1.150779 5.194100 1.000000 alpha[116]: 0.220476 rates[116] ac ag at cg ct gt: 1.332105 3.359060 1.770828 2.598881 9.504278 1.000000 alpha[117]: 4.054600 rates[117] ac ag at cg ct gt: 1.815642 3.694315 0.920946 1.676661 3.386191 1.000000 alpha[118]: 0.565065 rates[118] ac ag at cg ct gt: 0.953078 2.245962 0.354352 0.966988 1.895065 1.000000 alpha[119]: 0.470749 rates[119] ac ag at cg ct gt: 0.530695 2.421551 0.461957 0.363722 2.717916 1.000000 alpha[120]: 9.144544 rates[120] ac ag at cg ct gt: 2.565657 3.518194 1.302699 0.709494 3.663494 1.000000 alpha[121]: 0.657419 rates[121] ac ag at cg ct gt: 1.061423 3.068274 1.503663 0.998763 3.657348 1.000000 alpha[122]: 0.085594 rates[122] ac ag at cg ct gt: 1.121876 7.593315 0.964601 2.573815 6.250691 1.000000 alpha[123]: 0.597859 rates[123] ac ag at cg ct gt: 1.222792 3.458067 0.454974 0.942372 3.967945 1.000000 alpha[124]: 0.282755 rates[124] ac ag at cg ct gt: 0.584576 0.794083 0.696515 0.564282 1.625607 1.000000 alpha[125]: 1000.000000 rates[125] ac ag at cg ct gt: 0.872591 3.168168 1.396093 1.478064 4.657763 1.000000 alpha[126]: 0.020000 rates[126] ac ag at cg ct gt: 1.002254 1.193032 0.256331 0.000100 0.422819 1.000000 alpha[127]: 0.810950 rates[127] ac ag at cg ct gt: 2.664761 6.531133 3.572328 3.008873 5.164423 1.000000 alpha[128]: 0.700521 rates[128] ac ag at cg ct gt: 0.973808 3.534128 1.228614 1.491808 3.498939 1.000000 alpha[129]: 0.020000 rates[129] ac ag at cg ct gt: 1.040760 6.601144 0.586705 1.230906 2.960103 1.000000 alpha[130]: 0.174483 rates[130] ac ag at cg ct gt: 1.401835 3.020063 1.879373 1.033547 4.149027 1.000000 alpha[131]: 0.364537 rates[131] ac ag at cg ct gt: 0.482786 1.879480 0.629675 0.587991 1.766681 1.000000 alpha[132]: 0.679249 rates[132] ac ag at cg ct gt: 0.300512 1.599218 0.377088 0.650310 2.296885 1.000000 alpha[133]: 0.068630 rates[133] ac ag at cg ct gt: 0.466575 4.458867 0.363276 0.861694 3.330458 1.000000 alpha[134]: 0.408440 rates[134] ac ag at cg ct gt: 1.072954 2.597684 0.601242 1.221183 3.119669 1.000000 alpha[135]: 0.618489 rates[135] ac ag at cg ct gt: 1.158171 4.768565 1.055646 1.802515 4.562112 1.000000 alpha[136]: 0.838134 rates[136] ac ag at cg ct gt: 1.577451 3.927024 0.638236 1.610959 3.152777 1.000000 alpha[137]: 1.170109 rates[137] ac ag at cg ct gt: 0.787592 2.317469 0.581468 0.837498 2.479271 1.000000 alpha[138]: 0.020000 rates[138] ac ag at cg ct gt: 1.124686 2.057433 0.500288 0.192111 4.382442 1.000000 alpha[139]: 1000.000000 rates[139] ac ag at cg ct gt: 15.671644 23.447882 0.000100 15.541157 10.749795 1.000000 
+Inference[0]: Time 87.110237 GAMMA-based likelihood -343903.741778, best rearrangement setting 5
+alpha[0]: 1000.000000 rates[0] ac ag at cg ct gt: 0.000100 23.294610 0.000100 36.855532 0.000100 1.000000 alpha[1]: 0.892203 rates[1] ac ag at cg ct gt: 0.940570 3.309661 0.751568 0.787287 1.467773 1.000000 alpha[2]: 0.200341 rates[2] ac ag at cg ct gt: 0.718115 2.091736 1.406223 1.013245 2.353830 1.000000 alpha[3]: 0.078173 rates[3] ac ag at cg ct gt: 1.217608 3.562752 1.061689 1.312564 3.520969 1.000000 alpha[4]: 0.732185 rates[4] ac ag at cg ct gt: 0.857675 3.026703 0.679763 0.527080 1.965351 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.261376 2.018415 0.694911 0.333069 2.932017 1.000000 alpha[6]: 0.332888 rates[6] ac ag at cg ct gt: 1.049545 5.702186 0.708217 1.828530 3.643952 1.000000 alpha[7]: 1000.000000 rates[7] ac ag at cg ct gt: 0.623227 5.976561 1.225841 2.279396 3.789197 1.000000 alpha[8]: 0.617998 rates[8] ac ag at cg ct gt: 0.939736 5.588286 1.383758 2.325574 5.598222 1.000000 alpha[9]: 0.191698 rates[9] ac ag at cg ct gt: 1.959795 1.884206 1.915921 1.456648 4.914939 1.000000 alpha[10]: 0.020000 rates[10] ac ag at cg ct gt: 2.043424 4.380140 1.918251 0.786412 5.885175 1.000000 alpha[11]: 0.020000 rates[11] ac ag at cg ct gt: 0.504965 2.676040 0.974824 1.145705 2.609602 1.000000 alpha[12]: 0.321416 rates[12] ac ag at cg ct gt: 1.246921 4.404329 0.916053 1.335691 4.099344 1.000000 alpha[13]: 0.867516 rates[13] ac ag at cg ct gt: 0.356857 3.718980 1.181436 1.543857 3.841901 1.000000 alpha[14]: 1.015647 rates[14] ac ag at cg ct gt: 1.015810 3.031120 0.954548 1.120153 2.904420 1.000000 alpha[15]: 0.046180 rates[15] ac ag at cg ct gt: 1.341882 4.806550 0.723038 0.128751 5.484606 1.000000 alpha[16]: 0.020000 rates[16] ac ag at cg ct gt: 0.000100 9.801094 13.925612 0.000100 24.059728 1.000000 alpha[17]: 0.020000 rates[17] ac ag at cg ct gt: 0.214465 1.263638 0.206395 0.912286 1.015967 1.000000 alpha[18]: 0.798815 rates[18] ac ag at cg ct gt: 1.627468 2.675180 1.660554 2.897481 3.431059 1.000000 alpha[19]: 0.798011 rates[19] ac ag at cg ct gt: 0.743926 3.650195 1.474102 1.868418 3.729687 1.000000 alpha[20]: 0.074207 rates[20] ac ag at cg ct gt: 1.668564 3.069433 0.677317 0.881730 5.238246 1.000000 alpha[21]: 0.972718 rates[21] ac ag at cg ct gt: 1.890083 4.534291 0.999195 1.828562 5.974786 1.000000 alpha[22]: 0.347950 rates[22] ac ag at cg ct gt: 0.889754 2.702989 0.658788 1.014668 3.938855 1.000000 alpha[23]: 0.703820 rates[23] ac ag at cg ct gt: 1.661177 4.414060 1.110401 1.338258 3.822850 1.000000 alpha[24]: 0.246256 rates[24] ac ag at cg ct gt: 1.590396 3.334592 1.360424 1.190589 5.562773 1.000000 alpha[25]: 0.164803 rates[25] ac ag at cg ct gt: 0.776974 3.122016 0.810240 1.275404 3.954067 1.000000 alpha[26]: 1000.000000 rates[26] ac ag at cg ct gt: 4.475671 9.724945 0.000100 13.678164 10.606997 1.000000 alpha[27]: 0.703313 rates[27] ac ag at cg ct gt: 0.962437 4.371668 0.938833 1.249087 4.050037 1.000000 alpha[28]: 0.497587 rates[28] ac ag at cg ct gt: 1.218159 3.820333 1.174009 0.696267 2.963751 1.000000 alpha[29]: 1.827475 rates[29] ac ag at cg ct gt: 0.542784 2.171101 0.316169 0.608312 1.888054 1.000000 alpha[30]: 0.759120 rates[30] ac ag at cg ct gt: 0.513013 3.538505 0.506274 0.769425 2.399063 1.000000 alpha[31]: 0.594198 rates[31] ac ag at cg ct gt: 1.540781 2.910463 0.978611 1.163360 3.259697 1.000000 alpha[32]: 0.711236 rates[32] ac ag at cg ct gt: 1.514769 4.641765 0.570394 2.473854 4.473754 1.000000 alpha[33]: 1.086208 rates[33] ac ag at cg ct gt: 0.443761 3.995021 0.680298 2.194145 6.056248 1.000000 alpha[34]: 0.198238 rates[34] ac ag at cg ct gt: 1.310873 2.746555 1.691585 0.616769 3.526983 1.000000 alpha[35]: 0.402410 rates[35] ac ag at cg ct gt: 0.350006 2.222033 0.437567 1.113354 2.980070 1.000000 alpha[36]: 0.544261 rates[36] ac ag at cg ct gt: 0.886835 2.400234 0.902511 1.174842 4.768415 1.000000 alpha[37]: 0.049292 rates[37] ac ag at cg ct gt: 1.661105 4.454391 1.243261 1.431846 3.596330 1.000000 alpha[38]: 1000.000000 rates[38] ac ag at cg ct gt: 0.000100 24.532798 0.000100 0.000100 72.315864 1.000000 alpha[39]: 0.540561 rates[39] ac ag at cg ct gt: 0.873769 3.689577 0.969806 1.371815 3.518000 1.000000 alpha[40]: 0.020000 rates[40] ac ag at cg ct gt: 0.329920 0.422834 0.259707 0.766153 0.623704 1.000000 alpha[41]: 0.104278 rates[41] ac ag at cg ct gt: 0.866349 3.945660 1.097127 1.678864 4.236221 1.000000 alpha[42]: 0.652796 rates[42] ac ag at cg ct gt: 1.036133 3.670651 0.457893 1.418427 3.135345 1.000000 alpha[43]: 0.268926 rates[43] ac ag at cg ct gt: 1.786813 5.233638 0.675435 0.960737 4.780512 1.000000 alpha[44]: 1.114484 rates[44] ac ag at cg ct gt: 1.350735 2.538628 0.928490 1.071480 3.659974 1.000000 alpha[45]: 0.020000 rates[45] ac ag at cg ct gt: 0.160531 1.023402 0.211615 0.148111 0.220416 1.000000 alpha[46]: 0.300395 rates[46] ac ag at cg ct gt: 0.750279 4.283072 1.081139 2.662185 3.819333 1.000000 alpha[47]: 1.177970 rates[47] ac ag at cg ct gt: 1.732647 4.734588 0.941402 1.264393 3.998434 1.000000 alpha[48]: 0.295741 rates[48] ac ag at cg ct gt: 0.421034 4.271236 1.081078 1.712837 7.393669 1.000000 alpha[49]: 0.232926 rates[49] ac ag at cg ct gt: 0.678102 2.540483 0.854413 0.800090 4.541961 1.000000 alpha[50]: 0.302546 rates[50] ac ag at cg ct gt: 0.991302 3.485525 0.709457 0.939821 5.058842 1.000000 alpha[51]: 0.252233 rates[51] ac ag at cg ct gt: 0.893607 2.207984 1.492872 0.887226 3.467058 1.000000 alpha[52]: 0.419921 rates[52] ac ag at cg ct gt: 1.164013 2.790446 0.517569 0.566391 4.054169 1.000000 alpha[53]: 0.256626 rates[53] ac ag at cg ct gt: 1.818141 4.385102 1.684275 1.511191 4.791835 1.000000 alpha[54]: 0.663032 rates[54] ac ag at cg ct gt: 1.453338 3.186279 1.414152 2.459044 3.185520 1.000000 alpha[55]: 0.470910 rates[55] ac ag at cg ct gt: 1.086004 2.917701 1.173923 1.345794 4.830295 1.000000 alpha[56]: 0.398582 rates[56] ac ag at cg ct gt: 1.958078 2.950082 0.746783 1.603190 2.445462 1.000000 alpha[57]: 6.995128 rates[57] ac ag at cg ct gt: 0.574037 1.301360 0.298760 0.162776 1.987113 1.000000 alpha[58]: 0.372471 rates[58] ac ag at cg ct gt: 0.652429 1.610363 0.612932 1.307767 1.922688 1.000000 alpha[59]: 0.020000 rates[59] ac ag at cg ct gt: 3.478722 2.998021 3.534691 0.000100 3.141511 1.000000 alpha[60]: 0.799992 rates[60] ac ag at cg ct gt: 0.569188 3.453789 0.573936 1.056856 2.840451 1.000000 alpha[61]: 0.691197 rates[61] ac ag at cg ct gt: 0.862521 2.864619 0.911182 1.771437 3.753801 1.000000 alpha[62]: 0.020000 rates[62] ac ag at cg ct gt: 0.511415 2.248984 0.782842 0.980835 1.856558 1.000000 alpha[63]: 0.310515 rates[63] ac ag at cg ct gt: 0.898928 3.267199 1.592058 1.182431 3.321063 1.000000 alpha[64]: 0.020000 rates[64] ac ag at cg ct gt: 0.353683 2.437410 0.922568 0.428928 2.027340 1.000000 alpha[65]: 0.291637 rates[65] ac ag at cg ct gt: 1.146937 2.592351 1.003970 1.396166 5.197529 1.000000 alpha[66]: 0.464510 rates[66] ac ag at cg ct gt: 0.586684 1.850784 0.208654 0.473317 1.844339 1.000000 alpha[67]: 0.020000 rates[67] ac ag at cg ct gt: 0.959433 3.101287 0.802842 0.875804 3.037298 1.000000 alpha[68]: 0.970547 rates[68] ac ag at cg ct gt: 0.472937 1.827973 0.837780 0.319949 1.722756 1.000000 alpha[69]: 0.020000 rates[69] ac ag at cg ct gt: 0.000100 5.435177 1.407078 0.015402 6.384190 1.000000 alpha[70]: 1.285057 rates[70] ac ag at cg ct gt: 1.004695 3.014765 0.859486 1.140553 4.877570 1.000000 alpha[71]: 1000.000000 rates[71] ac ag at cg ct gt: 0.000117 0.000100 0.000100 0.000100 1257.772840 1.000000 alpha[72]: 0.390368 rates[72] ac ag at cg ct gt: 0.717469 3.316086 1.217144 0.803834 3.303107 1.000000 alpha[73]: 1.349210 rates[73] ac ag at cg ct gt: 2.054230 3.818099 1.393983 1.119622 3.686241 1.000000 alpha[74]: 0.020000 rates[74] ac ag at cg ct gt: 1.054572 2.815022 1.399260 0.757669 1.897966 1.000000 alpha[75]: 0.419450 rates[75] ac ag at cg ct gt: 1.944967 3.163760 2.834455 2.344511 4.036469 1.000000 alpha[76]: 1.490970 rates[76] ac ag at cg ct gt: 1.088832 3.349781 0.414786 1.225703 3.059784 1.000000 alpha[77]: 0.020000 rates[77] ac ag at cg ct gt: 1.333468 2.099124 1.481265 2.699277 2.999230 1.000000 alpha[78]: 1.074296 rates[78] ac ag at cg ct gt: 1.222817 3.565034 1.348197 1.313783 3.138000 1.000000 alpha[79]: 0.173867 rates[79] ac ag at cg ct gt: 1.762975 4.470733 1.701596 1.777292 3.137827 1.000000 alpha[80]: 0.020000 rates[80] ac ag at cg ct gt: 0.293269 9.351054 3.245528 2.040997 5.346812 1.000000 alpha[81]: 1000.000000 rates[81] ac ag at cg ct gt: 0.000100 30.572465 0.000100 0.000100 48.155203 1.000000 alpha[82]: 0.020000 rates[82] ac ag at cg ct gt: 1.145158 2.282425 0.592533 1.189793 2.662678 1.000000 alpha[83]: 0.126036 rates[83] ac ag at cg ct gt: 0.988356 2.415801 0.681843 0.326997 2.009665 1.000000 alpha[84]: 0.373235 rates[84] ac ag at cg ct gt: 2.030158 3.359247 0.634523 2.801161 2.999803 1.000000 alpha[85]: 0.344793 rates[85] ac ag at cg ct gt: 1.400964 5.035140 0.915883 1.425590 3.828463 1.000000 alpha[86]: 0.411647 rates[86] ac ag at cg ct gt: 1.018848 2.183919 0.975985 1.971555 2.213239 1.000000 alpha[87]: 0.161236 rates[87] ac ag at cg ct gt: 0.582102 2.253552 2.140207 0.669872 2.591553 1.000000 alpha[88]: 0.676625 rates[88] ac ag at cg ct gt: 0.947412 2.636214 1.030984 2.111046 2.817147 1.000000 alpha[89]: 2.553278 rates[89] ac ag at cg ct gt: 0.731559 3.013821 0.662513 1.111270 2.549758 1.000000 alpha[90]: 0.020000 rates[90] ac ag at cg ct gt: 0.108650 1.666471 0.429050 1.250243 4.198442 1.000000 alpha[91]: 1000.000000 rates[91] ac ag at cg ct gt: 0.542563 2.987990 0.665962 0.177715 2.850343 1.000000 alpha[92]: 0.519455 rates[92] ac ag at cg ct gt: 1.476634 2.385208 0.602982 0.578959 2.756871 1.000000 alpha[93]: 0.020000 rates[93] ac ag at cg ct gt: 1.674834 2.906578 1.299489 0.768344 0.947019 1.000000 alpha[94]: 0.020000 rates[94] ac ag at cg ct gt: 1.915656 2.620945 1.028738 1.452020 4.361266 1.000000 alpha[95]: 0.020000 rates[95] ac ag at cg ct gt: 1.882919 4.087611 1.582149 3.897589 5.510229 1.000000 alpha[96]: 0.051956 rates[96] ac ag at cg ct gt: 1.133329 6.559397 1.037431 2.155357 6.770353 1.000000 alpha[97]: 0.273893 rates[97] ac ag at cg ct gt: 1.027219 3.986437 1.033537 1.388194 4.997207 1.000000 alpha[98]: 0.738927 rates[98] ac ag at cg ct gt: 1.381338 2.708416 0.953204 1.029718 3.693373 1.000000 alpha[99]: 0.020000 rates[99] ac ag at cg ct gt: 1.112924 4.354289 1.055629 0.953760 4.405704 1.000000 alpha[100]: 0.923378 rates[100] ac ag at cg ct gt: 1.682795 5.216423 1.554991 1.370579 4.564058 1.000000 alpha[101]: 2.040638 rates[101] ac ag at cg ct gt: 0.555642 2.360432 0.502002 0.454732 3.500945 1.000000 alpha[102]: 0.299507 rates[102] ac ag at cg ct gt: 0.422249 2.572240 0.505936 0.761307 3.743832 1.000000 alpha[103]: 0.509991 rates[103] ac ag at cg ct gt: 1.291853 3.769194 0.449654 0.951764 4.056864 1.000000 alpha[104]: 1.049791 rates[104] ac ag at cg ct gt: 1.126856 1.904839 0.663176 1.311199 3.579878 1.000000 alpha[105]: 0.157844 rates[105] ac ag at cg ct gt: 1.457106 4.595289 0.829267 1.832196 6.432735 1.000000 alpha[106]: 0.863333 rates[106] ac ag at cg ct gt: 1.627851 4.049027 1.373574 1.225735 3.986272 1.000000 alpha[107]: 0.238013 rates[107] ac ag at cg ct gt: 0.797857 3.126088 0.794977 0.971282 2.597980 1.000000 alpha[108]: 0.133335 rates[108] ac ag at cg ct gt: 1.304544 1.795188 0.737066 0.484068 3.780308 1.000000 alpha[109]: 0.489864 rates[109] ac ag at cg ct gt: 0.708439 2.934719 0.666534 0.389080 2.981350 1.000000 alpha[110]: 0.020000 rates[110] ac ag at cg ct gt: 8.545678 7.717509 0.861887 3.963925 10.185029 1.000000 alpha[111]: 0.239082 rates[111] ac ag at cg ct gt: 1.873000 6.689927 2.284632 1.786249 7.452355 1.000000 alpha[112]: 0.197102 rates[112] ac ag at cg ct gt: 0.883885 3.235033 1.168266 1.650738 6.083564 1.000000 alpha[113]: 0.272008 rates[113] ac ag at cg ct gt: 2.437123 3.645634 1.245534 1.900174 4.490462 1.000000 alpha[114]: 0.689928 rates[114] ac ag at cg ct gt: 1.387008 2.377906 0.948802 2.381550 3.896242 1.000000 alpha[115]: 0.720457 rates[115] ac ag at cg ct gt: 1.482658 3.621026 0.643675 1.150779 5.194099 1.000000 alpha[116]: 0.220476 rates[116] ac ag at cg ct gt: 1.332105 3.359060 1.770828 2.598881 9.504279 1.000000 alpha[117]: 4.054599 rates[117] ac ag at cg ct gt: 1.815642 3.694315 0.920946 1.676661 3.386191 1.000000 alpha[118]: 0.565065 rates[118] ac ag at cg ct gt: 0.953078 2.245962 0.354352 0.966988 1.895065 1.000000 alpha[119]: 0.470749 rates[119] ac ag at cg ct gt: 0.530695 2.421551 0.461957 0.363722 2.717916 1.000000 alpha[120]: 9.144541 rates[120] ac ag at cg ct gt: 2.565657 3.518194 1.302699 0.709494 3.663494 1.000000 alpha[121]: 0.657419 rates[121] ac ag at cg ct gt: 1.061423 3.068274 1.503663 0.998763 3.657348 1.000000 alpha[122]: 0.085594 rates[122] ac ag at cg ct gt: 1.121876 7.593316 0.964601 2.573815 6.250691 1.000000 alpha[123]: 0.597857 rates[123] ac ag at cg ct gt: 1.222789 3.458062 0.454973 0.942371 3.967939 1.000000 alpha[124]: 0.282755 rates[124] ac ag at cg ct gt: 0.584576 0.794083 0.696515 0.564282 1.625607 1.000000 alpha[125]: 1000.000000 rates[125] ac ag at cg ct gt: 0.872591 3.168168 1.396093 1.478064 4.657763 1.000000 alpha[126]: 0.020000 rates[126] ac ag at cg ct gt: 1.002254 1.193032 0.256331 0.000100 0.422819 1.000000 alpha[127]: 0.810950 rates[127] ac ag at cg ct gt: 2.664762 6.531136 3.572330 3.008874 5.164425 1.000000 alpha[128]: 0.700521 rates[128] ac ag at cg ct gt: 0.973808 3.534128 1.228614 1.491808 3.498939 1.000000 alpha[129]: 0.020000 rates[129] ac ag at cg ct gt: 1.040760 6.601144 0.586705 1.230906 2.960103 1.000000 alpha[130]: 0.174484 rates[130] ac ag at cg ct gt: 1.401835 3.020062 1.879373 1.033548 4.149026 1.000000 alpha[131]: 0.364537 rates[131] ac ag at cg ct gt: 0.482787 1.879478 0.629675 0.587991 1.766682 1.000000 alpha[132]: 0.679249 rates[132] ac ag at cg ct gt: 0.300512 1.599218 0.377088 0.650310 2.296885 1.000000 alpha[133]: 0.068630 rates[133] ac ag at cg ct gt: 0.466575 4.458867 0.363276 0.861694 3.330459 1.000000 alpha[134]: 0.408440 rates[134] ac ag at cg ct gt: 1.072954 2.597684 0.601242 1.221183 3.119669 1.000000 alpha[135]: 0.618489 rates[135] ac ag at cg ct gt: 1.158171 4.768566 1.055646 1.802515 4.562112 1.000000 alpha[136]: 0.838134 rates[136] ac ag at cg ct gt: 1.577451 3.927024 0.638236 1.610959 3.152777 1.000000 alpha[137]: 1.170109 rates[137] ac ag at cg ct gt: 0.787592 2.317469 0.581468 0.837498 2.479271 1.000000 alpha[138]: 0.020000 rates[138] ac ag at cg ct gt: 1.124686 2.057433 0.500288 0.192111 4.382442 1.000000 alpha[139]: 1000.000000 rates[139] ac ag at cg ct gt: 15.671644 23.447882 0.000100 15.541157 10.749795 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
@@ -7293,7 +7293,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 15.152120 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 15.152109 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7343,7 +7343,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 26.569650 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 26.569496 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7393,7 +7393,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 49.403018 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 49.405656 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7443,7 +7443,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 97.274762 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 97.284889 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7493,7 +7493,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 190.997948 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 191.012258 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7543,7 +7543,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 400.144776 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 400.368288 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7593,7 +7593,7 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 872.960644 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
+WARNING the alpha parameter with a value of 873.081135 estimated by RAxML for partition number 120 with the name "Oryza_4527/clusters/cluster224.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -7607,17 +7607,17 @@ WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for p
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0] final GAMMA-based Likelihood: -343902.017621 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Oryza_4527/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -343902.018435 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Oryza_4527/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -343902.017621 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -343902.018435 .... 
 
-Final GAMMA-based Score of best tree -343902.017621
+Final GAMMA-based Score of best tree -343902.018435
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Oryza_4527/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Oryza_4527/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Oryza_4527/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Oryza_4527/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Oryza_4527/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Oryza_4527/RAxML_bestTree.T22.PARTITION.139
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Oryza_4527/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Oryza_4527/RAxML_bestTree.T22.PARTITION.139
 
-Overall execution time: 3432.336363 secs or 0.953427 hours or 0.039726 days
+Overall execution time: 169.341932 secs or 0.047039 hours or 0.001960 days
 

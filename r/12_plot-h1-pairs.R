@@ -2,10 +2,10 @@ source("r/header.R")
 
 # Source saved data and objects ----
 pair_div = read_rds("objects/pair_div.rds")
-df_samples = read_rds("objects/df_samples.rds")
+df_samples12 = read_rds("objects/df_samples12.rds")
 
 # Prepare ----
-df_medians = df_samples |>
+df_medians = df_samples12 |>
   filter(pair_age == 0) |>
   select(starts_with("b_a"), starts_with("sigma2"), starts_with("cov"), nu) |>
   summarize(across(everything(), median))

@@ -154,10 +154,10 @@ Found 150 columns that contain only undetermined values which will be treated as
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Thalictrum_46968_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Thalictrum_46968_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Thalictrum_46968_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Thalictrum_46968_outaln_names1.reduced
 
 Alignment has 150 completely undetermined sites that will be automatically removed from the input data
 
@@ -253,7 +253,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Thalictrum_46968_outpart -s ../../alignments/Thalictrum_46968_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Thalictrum_46968_outpart -s ../../alignments/Thalictrum_46968_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Thalictrum_46968/clusters/cluster5.aln.rn
@@ -277,23 +277,23 @@ Base frequencies: 0.337 0.182 0.162 0.319
 Partition: 6 with name: Thalictrum_46968/clusters/cluster1.aln.rn
 Base frequencies: 0.220 0.297 0.308 0.175 
 
-Inference[0]: Time 64.738628 GAMMA-based likelihood -24664.670740, best rearrangement setting 10
-alpha[0]: 0.137311 rates[0] ac ag at cg ct gt: 0.806518 1.086386 0.141849 0.375996 1.032644 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 3.341807 2.587593 0.887437 0.831464 4.522429 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 1.575225 2.134579 0.151107 0.483153 1.372575 1.000000 alpha[3]: 0.128065 rates[3] ac ag at cg ct gt: 0.744883 1.251248 1.095790 0.120821 0.801330 1.000000 alpha[4]: 0.105486 rates[4] ac ag at cg ct gt: 1.225198 0.811340 1.194204 0.118306 0.798905 1.000000 alpha[5]: 0.089978 rates[5] ac ag at cg ct gt: 1.138917 0.603507 0.634454 0.224336 1.187474 1.000000 alpha[6]: 0.179246 rates[6] ac ag at cg ct gt: 1.325244 1.366913 1.565043 0.235642 5.660250 1.000000 
+Inference[0]: Time 41.965281 GAMMA-based likelihood -24664.670739, best rearrangement setting 10
+alpha[0]: 0.137311 rates[0] ac ag at cg ct gt: 0.806518 1.086388 0.141849 0.375996 1.032644 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 3.341807 2.587593 0.887437 0.831464 4.522429 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 1.575225 2.134579 0.151107 0.483153 1.372575 1.000000 alpha[3]: 0.128065 rates[3] ac ag at cg ct gt: 0.744882 1.251248 1.095789 0.120820 0.801330 1.000000 alpha[4]: 0.105486 rates[4] ac ag at cg ct gt: 1.225199 0.811341 1.194205 0.118306 0.798906 1.000000 alpha[5]: 0.089978 rates[5] ac ag at cg ct gt: 1.138916 0.603507 0.634454 0.224336 1.187474 1.000000 alpha[6]: 0.179246 rates[6] ac ag at cg ct gt: 1.325244 1.366913 1.565043 0.235642 5.660250 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -24663.456922 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Thalictrum_46968/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -24663.456921 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Thalictrum_46968/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -24663.456922 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -24663.456921 .... 
 
-Final GAMMA-based Score of best tree -24663.456922
+Final GAMMA-based Score of best tree -24663.456921
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Thalictrum_46968/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Thalictrum_46968/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Thalictrum_46968/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Thalictrum_46968/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Thalictrum_46968/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Thalictrum_46968/RAxML_bestTree.T22.PARTITION.6
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Thalictrum_46968/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Thalictrum_46968/RAxML_bestTree.T22.PARTITION.6
 
-Overall execution time: 90.839336 secs or 0.025233 hours or 0.001051 days
+Overall execution time: 59.100508 secs or 0.016417 hours or 0.000684 days
 

@@ -40,10 +40,10 @@ Found 36 columns that contain only undetermined values which will be treated as 
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Trigonella_78532_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Trigonella_78532_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Trigonella_78532_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Trigonella_78532_outaln_names1.reduced
 
 Alignment has 36 completely undetermined sites that will be automatically removed from the input data
 
@@ -139,7 +139,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Trigonella_78532_outpart -s ../../alignments/Trigonella_78532_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Trigonella_78532_outpart -s ../../alignments/Trigonella_78532_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Trigonella_78532/clusters/cluster5.aln.rn
@@ -163,23 +163,23 @@ Base frequencies: 0.282 0.215 0.182 0.322
 Partition: 6 with name: Trigonella_78532/clusters/cluster2.aln.rn
 Base frequencies: 0.359 0.174 0.173 0.294 
 
-Inference[0]: Time 5.245155 GAMMA-based likelihood -19760.148294, best rearrangement setting 5
-alpha[0]: 0.418626 rates[0] ac ag at cg ct gt: 2.270278 2.182801 1.304403 1.064704 3.883772 1.000000 alpha[1]: 0.339267 rates[1] ac ag at cg ct gt: 1.470845 2.219115 1.104525 0.872034 3.109451 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.710525 0.058525 1.151511 0.000100 0.148096 1.000000 alpha[3]: 0.142025 rates[3] ac ag at cg ct gt: 2.255864 3.090957 1.062580 1.660820 4.671703 1.000000 alpha[4]: 0.423213 rates[4] ac ag at cg ct gt: 0.923467 1.148974 0.262288 2.113557 0.704008 1.000000 alpha[5]: 0.166647 rates[5] ac ag at cg ct gt: 0.735957 2.197557 0.958653 1.328060 2.049626 1.000000 alpha[6]: 0.020000 rates[6] ac ag at cg ct gt: 0.964448 1.058807 1.047203 0.487725 1.559283 1.000000 
+Inference[0]: Time 5.337926 GAMMA-based likelihood -19760.148291, best rearrangement setting 5
+alpha[0]: 0.418626 rates[0] ac ag at cg ct gt: 2.270278 2.182801 1.304404 1.064704 3.883771 1.000000 alpha[1]: 0.339267 rates[1] ac ag at cg ct gt: 1.470846 2.219115 1.104525 0.872034 3.109451 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.710525 0.058525 1.151511 0.000100 0.148096 1.000000 alpha[3]: 0.142025 rates[3] ac ag at cg ct gt: 2.255863 3.090960 1.062582 1.660820 4.671698 1.000000 alpha[4]: 0.423213 rates[4] ac ag at cg ct gt: 0.923467 1.148974 0.262288 2.113557 0.704008 1.000000 alpha[5]: 0.166647 rates[5] ac ag at cg ct gt: 0.735955 2.197560 0.958656 1.328058 2.049628 1.000000 alpha[6]: 0.020000 rates[6] ac ag at cg ct gt: 0.964448 1.058807 1.047204 0.487725 1.559283 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -19759.225072 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Trigonella_78532/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -19759.225071 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Trigonella_78532/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -19759.225072 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -19759.225071 .... 
 
-Final GAMMA-based Score of best tree -19759.223283
+Final GAMMA-based Score of best tree -19759.223282
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Trigonella_78532/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Trigonella_78532/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Trigonella_78532/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Trigonella_78532/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Trigonella_78532/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Trigonella_78532/RAxML_bestTree.T22.PARTITION.6
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Trigonella_78532/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Trigonella_78532/RAxML_bestTree.T22.PARTITION.6
 
-Overall execution time: 8.434389 secs or 0.002343 hours or 0.000098 days
+Overall execution time: 7.972316 secs or 0.002215 hours or 0.000092 days
 

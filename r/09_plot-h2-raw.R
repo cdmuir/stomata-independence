@@ -2,7 +2,7 @@
 source("r/header.R")
 
 trimmed_data = read_rds("processed-data/trimmed-data.rds") |>
-  select(phy_name, starts_with("a")) |>
+  select(phy_name, matches("^a[b|d]axial_stomatal_density|length")) |>
   pivot_longer(-phy_name) |>
   transmute(
     phy_name = phy_name,
@@ -46,7 +46,7 @@ ggplot(
               color = "grey") +
   scale_x_log10(breaks = my_breaks, limits = my_lims, expand=expansion(0,0)) +
   scale_y_log10(breaks = my_breaks, limits = my_lims, expand=expansion(0,0)) +
-  scale_fill_gradient(low = "grey20", high = "grey80") +
+  scale_fill_gradient(low = "grey20", high = "grey80", name = "Taxa per\nhex bin") +
   theme_cowplot()
 
 ggsave("figures/h2-raw.pdf", width = 6.5, height = 3.25)

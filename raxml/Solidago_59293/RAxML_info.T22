@@ -59,10 +59,10 @@ Found 23 columns that contain only undetermined values which will be treated as 
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Solidago_59293_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Solidago_59293_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Solidago_59293_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Solidago_59293_outaln_names1.reduced
 
 Alignment has 23 completely undetermined sites that will be automatically removed from the input data
 
@@ -150,7 +150,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Solidago_59293_outpart -s ../../alignments/Solidago_59293_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Solidago_59293_outpart -s ../../alignments/Solidago_59293_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Solidago_59293/clusters/cluster6.aln.rn
@@ -172,42 +172,42 @@ Partition: 5 with name: Solidago_59293/clusters/cluster5.aln.rn
 Base frequencies: 0.163 0.214 0.286 0.336 
 
 
-WARNING the alpha parameter with a value of 12.777363 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 12.777344 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 29.337541 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 29.355994 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 67.233131 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 67.293114 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 21.167711 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
+WARNING the alpha parameter with a value of 124.714327 estimated by RAxML for partition number 4 with the name "Solidago_59293/clusters/cluster1.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 12.381997 GAMMA-based likelihood -9885.443361, best rearrangement setting 10
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 1.383207 1.693580 0.667077 0.958092 0.775189 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.023222 2.233029 0.000100 1.130504 2.820630 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.982212 0.994096 14.541247 0.000100 3.395106 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 2.347546 5.616183 3.213481 0.000100 6.454100 1.000000 alpha[4]: 0.978256 rates[4] ac ag at cg ct gt: 14.870288 0.000100 0.000100 0.000100 14.690477 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.169217 6.702495 0.833613 2.044297 14.588488 1.000000 
+Inference[0]: Time 11.035782 GAMMA-based likelihood -9885.205637, best rearrangement setting 10
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 1.383206 1.693576 0.667079 0.958089 0.775190 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.450321 2.732680 0.000100 1.388138 3.534458 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.985537 0.997470 14.532750 0.000100 3.397686 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 2.327807 5.979084 3.187436 0.000100 6.371378 1.000000 alpha[4]: 1.122097 rates[4] ac ag at cg ct gt: 14.869651 0.000100 0.000100 0.000100 14.689340 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.145243 6.537031 0.816555 2.007198 15.025650 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -9883.711496 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -9883.698368 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Solidago_59293/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -9883.711496 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -9883.698368 .... 
 
-Final GAMMA-based Score of best tree -9883.704059
+Final GAMMA-based Score of best tree -9883.698368
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Solidago_59293/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22.PARTITION.5
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Solidago_59293/RAxML_bestTree.T22.PARTITION.5
 
-Overall execution time: 15.834128 secs or 0.004398 hours or 0.000183 days
+Overall execution time: 13.504440 secs or 0.003751 hours or 0.000156 days
 

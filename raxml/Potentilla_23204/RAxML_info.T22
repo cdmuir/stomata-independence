@@ -238,10 +238,10 @@ Found 208 columns that contain only undetermined values which will be treated as
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Potentilla_23204_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Potentilla_23204_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Potentilla_23204_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Potentilla_23204_outaln_names1.reduced
 
 Alignment has 208 completely undetermined sites that will be automatically removed from the input data
 
@@ -337,7 +337,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Potentilla_23204_outpart -s ../../alignments/Potentilla_23204_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Potentilla_23204_outpart -s ../../alignments/Potentilla_23204_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Potentilla_23204/clusters/cluster2.aln.rn
@@ -361,23 +361,23 @@ Base frequencies: 0.287 0.197 0.198 0.317
 Partition: 6 with name: Potentilla_23204/clusters/cluster7.aln.rn
 Base frequencies: 0.191 0.258 0.287 0.265 
 
-Inference[0]: Time 464.612164 GAMMA-based likelihood -31575.695375, best rearrangement setting 25
-alpha[0]: 0.268700 rates[0] ac ag at cg ct gt: 1.199622 3.064975 0.948694 0.729761 5.703631 1.000000 alpha[1]: 0.477626 rates[1] ac ag at cg ct gt: 0.923770 1.259465 0.581199 0.400427 1.194298 1.000000 alpha[2]: 0.476552 rates[2] ac ag at cg ct gt: 0.708841 1.784348 0.404980 0.247017 1.251579 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 1.117995 1.907501 0.381736 1.099919 2.458893 1.000000 alpha[4]: 0.685585 rates[4] ac ag at cg ct gt: 1.218623 1.976333 0.688513 0.855550 1.734433 1.000000 alpha[5]: 0.820211 rates[5] ac ag at cg ct gt: 1.324903 2.797031 0.527088 0.694080 2.504678 1.000000 alpha[6]: 0.317490 rates[6] ac ag at cg ct gt: 0.512305 1.565355 0.847475 0.453439 2.959882 1.000000 
+Inference[0]: Time 411.471395 GAMMA-based likelihood -31578.333362, best rearrangement setting 25
+alpha[0]: 0.267965 rates[0] ac ag at cg ct gt: 1.204904 3.081466 0.948447 0.733060 5.698147 1.000000 alpha[1]: 0.477649 rates[1] ac ag at cg ct gt: 0.923779 1.259481 0.581201 0.400429 1.194306 1.000000 alpha[2]: 0.476552 rates[2] ac ag at cg ct gt: 0.708841 1.784349 0.404980 0.247017 1.251579 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 1.118001 1.907508 0.381737 1.099922 2.458893 1.000000 alpha[4]: 0.685714 rates[4] ac ag at cg ct gt: 1.218508 1.976174 0.688467 0.855546 1.734459 1.000000 alpha[5]: 0.833425 rates[5] ac ag at cg ct gt: 1.328220 2.804090 0.528601 0.696978 2.490055 1.000000 alpha[6]: 0.317750 rates[6] ac ag at cg ct gt: 0.491146 1.563798 0.846581 0.453703 2.956830 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -31574.093470 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Potentilla_23204/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -31577.292094 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Potentilla_23204/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -31574.093470 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -31577.292094 .... 
 
-Final GAMMA-based Score of best tree -31574.086161
+Final GAMMA-based Score of best tree -31577.288591
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Potentilla_23204/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Potentilla_23204/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Potentilla_23204/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Potentilla_23204/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Potentilla_23204/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Potentilla_23204/RAxML_bestTree.T22.PARTITION.6
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Potentilla_23204/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Potentilla_23204/RAxML_bestTree.T22.PARTITION.6
 
-Overall execution time: 531.813278 secs or 0.147726 hours or 0.006155 days
+Overall execution time: 451.006929 secs or 0.125280 hours or 0.005220 days
 

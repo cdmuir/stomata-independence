@@ -1,12 +1,11 @@
 source("r/header.R")
 
 # Source saved data and objects ----
-pair_dov = read_rds("objects/pair_div.rds")
-df_samples = read_rds("objects/df_samples.rds")
+df_samples12 = read_rds("objects/df_samples12.rds")
 h1_pairs = read_rds("objects/h1_pairs.rds")
 
 # Prepare for plotting ----
-df_pointinterval = df_samples |>
+df_pointinterval = df_samples12 |>
   filter(pair_age == 0) |>
   select(starts_with("sigma2"), cov_ad = cov_adl_add, cov_ab = cov_abl_abd) |>
   mutate(

@@ -152,10 +152,10 @@ Found 125 columns that contain only undetermined values which will be treated as
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Salix_40685_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Salix_40685_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Salix_40685_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Salix_40685_outaln_names1.reduced
 
 Alignment has 125 completely undetermined sites that will be automatically removed from the input data
 
@@ -299,7 +299,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Salix_40685_outpart -s ../../alignments/Salix_40685_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Salix_40685_outpart -s ../../alignments/Salix_40685_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Salix_40685/clusters/cluster21.aln.rn
@@ -342,7 +342,7 @@ Partition: 12 with name: Salix_40685/clusters/cluster2.aln.rn
 Base frequencies: 0.272 0.199 0.236 0.294 
 
 
-WARNING the alpha parameter with a value of 11.972636 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
+WARNING the alpha parameter with a value of 11.972635 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -352,53 +352,53 @@ is larger than 10.000000. You should do a model test and confirm that you actual
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 27.611324 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
+WARNING the alpha parameter with a value of 27.611342 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 29.815901 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
+WARNING the alpha parameter with a value of 29.815899 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 63.687798 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
+WARNING the alpha parameter with a value of 63.685715 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 68.893576 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
+WARNING the alpha parameter with a value of 68.893501 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 147.038403 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
+WARNING the alpha parameter with a value of 147.037272 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 149.898958 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
+WARNING the alpha parameter with a value of 149.898777 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 330.270755 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
+WARNING the alpha parameter with a value of 330.266696 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 336.923100 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
+WARNING the alpha parameter with a value of 336.922633 estimated by RAxML for partition number 7 with the name "Salix_40685/clusters/cluster17.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 641.020475 GAMMA-based likelihood -30373.021639, best rearrangement setting 25
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.783140 0.665317 0.259071 0.728744 0.484980 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.749623 0.635884 0.833492 4.966252 1.980176 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 1.814243 0.000100 0.000100 1.434611 2.419648 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 3.042316 1.298556 1.331005 3.593682 5.091602 1.000000 alpha[4]: 330.270755 rates[4] ac ag at cg ct gt: 0.152483 1.983528 0.212858 0.000100 1.983845 1.000000 alpha[5]: 0.328154 rates[5] ac ag at cg ct gt: 0.591855 1.333938 1.005683 0.364442 4.707215 1.000000 alpha[6]: 0.020000 rates[6] ac ag at cg ct gt: 1.049795 0.731437 0.288748 0.770298 1.080864 1.000000 alpha[7]: 336.923100 rates[7] ac ag at cg ct gt: 0.510491 0.367454 0.620753 0.727371 0.461891 1.000000 alpha[8]: 0.020000 rates[8] ac ag at cg ct gt: 1.885980 3.108407 0.700579 0.672609 2.166308 1.000000 alpha[9]: 0.020000 rates[9] ac ag at cg ct gt: 1.355347 2.591442 0.286592 0.522180 1.817978 1.000000 alpha[10]: 0.020000 rates[10] ac ag at cg ct gt: 2.229093 0.467251 0.681594 0.000100 1.532470 1.000000 alpha[11]: 0.020000 rates[11] ac ag at cg ct gt: 1.292057 1.330173 0.656759 0.723272 1.218388 1.000000 alpha[12]: 0.020000 rates[12] ac ag at cg ct gt: 1.399033 3.511991 0.966204 0.511352 4.389807 1.000000 
+Inference[0]: Time 466.218676 GAMMA-based likelihood -30364.872275, best rearrangement setting 25
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.783146 0.665323 0.259076 0.728825 0.484987 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.749510 0.635856 0.833467 4.966100 1.980112 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 1.814233 0.000100 0.000100 1.434588 2.419640 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 3.042317 1.298558 1.331004 3.593693 5.091604 1.000000 alpha[4]: 330.266696 rates[4] ac ag at cg ct gt: 0.152424 1.982709 0.212787 0.000100 1.983931 1.000000 alpha[5]: 0.326859 rates[5] ac ag at cg ct gt: 0.588155 1.324671 1.001172 0.362284 4.729054 1.000000 alpha[6]: 0.020000 rates[6] ac ag at cg ct gt: 1.085446 0.732591 0.288993 0.772572 1.083623 1.000000 alpha[7]: 336.922633 rates[7] ac ag at cg ct gt: 0.510491 0.367454 0.620754 0.727369 0.461891 1.000000 alpha[8]: 0.020000 rates[8] ac ag at cg ct gt: 1.781010 3.106757 0.700985 0.672858 2.166062 1.000000 alpha[9]: 0.020000 rates[9] ac ag at cg ct gt: 1.362483 2.601106 0.263827 0.524500 1.824058 1.000000 alpha[10]: 0.020000 rates[10] ac ag at cg ct gt: 2.229272 0.467254 0.681555 0.000100 1.532516 1.000000 alpha[11]: 0.020000 rates[11] ac ag at cg ct gt: 1.292046 1.330169 0.656758 0.723267 1.218380 1.000000 alpha[12]: 0.020000 rates[12] ac ag at cg ct gt: 1.396242 3.526827 0.966751 0.512620 4.377751 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
 
-WARNING the alpha parameter with a value of 753.316633 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
+WARNING the alpha parameter with a value of 753.302515 estimated by RAxML for partition number 4 with the name "Salix_40685/clusters/cluster28.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
@@ -417,17 +417,17 @@ WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for p
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0] final GAMMA-based Likelihood: -30368.983947 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Salix_40685/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -30361.151526 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Salix_40685/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -30368.983947 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -30361.151526 .... 
 
-Final GAMMA-based Score of best tree -30368.981934
+Final GAMMA-based Score of best tree -30358.773332
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Salix_40685/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Salix_40685/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Salix_40685/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Salix_40685/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Salix_40685/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Salix_40685/RAxML_bestTree.T22.PARTITION.12
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Salix_40685/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Salix_40685/RAxML_bestTree.T22.PARTITION.12
 
-Overall execution time: 686.153384 secs or 0.190598 hours or 0.007942 days
+Overall execution time: 505.642838 secs or 0.140456 hours or 0.005852 days
 

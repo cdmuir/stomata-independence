@@ -100,7 +100,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Alchemilla_23138_outpart -s ../../alignments/Alchemilla_23138_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Alchemilla_23138_outpart -s ../../alignments/Alchemilla_23138_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Alchemilla_23138/clusters/cluster4.aln.rn
@@ -118,23 +118,23 @@ Base frequencies: 0.199 0.280 0.289 0.232
 Partition: 4 with name: Alchemilla_23138/clusters/cluster5.aln.rn
 Base frequencies: 0.379 0.147 0.123 0.351 
 
-Inference[0]: Time 42.256234 GAMMA-based likelihood -12335.592447, best rearrangement setting 10
-alpha[0]: 0.309236 rates[0] ac ag at cg ct gt: 1.127914 3.413324 2.679532 0.314507 6.175088 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.987488 1.334599 1.692922 0.632438 1.885341 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.993952 0.879750 0.879345 0.440496 1.022560 1.000000 alpha[3]: 0.272551 rates[3] ac ag at cg ct gt: 1.423611 3.320148 1.310193 0.560066 6.770117 1.000000 alpha[4]: 0.499229 rates[4] ac ag at cg ct gt: 1.037448 1.569960 0.869853 1.058356 1.269160 1.000000 
+Inference[0]: Time 35.070371 GAMMA-based likelihood -12341.137802, best rearrangement setting 10
+alpha[0]: 0.309236 rates[0] ac ag at cg ct gt: 1.127914 3.413324 2.679531 0.314507 6.175086 1.000000 alpha[1]: 0.020000 rates[1] ac ag at cg ct gt: 2.883180 1.336999 1.695733 0.632415 1.876737 1.000000 alpha[2]: 0.020000 rates[2] ac ag at cg ct gt: 0.993950 0.879750 0.879346 0.440496 1.022559 1.000000 alpha[3]: 0.272258 rates[3] ac ag at cg ct gt: 1.406078 3.303083 1.325328 0.552636 6.667774 1.000000 alpha[4]: 0.470587 rates[4] ac ag at cg ct gt: 1.030761 1.559877 0.888183 1.048973 1.265308 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -12334.334926 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Alchemilla_23138/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -12339.898486 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Alchemilla_23138/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -12334.334926 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -12339.898486 .... 
 
-Final GAMMA-based Score of best tree -12334.334719
+Final GAMMA-based Score of best tree -12339.002083
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Alchemilla_23138/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Alchemilla_23138/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Alchemilla_23138/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Alchemilla_23138/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Alchemilla_23138/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Alchemilla_23138/RAxML_bestTree.T22.PARTITION.4
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Alchemilla_23138/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Alchemilla_23138/RAxML_bestTree.T22.PARTITION.4
 
-Overall execution time: 52.087232 secs or 0.014469 hours or 0.000603 days
+Overall execution time: 45.420909 secs or 0.012617 hours or 0.000526 days
 

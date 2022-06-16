@@ -76,11 +76,12 @@ chosen_names = taxize_output |>
 # Manually choose names for n_names > 1 & n_words == 1 (if needed)
 chosen_names |> 
   mutate(n_words = str_count(chosen_name, "\\S+")) |>
-  filter(n_names > 1 | n_words == 1) 
+  filter(n_names > 1 | n_words == 1)
 
 chosen_names = chosen_names |>
   mutate(
-    chosen_name = str_replace(chosen_name, "Nigella damascena, Nigela damascena", "Nigella damascena")
+    chosen_name = str_replace(chosen_name, "Nigella damascena, Nigela damascena", "Nigella damascena"),
+    chosen_name = str_replace(chosen_name, "Astragalus glycyphyllos, Astragalus glaucophyllus, Astragalus glycyphylloides", "Astragalus glycyphyllus")
   )
     
 taxize_output2 = taxize_output |>
@@ -88,7 +89,7 @@ taxize_output2 = taxize_output |>
             by = "user_supplied_name")
 
 # 3. Combine and cleanup ----
-
+# NOTE: Seems like in some cases, extra ',' not removed
 resolved_names = bind_rows(
   taxize_output1,
   taxize_output2
@@ -102,8 +103,9 @@ resolved_names |>
   pull(n) |>
   equals(1) |>
   all() |>
-  assertTRUE()
+  assert_true()
 
+# remove hybrids
 resolved_names = resolved_names |>
   mutate(resolved_name = remove_authority(resolved_name)) |>
   filter(!str_detect(user_supplied_name, " x")) |>
@@ -113,4 +115,3 @@ resolved_names = resolved_names |>
   select(user_supplied_name, resolved_name)
 
 write_rds(resolved_names, "processed-data/resolved_names.rds")
-

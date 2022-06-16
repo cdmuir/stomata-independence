@@ -1473,7 +1473,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Astragalus_20400_outpart -s ../../alignments/Astragalus_20400_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Astragalus_20400_outpart -s ../../alignments/Astragalus_20400_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Astragalus_20400/clusters/cluster12.aln.rn
@@ -1513,37 +1513,42 @@ Partition: 11 with name: Astragalus_20400/clusters/cluster2.aln.rn
 Base frequencies: 0.303 0.171 0.172 0.354 
 
 
-WARNING the alpha parameter with a value of 12.975794 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 12.975795 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 30.028638 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 30.028632 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 69.387339 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 69.386345 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 151.051202 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 151.049048 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 339.597242 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 339.596094 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
 
-WARNING the alpha parameter with a value of 774.888916 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+WARNING the alpha parameter with a value of 774.746003 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-Inference[0]: Time 36196.957095 GAMMA-based likelihood -69356.735363, best rearrangement setting 15
-alpha[0]: 0.407597 rates[0] ac ag at cg ct gt: 1.060932 2.156521 1.908880 0.691042 2.030181 1.000000 alpha[1]: 0.364670 rates[1] ac ag at cg ct gt: 0.576489 1.181763 1.029914 0.725353 1.786658 1.000000 alpha[2]: 0.465535 rates[2] ac ag at cg ct gt: 0.719922 2.039240 1.354425 0.517426 3.484771 1.000000 alpha[3]: 0.188969 rates[3] ac ag at cg ct gt: 0.681756 1.771113 0.637129 1.087206 2.409189 1.000000 alpha[4]: 0.308182 rates[4] ac ag at cg ct gt: 1.360349 1.236539 0.414159 1.663306 0.941069 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.653161 1.400490 0.557401 1.165735 1.553612 1.000000 alpha[6]: 0.541962 rates[6] ac ag at cg ct gt: 0.918985 0.926581 0.771002 0.779849 0.753524 1.000000 alpha[7]: 774.888916 rates[7] ac ag at cg ct gt: 3.956538 8.255648 2.634704 0.000100 7.669027 1.000000 alpha[8]: 0.429017 rates[8] ac ag at cg ct gt: 0.997230 1.002142 0.676055 0.326922 0.880064 1.000000 alpha[9]: 0.286428 rates[9] ac ag at cg ct gt: 0.971342 1.026731 0.748003 0.509562 0.933707 1.000000 alpha[10]: 0.105996 rates[10] ac ag at cg ct gt: 0.503176 0.628109 0.334511 0.395272 0.577505 1.000000 alpha[11]: 0.336610 rates[11] ac ag at cg ct gt: 2.682954 1.750779 0.408714 1.794957 1.758097 1.000000 
+
+WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
+is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
+You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+
+Inference[0]: Time 4095.325525 GAMMA-based likelihood -69342.992584, best rearrangement setting 15
+alpha[0]: 0.407164 rates[0] ac ag at cg ct gt: 1.088149 2.189016 1.939567 0.701664 2.056398 1.000000 alpha[1]: 0.349432 rates[1] ac ag at cg ct gt: 0.585745 1.177704 1.042111 0.733587 1.786605 1.000000 alpha[2]: 0.468657 rates[2] ac ag at cg ct gt: 0.744426 2.088067 1.391791 0.532902 3.525011 1.000000 alpha[3]: 0.188939 rates[3] ac ag at cg ct gt: 0.693562 1.798570 0.644697 1.154728 2.442932 1.000000 alpha[4]: 0.308219 rates[4] ac ag at cg ct gt: 1.373950 1.245765 0.417007 1.675903 0.947450 1.000000 alpha[5]: 0.020000 rates[5] ac ag at cg ct gt: 1.667639 1.411021 0.561282 1.173571 1.562581 1.000000 alpha[6]: 0.549410 rates[6] ac ag at cg ct gt: 0.929526 0.918037 0.778214 0.786473 0.742031 1.000000 alpha[7]: 1000.000000 rates[7] ac ag at cg ct gt: 4.486091 9.313678 2.965144 0.000100 8.592332 1.000000 alpha[8]: 0.428804 rates[8] ac ag at cg ct gt: 0.987807 1.007353 0.689878 0.328293 0.881579 1.000000 alpha[9]: 0.286373 rates[9] ac ag at cg ct gt: 0.979026 1.033163 0.752325 0.512395 0.938332 1.000000 alpha[10]: 0.105991 rates[10] ac ag at cg ct gt: 0.503052 0.627991 0.334455 0.395213 0.577433 1.000000 alpha[11]: 0.333220 rates[11] ac ag at cg ct gt: 2.801278 1.791058 0.413543 1.824466 1.769614 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
@@ -1633,27 +1638,17 @@ WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for p
 is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
 You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
 
-
-WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
-is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
-You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+Inference[0] final GAMMA-based Likelihood: -69327.535725 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Astragalus_20400/RAxML_result.T22
 
 
-WARNING the alpha parameter with a value of 1000.000000 estimated by RAxML for partition number 7 with the name "Astragalus_20400/clusters/cluster5.aln.rn"
-is larger than 10.000000. You should do a model test and confirm that you actually need to incorporate a model of rate heterogeneity!
-You can run inferences with a plain substitution model (without rate heterogeneity) by specifyng the CAT model and the "-V" option!
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -69327.535725 .... 
 
-Inference[0] final GAMMA-based Likelihood: -69350.370519 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Astragalus_20400/RAxML_result.T22
+Final GAMMA-based Score of best tree -69327.230651
 
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Astragalus_20400/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Astragalus_20400/RAxML_bestTree.T22
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -69350.370519 .... 
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Astragalus_20400/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Astragalus_20400/RAxML_bestTree.T22.PARTITION.11
 
-Final GAMMA-based Score of best tree -69340.439857
-
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Astragalus_20400/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Astragalus_20400/RAxML_bestTree.T22
-
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Astragalus_20400/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Astragalus_20400/RAxML_bestTree.T22.PARTITION.11
-
-Overall execution time: 37038.964441 secs or 10.288601 hours or 0.428692 days
+Overall execution time: 4750.175155 secs or 1.319493 hours or 0.054979 days
 

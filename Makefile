@@ -2,10 +2,10 @@
 R_OPTS=--no-save --no-restore --no-init-file --no-site-file
 all: data model paper
 data: objects/pair_div.rds 
-model: objects/fit.rds
+model: objects/fit12.rds objects/fit3.rds
 paper: ms/ms.pdf figures/concepts.pdf figures/h1-raw.pdf figures/h1.pdf figures/h2.pdf
 
-ms/ms.pdf: ms/ms.Rmd ms/stomata-independence.bib figures/concepts.pdf figures/h1-raw.pdf figures/h2-raw.pdf figures/h1.pdf figures/h2.pdf objects/modeloutput.rds
+ms/ms.pdf: ms/ms.Rmd ms/stomata-independence.bib figures/concepts.pdf figures/h1-raw.pdf figures/h2-raw.pdf figures/h1.pdf figures/h2.pdf objects/h12output.rds
 	Rscript -e 'rmarkdown::render("ms/ms.Rmd", output_format = "bookdown::pdf_document2", output_file = "ms.pdf")'
 
 figures/concepts.pdf: r/16_plot-concepts.R
@@ -17,29 +17,32 @@ figures/h1-raw.pdf: r/08_plot-h1-raw.R
 figures/h2-raw.pdf: r/09_plot-h2-raw.R
 	Rscript -e 'source("r/09_plot-h2-raw.R")'
 
-figures/h1.pdf: r/11_prepare-plotting.R r/12_plot-h1-pairs.R r/14_plot-h1.R objects/fit.rds
-	Rscript -e 'source("r/11_prepare-plotting.R")'
+figures/h1.pdf: r/11_prepare-plotting1.R r/12_plot-h1-pairs.R r/14_plot-h1.R objects/fit12.rds
+	Rscript -e 'source("r/11_prepare-plotting1.R")'
 	Rscript -e 'source("r/12_plot-h1-pairs.R")'
 	Rscript -e 'source("r/14_plot-h1.R")'
 
-figures/h2.pdf: r/11_prepare-plotting.R r/13_plot-h2-pairs.R r/15_plot-h2.R objects/fit.rds
-	Rscript -e 'source("r/11_prepare-plotting.R")'
+figures/h2.pdf: r/11_prepare-plotting1.R r/13_plot-h2-pairs.R r/15_plot-h2.R objects/fit12.rds
+	Rscript -e 'source("r/11_prepare-plotting1.R")'
 	Rscript -e 'source("r/13_plot-h2-pairs.R")'
 	Rscript -e 'source("r/15_plot-h2.R")'
 
-objects/modeloutput.rds: objects/fit.rds r/17_summarize-fit.R
-	Rscript -e 'source("r/17_summarize-fit.R")'
+objects/h12output.rds: objects/fit12.rds r/17_summarize-fit1.R
+	Rscript -e 'source("r/17_summarize-fit1.R")'
 
-objects/fit.rds: r/10_fit-pairs.R processed-data/trimmed-data.rds processed-data/trimmed-phylogeny.rds objects/pair_div.rds
-	Rscript -e 'source("r/10_fit-pairs.R")'
+objects/fit12.rds: r/10_fit-models1.R processed-data/trimmed-data.rds processed-data/trimmed-phylogeny.rds objects/pair_div.rds
+	Rscript -e 'source("r/10_fit-models1.R")'
 
-processed-data/trimmed-data.rds: r/06_connect-data.R processed-data/resolved_names.rds processed-data/phy2.rds
+processed-data/trimmed-data.rds: r/06_connect-data.R processed-data/resolved_names.rds processed-data/phy2.rds raw-data/plant-c-value.csv
 	Rscript -e 'source("r/06_connect-data.R")'
 	
 processed-data/trimmed-phylogeny.rds: r/06_connect-data.R processed-data/resolved_names.rds processed-data/phy2.rds
 	Rscript -e 'source("r/06_connect-data.R")'
 
 objects/pair_div.rds: r/07_make-pairs.R	processed-data/trimmed-data.rds processed-data/trimmed-phylogeny.rds
+	Rscript -e 'source("r/07_make-pairs.R")'
+
+objects/pair_div_genome.rds: r/07_make-pairs.R	processed-data/trimmed-data.rds processed-data/trimmed-phylogeny.rds
 	Rscript -e 'source("r/07_make-pairs.R")'
 
 processed-data/resolved_names.rds: r/02_resolve-names.R processed-data/taxize_output.rds

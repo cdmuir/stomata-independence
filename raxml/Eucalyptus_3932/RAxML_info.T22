@@ -1406,10 +1406,10 @@ Found 1313 columns that contain only undetermined values which will be treated a
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Eucalyptus_3932_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Eucalyptus_3932_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Eucalyptus_3932_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Eucalyptus_3932_outaln_names1.reduced
 
 Alignment has 1313 completely undetermined sites that will be automatically removed from the input data
 
@@ -1473,7 +1473,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Eucalyptus_3932_outpart -s ../../alignments/Eucalyptus_3932_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Eucalyptus_3932_outpart -s ../../alignments/Eucalyptus_3932_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Eucalyptus_3932/clusters/cluster3.aln.rn
@@ -1485,23 +1485,23 @@ Base frequencies: 0.254 0.247 0.248 0.252
 Partition: 2 with name: Eucalyptus_3932/clusters/cluster2.aln.rn
 Base frequencies: 0.212 0.323 0.286 0.180 
 
-Inference[0]: Time 377.685583 GAMMA-based likelihood -15871.469254, best rearrangement setting 20
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 1.014814 0.380892 1.234743 0.477151 0.656654 1.000000 alpha[1]: 0.108846 rates[1] ac ag at cg ct gt: 0.929381 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[2]: 0.669633 rates[2] ac ag at cg ct gt: 0.855228 1.513406 0.974460 0.563977 2.298402 1.000000 
+Inference[0]: Time 215.880057 GAMMA-based likelihood -15871.428702, best rearrangement setting 20
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 1.014813 0.380892 1.234740 0.477153 0.656655 1.000000 alpha[1]: 0.109183 rates[1] ac ag at cg ct gt: 0.929479 0.000100 0.000100 0.000100 0.000100 1.000000 alpha[2]: 0.667884 rates[2] ac ag at cg ct gt: 0.852784 1.511765 0.975261 0.563889 2.292827 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -15870.614287 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Eucalyptus_3932/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -15870.686164 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Eucalyptus_3932/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -15870.614287 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -15870.686164 .... 
 
-Final GAMMA-based Score of best tree -15869.882798
+Final GAMMA-based Score of best tree -15869.958751
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Eucalyptus_3932/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Eucalyptus_3932/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Eucalyptus_3932/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Eucalyptus_3932/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Eucalyptus_3932/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Eucalyptus_3932/RAxML_bestTree.T22.PARTITION.2
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Eucalyptus_3932/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Eucalyptus_3932/RAxML_bestTree.T22.PARTITION.2
 
-Overall execution time: 439.162838 secs or 0.121990 hours or 0.005083 days
+Overall execution time: 257.465242 secs or 0.071518 hours or 0.002980 days
 

@@ -6,12 +6,21 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lineno}
 \usepackage{titlesec}
+\usepackage{multirow} % for merging rows in tables
+
+% flush left while keep identation
+\makeatletter
+\newcommand\iraggedright{%
+  \let\\\@centercr\@rightskip\@flushglue \rightskip\@rightskip
+  \leftskip\z@skip}
+\makeatother
+
 \titleformat{\section}[block]{\Large\bfseries\filcenter}{\thesection}{1em}{}
 \titleformat{\subsection}[block]{\Large\itshape\filcenter}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}[block]{\large\itshape}{\thesubsubsection}{1em}{}
 \titleformat{\paragraph}[runin]{\itshape}{\theparagraph}{1em}{}[. ]\renewcommand{\refname}{Literature Cited}
 
-\title{Developmental integration cannot explain major features of stomatal anatomical evolution in seed plants}
+\title{Packing limits and developmental integration are not sufficient to explain stomatal anatomical evolution in flowering plants}
 
 \setlength{\parindent}{5ex}
 

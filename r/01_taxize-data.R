@@ -1,6 +1,9 @@
 source("r/header.R")
 
 distinct_names = stomata_anatomy |>
+  # Sundberg et al. (1986) guard cell length values appear systematically too 
+  # small, including several estimates < 10 um
+  filter(source != "sundberg_comparison_1986") |>
   select(source_id) |>
   distinct()
 

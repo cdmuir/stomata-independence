@@ -518,10 +518,10 @@ Found 514 columns that contain only undetermined values which will be treated as
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Gentiana_21496_outpart.reduced
-Just in case you might need it, an alignment file with 
-undetermined columns removed is printed to file ../../alignments/Gentiana_21496_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Gentiana_21496_outpart.reduced
+An alignment file with undetermined columns removed has already
+been printed to file ../../alignments/Gentiana_21496_outaln_names1.reduced
 
 Alignment has 514 completely undetermined sites that will be automatically removed from the input data
 
@@ -609,7 +609,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Gentiana_21496_outpart -s ../../alignments/Gentiana_21496_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Gentiana_21496_outpart -s ../../alignments/Gentiana_21496_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Gentiana_21496/clusters/cluster3.aln.rn
@@ -630,23 +630,23 @@ Base frequencies: 0.233 0.296 0.292 0.180
 Partition: 5 with name: Gentiana_21496/clusters/cluster4.aln.rn
 Base frequencies: 0.330 0.139 0.169 0.361 
 
-Inference[0]: Time 186.348155 GAMMA-based likelihood -33892.095467, best rearrangement setting 5
-alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.662987 4.276216 0.725527 0.353078 7.667130 1.000000 alpha[1]: 0.586715 rates[1] ac ag at cg ct gt: 1.488975 2.499520 0.316085 0.706694 2.528955 1.000000 alpha[2]: 0.834583 rates[2] ac ag at cg ct gt: 0.811265 2.134972 0.801486 0.735274 2.852761 1.000000 alpha[3]: 0.594461 rates[3] ac ag at cg ct gt: 0.975793 1.732864 0.659056 0.574063 2.065466 1.000000 alpha[4]: 0.447279 rates[4] ac ag at cg ct gt: 0.669043 1.183465 0.933886 0.175892 2.383899 1.000000 alpha[5]: 1.084105 rates[5] ac ag at cg ct gt: 0.935753 1.783302 0.434993 0.547218 1.886469 1.000000 
+Inference[0]: Time 251.707658 GAMMA-based likelihood -33891.485890, best rearrangement setting 5
+alpha[0]: 0.020000 rates[0] ac ag at cg ct gt: 0.662987 4.276219 0.725527 0.353078 7.667129 1.000000 alpha[1]: 0.586715 rates[1] ac ag at cg ct gt: 1.488972 2.499526 0.316083 0.706694 2.528955 1.000000 alpha[2]: 0.834583 rates[2] ac ag at cg ct gt: 0.811265 2.134972 0.801486 0.735274 2.852761 1.000000 alpha[3]: 0.594461 rates[3] ac ag at cg ct gt: 0.975793 1.732865 0.659056 0.574063 2.065466 1.000000 alpha[4]: 0.447279 rates[4] ac ag at cg ct gt: 0.669043 1.183465 0.933886 0.175892 2.383900 1.000000 alpha[5]: 1.084105 rates[5] ac ag at cg ct gt: 0.935753 1.783302 0.434994 0.547218 1.886469 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -33891.291312 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Gentiana_21496/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -33890.683495 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Gentiana_21496/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -33891.291312 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -33890.683495 .... 
 
-Final GAMMA-based Score of best tree -33891.291193
+Final GAMMA-based Score of best tree -33890.683495
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Gentiana_21496/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Gentiana_21496/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Gentiana_21496/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Gentiana_21496/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Gentiana_21496/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Gentiana_21496/RAxML_bestTree.T22.PARTITION.5
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Gentiana_21496/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Gentiana_21496/RAxML_bestTree.T22.PARTITION.5
 
-Overall execution time: 247.937494 secs or 0.068872 hours or 0.002870 days
+Overall execution time: 305.595730 secs or 0.084888 hours or 0.003537 days
 

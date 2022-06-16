@@ -66,10 +66,10 @@ Found 42 columns that contain only undetermined values which will be treated as 
 Normally these columns should be excluded from the analysis.
 
 
-Just in case you might need it, a mixed model file with 
-model assignments for undetermined columns removed is printed to file ../../alignments/Vicia_3904_outpart.reduced
-Just in case you might need it, an alignment file with 
-sequence duplicates and undetermined columns removed is printed to file ../../alignments/Vicia_3904_outaln_names1.reduced
+A mixed model file with model assignments for undetermined
+columns removed has already been printed to  file ../../alignments/Vicia_3904_outpart.reduced
+An alignment file with undetermined columns and sequence duplicates removed has already
+been printed to file ../../alignments/Vicia_3904_outaln_names1.reduced
 
 Alignment has 42 completely undetermined sites that will be automatically removed from the input data
 
@@ -149,7 +149,7 @@ Substitution Matrix: GTR
 
 RAxML was called as follows:
 
-raxmlHPC-PTHREADS -T 8 -M -m GTRGAMMA -p 12345 -q ../../alignments/Vicia_3904_outpart -s ../../alignments/Vicia_3904_outaln_names1 -n T22 
+raxmlHPC-PTHREADS-SSE3 -T 10 -M -m GTRGAMMA -p 12345 -q ../../alignments/Vicia_3904_outpart -s ../../alignments/Vicia_3904_outaln_names1 -n T22 
 
 
 Partition: 0 with name: Vicia_3904/clusters/cluster5.aln.rn
@@ -167,23 +167,23 @@ Base frequencies: 0.277 0.192 0.235 0.296
 Partition: 4 with name: Vicia_3904/clusters/cluster1.aln.rn
 Base frequencies: 0.225 0.235 0.269 0.270 
 
-Inference[0]: Time 134.508681 GAMMA-based likelihood -22698.638513, best rearrangement setting 5
-alpha[0]: 0.533589 rates[0] ac ag at cg ct gt: 0.683867 0.516887 0.200637 0.509643 0.390840 1.000000 alpha[1]: 0.318679 rates[1] ac ag at cg ct gt: 0.794727 0.440914 0.203928 0.725216 0.813683 1.000000 alpha[2]: 0.357737 rates[2] ac ag at cg ct gt: 1.838658 0.734748 0.193883 1.176897 0.791688 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 1.151511 1.569929 0.578892 1.196718 1.456284 1.000000 alpha[4]: 0.437785 rates[4] ac ag at cg ct gt: 0.997454 2.342175 1.724039 0.381279 4.083773 1.000000 
+Inference[0]: Time 117.021404 GAMMA-based likelihood -22701.032203, best rearrangement setting 5
+alpha[0]: 0.520589 rates[0] ac ag at cg ct gt: 0.672406 0.510343 0.196332 0.502675 0.388442 1.000000 alpha[1]: 0.322623 rates[1] ac ag at cg ct gt: 0.790364 0.459693 0.205819 0.710455 0.825208 1.000000 alpha[2]: 0.361140 rates[2] ac ag at cg ct gt: 1.827190 0.737785 0.194931 1.182656 0.795836 1.000000 alpha[3]: 0.020000 rates[3] ac ag at cg ct gt: 1.151512 1.569927 0.578892 1.196717 1.456286 1.000000 alpha[4]: 0.438226 rates[4] ac ag at cg ct gt: 0.992354 2.337775 1.735200 0.382095 4.088347 1.000000 
 
 
 Conducting final model optimizations on all 1 trees under GAMMA-based models ....
 
-Inference[0] final GAMMA-based Likelihood: -22697.714496 tree written to file /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Vicia_3904/RAxML_result.T22
+Inference[0] final GAMMA-based Likelihood: -22700.118164 tree written to file /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Vicia_3904/RAxML_result.T22
 
 
-Starting final GAMMA-based thorough Optimization on tree 0 likelihood -22697.714496 .... 
+Starting final GAMMA-based thorough Optimization on tree 0 likelihood -22700.118164 .... 
 
-Final GAMMA-based Score of best tree -22697.714496
+Final GAMMA-based Score of best tree -22700.118164
 
-Program execution info written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Vicia_3904/RAxML_info.T22
-Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Vicia_3904/RAxML_bestTree.T22
+Program execution info written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Vicia_3904/RAxML_info.T22
+Best-scoring ML tree written to: /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Vicia_3904/RAxML_bestTree.T22
 
-Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Vicia_3904/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/02_active/stomata-independence/raxml/Vicia_3904/RAxML_bestTree.T22.PARTITION.4
+Per-Partition branch lengths of best-scoring ML tree written to /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Vicia_3904/RAxML_bestTree.T22.PARTITION.0 to  /Volumes/GoogleDrive/My Drive/research/03_revising/stomata-independence/raxml/Vicia_3904/RAxML_bestTree.T22.PARTITION.4
 
-Overall execution time: 157.403491 secs or 0.043723 hours or 0.001822 days
+Overall execution time: 140.545883 secs or 0.039041 hours or 0.001627 days
 
