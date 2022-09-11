@@ -1,0 +1,39 @@
+source,taxa,location,density_unit,length_unit,sample_size,notes
+arambarri_taxonomy_2005,lotus,table2,0.2463009 mm^-2,um,25,area was 560 um diameter
+avita_structure_1980,"ranunculaceae,paeoniaceae",table1,mm^-2,um,10,NA
+bucher_stomatal_2017,many,table1,mm^-2,um,NA,NA
+caldera_effects_2017,arabidopsis thaliana,"figure1, figure4",mm^-2,um,16,average across 16 ecotypes at ambient CO2
+chandra_epidermal_1967,solanum,table1,mm^-2,um,NA,NA
+conesa_stomatal_2019,limonium,tableS3,mm^-2,um,10,NA
+eckerson_number_1908,many,table1,mm^-2,um,90,30 replicates of 3 plants per species
+gindel_stomatal_1969,many,"table1, table2",mm^-2,um,NA,NA
+giuliani_coordination_2013,oryza,supporting_information,mm^-2,um,3,2-3 replicates per species
+hanafy_leaf_2019,mentha,table3,mm^-2,um,27,"9 plants, 3 leaves per plant"
+huang_leaf_2019,trees,table2,mm^-2,um,3,NA
+juhasz_effect_1966,solanum,"figure2, figure4, figure",mm^-2,um,5,average across 5 habitats
+juhasz_comparative_1968,solanum,"table1, table2",mm^-2,um,NA,NA
+kannabiran_foliar_1988,apocynaceae,table2,mm^-2,um,NA,NA
+kawamitsu_stomatal_1996,grasses,table1,mm^-2,um,NA,NA
+khan_taxonomic_2019,gymnosperms,table2,mm^-2,um,4,NA
+kim_comparative_1987,silverswords,table3,mm^-2,um,6,50 replicates across all taxa
+mckown_trait_2016,scaevola,tableS4,mm^-2,um,6,NA
+muir_unpublished_2022,solanum,NA,mm^-2,um,5,NA
+pallardy_frequency_1979,populus,table2,mm^-2,um,6,NA
+pandey_patterns_2003,many,table2,mm^-2,um,6,"6 leaves per species, 5 replicates within leaf"
+pathare_increased_2020,grasses,authors,mm^-2,um,6.5,6-7 replicates per species
+rivera_meso-_2017,asteraceae,authors,mm^-2,um,4.5,3-6 leaves per species
+rodriguez_unpublished_2021,eucalyptus,authors,mm^-2,um,10,NA
+scalon_leaf_2016,passovia,table3,mm^-2,um,5,NA
+siddiqi_contribution_1991,euphorbiaceae,table1,mm^-2,um,5,"5 leaves per species, 5 replicates per leaf"
+sporck_hawaiian_2011,euphorbia,"figure1-3, figure1-7",mm^-2,um,5,NA
+stenglein_leaf_2003,lotus,table1,0.2463009 mm^-2,um,25,area was 560 um diameter
+stenglein_leaf_2003-1,lotus,table3,0.2463009 mm^-2,um,25,area was 560 um diameter
+sundberg_comparison_1986,many,table1,mm^-2,um,5,NA
+szymura_leaf_2011,solidago,table1,mm^-2,um,10,"10 individuals, 100 replicates per individual"
+xiong_one_2020,many,authors,mm^-2,um,3,NA
+yang_large-scale_2014,many,table2,mm^-2,um,4,3-5 individuals and 3-4 leaves per individual per site
+zarinkamar_density_2006,monocots,table1,mm^-2,um,6,30 samples each from 6 plants per species
+zarinkamar_stomatal_2007,eudicots,table1,mm^-2,um,6,30 samples each from 6 plants per species
+zhao_difference_2020,monocots,supplement,mm^-2,um,5,4-6 mature leaves from 4 to 6 individual plants
+zlatkovic_epidermal_2017,sedum,table2,mm^-2,um,NA,variable n for species
+zoric_leaf_2009,trifolium,table3,mm^-2,um,30,NA

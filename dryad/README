@@ -1,0 +1,171 @@
+This readme file was generated on 2022-09-10 by Chris Muir
+
+GENERAL INFORMATION
+
+Title of Dataset: How important are functional and developmental constraints on phenotypic evolution? An empirical test with the stomatal anatomy of flowering plants
+
+Author/Principal Investigator Information
+Name: Christopher D. Muir
+ORCID: 0000-0003-2555-3878
+Institution: University of Hawaiʻi at Mānoa
+Address: 
+  2538 McCarthy Mall
+  EDM 216
+  Honolulu, HI 96822
+Email: cdmuir@hawaii.edu
+
+SHARING/ACCESS INFORMATION
+
+Licenses/restrictions placed on the data: 
+  No licenses/restrictions on processed data
+  The ropenstomata R package contains raw data distributed under an MIT license
+  
+Links to other publicly accessible locations of the data: 
+  Raw stomatal anatomical data: https://github.com/cdmuir/ropenstomata
+  Processed data: https://github.com/cdmuir/stomata-independence
+  
+Links/relationships to ancillary data sets: 
+
+  References to original stomatal anatomical data sets are provided in Table A5 of the Muir et al. (2022) and in the ropenstomata R package.
+  The GBOTB.extended mega-tree came from V.phylomaker (https://onlinelibrary.wiley.com/doi/10.1111/ecog.04434)
+  Sequence data came from GenBank Plant and Fungal sequences database division (https://www.ncbi.nlm.nih.gov/genbank/htgs/divisions/)
+  Genome size data came from the Angiosperm DNA C-values database (https://cvalues.science.kew.org/)
+  
+Recommended citation for this dataset: 
+
+  To cite ropenstomata in publications use:
+
+    Muir CD. 2022. ropenstomata: An Open Stomatal Database. https://github.com/cdmuir/ropenstomata.
+
+
+DATA & FILE OVERVIEW
+
+File List: <list all files (or folders, as appropriate for dataset organization) contained in the dataset, with a brief description>
+
+stomatal-anatomy.csv - raw stomatal anatomical data from ropenstomata
+stomatal-anatomy-metadata.csv - metadata on raw stomatal anatomical data from ropenstomata
+plant-c-value.csv - raw data on plant C-value downloaded from the Angiosperm DNA C-values database
+trimmed-data.csv - trimmed data set of species found on phylogeny
+trimmed-phylogeny.new - trimmed phylogeny of species with stomatal anatomical data in newick format
+phylogenetic-contrasts.csv - phylogenetically independent contrasts used in final analyses
+
+Relationship between files: 
+
+  The column "resolved_name" in trimmed-data.csv matches the tip names in trimmed-phylogeny.new. 
+  
+  The column "tree_node" in phylogenetic-contrasts.csv refers to the node in trimmed-phylogeny.new
+  
+  The columns "sp1" and "sp2" match "resolved_name" in trimmed-data.csv matches the tip names in trimmed-phylogeny.new
+
+
+DATA-SPECIFIC INFORMATION FOR: stomatal-anatomy.csv
+
+Number of variables: 7
+
+Number of rows: 5842
+
+Variable List:
+
+  source_id, taxonomic ID in original source, Genus species
+  trait, trait ID, {"abaxial_stomatal_density_mm2" , "abaxial_stomatal_length_um", "abaxial_stomatal_width_um", "adaxial_stomatal_density_mm2", "adaxial_stomatal_length_um", "adaxial_stomatal_width_um", "abaxial_pore_length_um"       "adaxial_pore_length_um"}
+  mu, mean trait value, um or mm^2
+  n, sample size, 1
+  sd, trait standard deviation, um or mm^2
+  source, original source, first-author_first-word_year
+  se, trait standard error of the mean, um or mm^2
+  
+Missing data codes: NA
+
+DATA-SPECIFIC INFORMATION FOR: stomatal-anatomy-metadata.csv
+
+Number of variables: 7
+
+Number of rows: 38
+
+Variable List:
+
+  source, original source, first-author_first-word_year
+  taxa, taxomic group studies, open-ended
+  location, location of data in source, tableX or figureX
+  density_unit, unit of stomatal density in source, open-ended
+  length_unit, unit of stomatal length in source, open-ended
+  sample_size, sample size, 1
+  notes, usage notes, open-ended
+  
+Missing data codes: NA
+
+DATA-SPECIFIC INFORMATION FOR: plant-c-value.csv
+
+Number of variables: 9
+
+Number of rows: 1033
+
+Variable List:
+
+  family, plant family
+  genus, plant genus
+  species, plant species
+  subspecies, plant subspecies 
+  chromostome_number_2n, 2N chromosome number, 1
+  ploidy_level_x, Ploidy level, 1
+  dna_amount_1c_pg, 1C DNA amount, pg
+  c_value_reference, reference
+  c_value_note, note
+  
+Missing data codes: NA
+
+DATA-SPECIFIC INFORMATION FOR: trimmed-data.csv
+
+Number of variables: 27
+
+Number of rows: 638
+
+Variable List:
+
+  resolved_name, resolved taxonomic name
+  family, plant family
+  source, original source, first-author_first-word_year
+  source_id, taxonomic ID in original source, Genus species
+  abaxial_stomatal_density_mm2, abaxial stomatal density, mm^2
+  adaxial_stomatal_density_mm2, adaxial stomatal density, mm^2
+  abaxial_stomatal_length_um, abaxial stomatal length, um
+  adaxial_stomatal_length_um, abaxial stomatal length, um
+  phy_name, tip label in original phylogeny
+  grass, is species a grass, boolean
+  c, morphological constant used to calculate m for gmax, unitless
+  h, morphological constant used to calculate m for gmax, unitless
+  j, morphological constant used to calculate m for gmax, unitless
+  m, morphological constant used to calculate gmax, unitless
+  b, biophysical constant used to calculate gmax, mol / m / s
+  abaxial_stomatal_area_um2, abaxial stomatal area, um^2
+  adaxial_stomatal_area_um2, adaxial stomatal area, um^2
+  abaxial_gmax, abaxial maximum stomatal conductance, mol / m^2 / s
+  adaxial_gmax, abaxial maximum stomatal conductance, mol / m^2 / s
+  abaxial_fs, abaxial fraction of epidermal area allocated to stomata, unitless
+  adaxial_fs, adaxial fraction of epidermal area allocated to stomata, unitless
+  genus, plant genus
+  subspecies, plant subspecies 
+  chromostome_number_2n, 2N chromosome number, 1
+  ploidy_level_x, Ploidy level, 1
+  c_value_reference, reference
+  c_value_note, note
+  dna_amount_2c_pg, 2C DNA amount, pg
+
+Missing data codes: NA
+
+DATA-SPECIFIC INFORMATION FOR: phylogenetic-contrasts.csv
+
+Number of variables: 18
+
+Number of rows: 236
+
+Variable List:
+
+  tree_node, node in trimmed phylogeny, 1
+  pair_age, divergence time between sp1 and sp2, millions of year
+  sp1, resolved name species 1, Genus_species
+  sp2, resolved name species 2, Genus_species
+  
+  All other columns are the log10-difference between sp1 and sp2 for the trait given by the column name
+  
+Missing data codes: NA
