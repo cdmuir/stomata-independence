@@ -2,7 +2,7 @@
 
 This repository contains source code associated with the manuscript:
 
-[How important are functional and developmental constraints on phenotypic evolution? An empirical test with the stomatal anatomy of flowering plants](https://doi.org/10.1101/2021.09.02.457988). *bioRxiv*.
+[How important are functional and developmental constraints on phenotypic evolution? An empirical test with the stomatal anatomy of flowering plants](https://doi.org/10.1101/2021.09.02.457988). Accepted at *The American Naturalist*.
 
 ## Author contributions
 
@@ -28,7 +28,7 @@ This repository has the following file folders:
 - `processed-data`: processed data generated from *R* code
 - `ms`: manuscript input (e.g. `ms.Rmd` and `stomata-independence.bib`) and output (e.g. `ms.pdf`) files
 - `r`: *R* scripts for all data processing and analysis
-- `raxml`: out from tree inference using [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)
+- `raxml`: output from tree inference using [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)
 - `template`: manuscript style files
 
 ## Prerequisites:
