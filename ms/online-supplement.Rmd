@@ -1,0 +1,536 @@
+---
+output:
+  bookdown::pdf_document2:
+    includes:
+      before_body: ../template/amnat_doc_prefix.tex
+      in_header: ../template/amnat_supp_preamble.tex
+    keep_tex: yes
+    latex_engine: pdflatex
+    number_sections: no
+    toc: no
+  bookdown::html_document2:
+    number_sections: no
+    theme: readable
+    toc: yes
+  bookdown::tufte_html2:
+    number_sections: no
+    toc: yes
+  bookdown::word_document2: null
+fontsize: 12pt
+linestretch: 1.0
+link-citations: yes
+bst: ../template/amnat.bst
+bibliography: stomata-independence-1.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_knit$set(root.dir = "..")
+```
+
+```{r, message=FALSE}
+library(checkmate)
+library(dplyr)
+library(glue)
+library(lubridate)
+library(readr)
+library(ropenstomata)
+library(stringr)
+library(tibble)
+
+source("r/functions.R")
+
+# Hack to fix bibliography issues with export from Zotero
+read_lines("ms/stomata-independence.bib") |>
+  str_replace_all("de Boer", "{de Boer}") |>
+  write_lines("ms/stomata-independence-1.bib")
+
+# Initial size of data set
+stomata_anatomy1 = stomata_anatomy |> 
+  filter(!str_detect(trait, "width"), 
+         !(source == "pathare_increased_2020" & str_detect(trait, "pore")))
+
+# 01_taxize-data ----
+taxize_output = read_rds("processed-data/taxize_output.rds") |>
+  mutate(ref = case_when(
+    data_source_title == "GRIN Taxonomy for Plants" ~ "united_states_department_of_agriculture_agricultural_research_service_germplasm_2020",
+    data_source_title == "NCBI" ~ "schoch_ncbi_2020",
+    data_source_title == "Open Tree of Life Reference Taxonomy" ~ "rees_automated_2017",
+    data_source_title == "The International Plant Names Index" ~ "the_royal_botanic_gardens_international_2020",
+    data_source_title == "Tropicos - Missouri Botanical Garden" ~ "missouri_botanical_garden_tropicos_2020",
+  ))
+
+taxize_source_ref = taxize_output |> 
+  mutate(x = glue("{data_source_title} [@{ref}]")) |>
+  pull(x) |>
+  unique() |>
+  sort() |>
+  str_c(collapse = ", ")
+
+n_tax1 = length(unique(taxize_output$user_supplied_name))
+
+# 02_resolve-names ----
+resolved_names = read_rds("processed-data/resolved_names.rds")
+
+n_tax2 = length(unique(resolved_names$resolved_name))
+
+# 03_make-megatree ----
+phy = read_rds("processed-data/phy.rds")
+
+# 04_prepare-subtrees ----
+polytomies = read_rds("objects/polytomies.rds")
+
+# 06_connect-data ----
+trimmed_data = read_rds("processed-data/trimmed-data.rds")
+trimmed_phy = read_rds("processed-data/trimmed-phylogeny.rds")
+write_csv(trimmed_data, "dryad/trimmed-data.csv")
+
+n_tax3 = nrow(trimmed_data)
+
+# 07_make-pairs ----
+pair_div = read_rds("objects/pair_div.rds")
+n_pair = nrow(pair_div)
+pair_div_genome = read_rds("objects/pair_div_genome.rds")
+n_pair_genome = nrow(pair_div_genome)
+
+# 10_fit-models1 ----
+fit12 = read_rds("objects/fit12.rds")
+
+# 14_plot-h1 ----
+h1_parameters = read_rds("objects/h1_parameters.rds") |>
+  mutate(
+    estimate = scientize(value),
+    lower = scientize(.lower),
+    upper = scientize(.upper),
+    interval = glue("95\\% HPD interval $[{lower},{upper}]$")
+  )
+
+# 15_plot-h2 ----
+h2_parameters = read_rds("objects/h2_parameters.rds") |>
+  mutate(
+    estimate = scientize(value, threshold = -2L),
+    lower = scientize(.lower, threshold = -2L),
+    upper = scientize(.upper, threshold = -2L),
+    interval = glue("95\\% HPD interval $[{lower},{upper}]$")
+  )
+
+# 17_summarize-fit1 ----
+h12o = read_rds("objects/h12output.rds")
+
+# 18_fit-models2 ----
+fit3 = read_rds("objects/fit3.rds")
+
+# 19_prepare-plotting2.R ----
+h3_hpd = read_rds("objects/h3_hpd.rds")
+h3_hpd_density = h3_hpd |>
+  filter(name == "diff_density") |>
+  mutate(across(where(is.numeric), round, digits = 1)) |>
+  transmute(s = glue("{value} [{.lower},{.upper}]"))
+
+h3_hpd_length = h3_hpd |>
+  filter(name == "diff_length") |>
+  mutate(across(where(is.numeric), round, digits = 1)) |>
+  transmute(s = glue("{value} [{.lower},{.upper}]"))
+
+# 21_summarize-fit2 ----
+h3o = read_rds("objects/h3output.rds")
+
+# Assert that all details about fit12 and fit3 are identical
+assert_true(as.character(fit12$version$cmdstan) == as.character(fit3$version$cmdstan))
+assert_true(as.character(fit12$version$brms) == as.character(fit3$version$brms))
+assert_true(as.character(fit12$version$cmdstanr) == as.character(fit3$version$cmdstanr))
+assert_true(length(fit12$fit@stan_args) == length(fit3$fit@stan_args))
+assert_true(fit12$fit@stan_args[[1]][["warmup"]] == fit3$fit@stan_args[[1]][["warmup"]])
+assert_true(fit12$fit@stan_args[[1]][["iter"]] == fit3$fit@stan_args[[1]][["iter"]])
+
+# Write additional DRYAD files
+write_csv(stomata_anatomy, "dryad/stomatal-anatomy.csv")
+write_csv(stomata_anatomy_metadata, "dryad/stomatal-anatomy-metadata.csv")
+
+invisible(file.copy("raw-data/plant-c-value.csv", "dryad/plant-c-value.csv",
+          overwrite = TRUE))
+```
+
+\maketitle
+
+\noindent{} 1. School of Life Sciences, University of Hawaii at Mānoa, Honolulu, HI 96822, USA;
+
+\noindent{} 2. Research Group on Plant Biology under Mediterranean Conditions, Departament de Biologia, Universitat de les Illes Balears, Ctra. Valldemossa km 7.5, E-07122, Palma, Spain;
+
+\noindent{} 3.  School of Biological Sciences, Washington State University, Pullman, WA 99164-4236, USA;
+
+\noindent{} 4. Departamento de Botánica, Instituto de Biología, Universidad Nacional Autónoma de México, Apartado Postal 70‑367, 04510 Mexico City, Mexico;
+
+\noindent{} 5. Departamento de Sistemas y Recursos Naturales, Universidad Politécnica de Madrid, 28040 Madrid, Spain;
+
+\noindent{} 6. National Key Laboratory of Crop Genetic Improvement, MOA Key Laboratory of Crop Ecophysiology and Farming System in the Middle Reaches of the Yangtze River, College of Plant Science and Technology, Huazhong Agricultural University, Wuhan, Hubei 430070, China.
+
+\noindent{} $\ast$ Corresponding author; e-mail: cdmuir@hawaii.edu
+
+<!-- References for tables and figures in main document -->
+
+\begin{table}
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{tab:traits}
+\end{table}
+
+\begin{figure}[ht]
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{fig:concepts}
+\end{figure}
+
+\begin{figure}[ht]
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{fig:h3}
+\end{figure}
+
+\begin{figure}[ht]
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{fig:h1_raw}
+\end{figure}
+
+\begin{figure}[ht]
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{fig:h1}
+\end{figure}
+
+\begin{figure}[ht]
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{fig:h2_raw}
+\end{figure}
+
+\begin{figure}[ht]
+  \captionsetup{labelformat=empty}
+  \caption{}
+  \label{fig:h2}
+\end{figure}
+
+\renewcommand\thefigure{S\arabic{figure}}    
+\renewcommand\thetable{S\arabic{table}}    
+\renewcommand\theequation{S\arabic{equation}}    
+\setcounter{figure}{0}    
+\setcounter{table}{0}    
+\setcounter{equation}{0}    
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/fs-sigma.pdf}
+\caption{The variance in evolutionary divergence ($y$-axis, $\textrm{Var}[\Delta \textrm{log(trait)}]$) declines the fraction of epidermal space allocated to stomata per surface ($x$-axis, $f_S$) increases. Within each ribbon, the middle line is the median estimate and the outer lines are the 95\% HPD intervals. The slope is significantly less than 0 for adaxial stomatal density and stomatal length of both surface (Table \ref{tab:h3output}). Results for the standard deviation, which is the square-root of the variance, are shown.}
+\label{fig:fs-sigma}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/genome.pdf}
+\caption{Evolutionary divergence in genome size (2C DNA content) is associated with guard cell length, but less so stomatal density. (a) Data from `r n_pair_genome` phylogenetically independent contrasts of change in log(2C DNA) ($x$-axis) and change in log(trait) ($y$-axis) for abaxial (lower panels) and adaxial (upper panels) leaf surfaces. Each contrast is shown by black points and every contrast appears on all panels. Black lines are the median predicted trait divergence and grey ribbons are the model-estimated 95\% HPD confidence bands. (b) Parameter estimates (points), 66\% (thick lines), and 95\% HPD intervals for estimates of the effect of change in log(2C DNA) on change in log(trait). HPD intervals that do not overlap zero indicate that divergence in genome size is associated with divergence in stomatal anatomy. Reported parameter estimates are conditioned on zero time since divergence between taxa (see \protect\hyperlink{results}{Results}).}
+  \label{fig:genome}
+\end{figure}
+
+\clearpage
+
+\begin{center}
+  Table S1 is a csv file uploaded with this manuscript and will be included as an online supplement upon publication.
+\end{center}
+
+\begin{table}
+\caption{\label{tab:pair_div}Final data set of `r n_pair` taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny (Notes S3). $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
+\end{table}
+
+```{r}
+# write supporting information table
+write_csv(pair_div, "ms/tableA1.csv")
+# write data set for DRYAD
+write_csv(pair_div, "dryad/phylogenetic-contrasts.csv")
+```
+
+\begin{table}[ht]
+\caption{\label{tab:h3output} Parameter estimates and 95\% highest posterior density (HPD) intervals for the effect of  $f_S$ on trait divergence. For each trait ($D_\mathrm{ab}$, $D_\mathrm{ad}$, $L_\mathrm{ab}$, $L_\mathrm{ad}$) we estimated the coefficient of $f_S$ on the standard deviation of $\Delta \text{log(trait)}$ on a log-link scale. Other model parameter estimates and confidence intervals can be found in the saved model output located in the archived online repository (see \protect\hyperlink{results}{Data avaibility}).}
+\begin{center}
+\begin{tabular}{lll}
+
+  \toprule
+  Trait(s) & Estimate & 95\% HPD interval \\
+  \midrule
+  
+  \multicolumn{3}{l}{Effect of $f_S$ on standard deviation of $\Delta \text{log(trait)}$} \\
+  \multicolumn{3}{l}{log-link scale} \\
+  \\
+  $D_\mathrm{ab}$ & `r h3o$fs["D_ab", "value"]`  & `r h3o$fs["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h3o$fs["D_ad", "value"]`  & `r h3o$fs["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h3o$fs["L_ab", "value"]`  & `r h3o$fs["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h3o$fs["L_ad", "value"]`  & `r h3o$fs["L_ad", "hdi"]`  \\
+  \\
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[ht]
+\caption{\label{tab:h12output} Parameter estimates and 95\% highest posterior density (HPD) intervals for the (co)variance of trait divergence. For each trait ($D_\mathrm{ab}$, $D_\mathrm{ad}$, $L_\mathrm{ab}$, $L_\mathrm{ad}$) we estimated the average (median) divergence between taxon pairs, denoted $\Delta \text{log(trait)}$. See Table \ref{tab:traits} for symbol definitions. The second section is the standard deviation of $\Delta \text{log(trait)}$. The third section is the estimated coefficient of pair age (millions of years) on the standard deviation on a log-link scale. The fourth section is the estimated correlation coefficient between $\Delta \text{log(trait)}$ of all pairwise trait combinations. The final section is the estimated $\nu$ family of the Student $t$ distribution.}
+\begin{center}
+\begin{tabular}{lll}
+
+  \toprule
+  Trait(s) & Estimate & 95\% HPD interval \\
+  \midrule
+  
+  \multicolumn{3}{l}{Average $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}$ & `r h12o$mu["D_ab", "value"]`  & `r h12o$mu["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h12o$mu["D_ad", "value"]`  & `r h12o$mu["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h12o$mu["L_ab", "value"]`  & `r h12o$mu["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h12o$mu["L_ad", "value"]`  & `r h12o$mu["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Standard deviation of $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}$ & `r h12o$sigma["D_ab", "value"]`  & `r h12o$sigma["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h12o$sigma["D_ad", "value"]`  & `r h12o$sigma["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h12o$sigma["L_ab", "value"]`  & `r h12o$sigma["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h12o$sigma["L_ad", "value"]`  & `r h12o$sigma["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Effect of pair age on standard deviation of $\Delta \text{log(trait)}$} \\
+  \multicolumn{3}{l}{log-link scale} \\
+  \\
+  $D_\mathrm{ab}$ & `r h12o$age["D_ab", "value"]`  & `r h12o$age["D_ab", "hdi"]`  \\
+  $D_\mathrm{ad}$ & `r h12o$age["D_ad", "value"]`  & `r h12o$age["D_ad", "hdi"]`  \\
+  $L_\mathrm{ab}$ & `r h12o$age["L_ab", "value"]`  & `r h12o$age["L_ab", "hdi"]`  \\
+  $L_\mathrm{ad}$ & `r h12o$age["L_ad", "value"]`  & `r h12o$age["L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Correlation between $\Delta \text{log(trait)}$} \\
+  \\
+  $D_\mathrm{ab}-D_\mathrm{ad}$ & 
+  `r h12o$cor["D_ab-D_ad", "value"]`  & `r h12o$cor["D_ab-D_ad", "hdi"]`  \\
+  $D_\mathrm{ab}-L_\mathrm{ab}$ & 
+  `r h12o$cor["D_ab-L_ab", "value"]`  & `r h12o$cor["D_ab-L_ab", "hdi"]`  \\
+  $D_\mathrm{ab}-L_\mathrm{ad}$ & 
+  `r h12o$cor["D_ab-L_ad", "value"]`  & `r h12o$cor["D_ab-L_ad", "hdi"]`  \\
+  $D_\mathrm{ad}-L_\mathrm{ab}$ & 
+  `r h12o$cor["D_ad-L_ab", "value"]`  & `r h12o$cor["D_ad-L_ab", "hdi"]`  \\
+  $D_\mathrm{ad}-L_\mathrm{ad}$ & 
+  `r h12o$cor["D_ad-L_ad", "value"]`  & `r h12o$cor["D_ad-L_ad", "hdi"]`  \\
+  $L_\mathrm{ab}-L_\mathrm{ad}$ & 
+  `r h12o$cor["L_ab-L_ad", "value"]`  & `r h12o$cor["L_ab-L_ad", "hdi"]`  \\
+  \\
+  \multicolumn{3}{l}{Student $t$ family parameter $\nu$} \\
+  \\
+  $-$ & `r h12o$nu["nu", "value"]`  & `r h12o$nu["nu", "hdi"]`  \\
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\clearpage
+
+## Notes S1: Theory connecting developmental function, constraint, and integration
+
+Below we provide a conceptual background to motivate the derivation of a stomatal developmental function. We then derive predictions for how stomatal size and density should diverge with or without developmental constraint. We then explain why comparing evolutionary divergence of lower and upper stomatal anatomy provides an important additional line of evidence on the contribution of developmental integration to phenotypic macroevolution. Fig. \ref{fig:developmental-integration} is a graphical summary of our analysis.
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{../figures/developmental-integration.pdf}
+\caption{Graphical summary describing contrasting predictions of developal integration and disintegration hypotheses. Meristematic cell volume and expansion determine the epidermal (white squares) and guard meristemoid (blue triangles) cell sizes before final differentiation into stomata. Because the developmental function is fixed, larger meristematic cell volume and greater expansion result in larger stomata at lower density (Species A); smaller meristematic cell volume and less expansion result in smaller stomata at higher density (Species B). Stomatal size and density can evolve independently if the developmental function is not fixed. Species C diverges in size but not density by allocating less volume to the guard meristemoid during asymmetic cell division. Species D diverges in density but not size by increasing stomatal index.}
+\label{fig:developmental-integration}
+\end{figure}
+
+### Conceptual background
+
+Developmental integration in stomatal anatomy is plausible because epidermal pavement cells and stomata share an early developmental history, originating from the same leaf meristem tissue. If all other factors are held constant, meristematic cell volume, which is largely determined by genome size [@simova_geometrical_2012], and early expansion rate increase both epidermal cell and stomatal area proportionally. This mechanically decreases stomatal density because the same number of stomata per epidermal cell (stomatal index) are spread farther apart by larger epidermal cells. Developmental integration between stomatal size and density arises naturally if meristematic cell volume and/or expansion rate evolve, but the remaining steps of stomatal development are fixed. As described in detail below, we mathematically formalize these later steps in stomatal development into a 'developmental function' inspired by @wagner_multivariate_1989. Wagner's used a developmental function to map genetic variance onto phenotypic variance. The developmental function can cause a disposition for phenotypic covariance, depending on the amount of pleiotropy. For example, genetic changes in a growth factor could be highly pleiotropic, simultaneously altering the size of many tissues. Wagner used the developmental function to model microevolution, but if we suppose that the developmental function is fixed over long time periods, it can be used to predict macroevolutionary divergence under developmental constraint. If the developmental function is fixed or highly constrained, species may never possess the genetic variation to access regions of phenotypic space. If the developmental function itself can evolve readily, then traits should be able to evolve independently given sufficient time for mutation, selection, and divergence. Finding that the developmental function is malleable would lend less credence to the importance of developmental constraint and lend more credence to selective hypotheses.
+
+The stomatal developmental function is probably not fixed, potentially allowing for independent evolution of stomatal size and density. The conceptual model of stomatal development by @dow_patterning_2014 identifies three key cell division types that could shape stomatal density and size. First, asymmetric division of undifferentiated epidermal cells forms the guard cell meristemoid. Larger allocation to and/or greater expansion of the meristemoid as it matures to a guard mother cell increases stomatal size without affecting density. Second, spacing divisions in developing epidermal cells increase stomatal density and index while maintaining spacing. Third, amplifying divisions generate more epidermal cells without further differentiation of stomata, decreasing stomatal density and index. Changing the probability of spacing and amplifying divisions affects stomatal density without changing size.
+
+Below we formalize these models of developmental (dis)integration to address the following two questions:
+
+1. How would stomatal size and density (co)diverge if the developmental function is fixed? We refer to this as the 'developmental integration' hypothesis.
+
+2. How would stomatal size and density (co)diverge if the developmental function is not fixed? We refer to this as the 'developmental disintegration' hypothesis.
+
+### Theory
+
+#### A developmental function for stomatal size and density
+
+In this section we derive a stomatal developmental function by extending the model of @sack_developmental_2016 in two ways. First, we provide an explicit, albeit simple, map from meristematic cell volume to stomatal size and density. Second, we use random variable algebra [@lynch_genetics_1998] to derive expectations for the variance in stomatal anatomy among species.  @sack_developmental_2016 consider three anatomical properties of a leaf surface, the projected epidermal cell area $E$, the area of the stomatal apparatus $S$, and the stomatal index $I$: 
+
+$$I = \frac{n_S}{n_S + n_E}$$
+$n_S$ and $n_E$ are the number of stomatal and other epidermal cells, respectively, on the leaf surface. Throughout this we supplement we focus on stomatal size ($S$) rather than guard cell length ($L$) because it is mathematically simpler. For comparison with our data on $L$, we derive predictions using the fact that $S = j L^2$ where $j=0.5$ for non-grasses and 0.125 for grasses [@sack_developmental_2016]. 
+
+Next, we assume that the area of epidermal cells and stomata are proportional to the meristematic cell volume $M$:
+
+\begin{align}
+  E = & A M \\
+  S = & B E = A B M
+  \label{eq:eq1}
+\end{align}
+
+The coefficient $A$ is determined by the early cell expansion and division rates, which we do not model explicitly. $B$ is determined by the placement of the asymmetric cell division generating the guard mother cell [@bergmann_stomatal_2007] and subsequent expansion of the guard cell meristemoid. For example, in *Arabidopsis thaliana*, the cell volume of shoot meristematic cells is approximately 200 $\mu\textrm{m}^3$ [@price_correlations_1973] and the epidermal and stomatal sizes are roughly 1000 and 250 $\mu\textrm{m}^2$ [@dow_integrated_2014]. Therefore $A = \frac{1000~\mu\textrm{m}^3}{200 ~\mu\textrm{m}^2} = 5 \frac{\mu\textrm{m}^3}{\mu\textrm{m}^2}$ and $B = \frac{250~\mu\textrm{m}^3}{1000 ~\mu\textrm{m}^2} = 0.25$.
+
+Following @sack_developmental_2016 the stomatal density as a function of $E$, $S$, and $I$ is:
+
+$$D = \frac{I}{IS + (1 - I) E}$$
+
+For analytical tractability, we use he first-order Taylor series approximation around $I = 0$ because $I$ is typically much closer to 0 than 1:
+
+$$D \approx \frac{I}{E}$$
+
+Below we show that this approximation accurately models the correlation in divergence between stomatal size and density by comparing it to random simulations (Fig. \ref{fig:check-approximation}.
+
+Substituting Eqn. \ref{eq:eq1} into the above expression we obtain
+
+$$D \approx \frac{I}{A M}$$
+
+Now we can can derive a developmental function to map from $M$ to $S$ and $D$. We assume that $M$ is determined by genome size [@simova_geometrical_2012] and, possibly, other genetic and environmental factors that we do not track explicitly in our model. As with our empirical analysis, we work with the log-transformed values of $S$ and $D$ to linearize the developmental function. For brevity, let the lowercase variables be the log-transformed values of their uppercase counterparts (e.g. $d = \textrm{log}(D)$). With these assumptions, we obtain:
+
+\begin{align}
+  d = &~i - a - m \\
+  s = &~a + b + m 
+  \label{eq:dev-fun}
+\end{align}
+
+### Hypotheses
+
+To address the two overarching questions posed above, we will use the theory in the previous section to derive predictions for two hypotheses. The developmental integration hypothesis can be thought of as a null hypothesis for how stomatal size and density diverge when the developmental function is fixed. The second hypothesis relaxes this constraint.
+
+1. Developmental integration hypothesis: the stomatal developmental function is fixed; divergence in stomatal size and density is caused only by divergence in meristematic cell volume and early expansion rate. 
+
+2. Developmental disintegration hypothesis: the stomatal developmental function is not fixed;  divergence in stomatal size and density is caused by the combined divergence in meristematic cell volume, early expansion, and later cell divisions, the asymmetric, spacing, amplifying divisions discussed in the Conceptual background.
+
+#### Developmental integration hypothesis
+
+Under this hypothesis, meristematic cell volume and expansion rate integrate stomatal size and density because the developmental function is constrained. We know that meristematic cell volume can evolve as a product of genome size, so a natural null hypothesis is that $m$ varies but the developmental parameters $a$, $b$, and $i$ in Eqn. \ref{eq:dev-fun} are constant or vary little relative to $m$. Let the divergence between taxa $i$ and $j$ be:
+
+\begin{align}
+  \Delta d = & d_j - d_i = (i_j - a_j - m_j) - (i_i - a_i - m_i) \\
+    = & \Delta i - \Delta a - \Delta m \\
+  \Delta s = & s_j - s_i = (a_j + b_j + m_j) - (a_i + b_i + m_i) \\
+    = & \Delta a + \Delta b + \Delta m 
+\end{align}
+
+When developmental parameters are fixed $\Delta a = \Delta b = \Delta i = 0$. This leads to integration between $s$ and $d$ mediated by $m$ because $\Delta s = \Delta m$, $\Delta d = -\Delta m$, and $\textrm{Cov}[\Delta s, \Delta d] = -\textrm{Var}[\Delta m]$. Strong developmental integration would also persist if $\Delta b = \Delta i = 0$ but $\Delta a \ne 0$. In that case, $\Delta s = \Delta a + \Delta m$, $\Delta d = -(\Delta a + \Delta m)$, and $\textrm{Cov}[\Delta s, \Delta d] = -\textrm{Var}[\Delta a + \Delta m]$. In either case, the correlation between between $\Delta d$ and $\Delta s$ is $-1$ because $-\textrm{Cov}[\Delta s, \Delta d] = \textrm{Var}[\Delta d] = \textrm{Var}[\Delta s]$:
+
+\begin{equation}
+  \textrm{Corr}[\Delta d, \Delta s] = \frac{\textrm{Cov}[\Delta s, \Delta d]}{\sqrt{\textrm{Var}[\Delta d]} \sqrt{\textrm{Var}[\Delta s]}} = -1
+\end{equation}
+
+In summary, developmental constraint on stomatal index and allocation to guard mother cells during asymmetric cell division leads to developmental integration between stomatal size and density. Developmental integration can be mediated by either meristematic cell volume and/or epidermal cell expansion since they are colinear.
+
+#### Developmental disintegration hypothesis
+
+Here we show that developmental disintegration is mediated by divergence in stomatal index and asymmetric cell division. In conceptual models of stomatal development [@dow_patterning_2014], asymmetric division forms the meristemoid to the guard mother cell. After asymmetric division, spacing divisions increase stomatal density and index whereas amplifying divisions decrease both quantities. Above we assumed these processes were constrained; here we relax that assumption. First, we assume that $\Delta b = 0$ and $\Delta i \ne 0$. Further, we assume for simplicity that there is no covariance in divergence between $m$ and $i$ ($\textrm{Cov}[\Delta i, \Delta m] = 0$. Using random variable algebra, the (co)variance and correlation between divergence in stomatal density and size are:
+
+\begin{align}
+  \textrm{Var}[\Delta d] = & \textrm{Var}[\Delta i] + \textrm{Var}[\Delta m] \\
+  \textrm{Var}[\Delta s] = & \textrm{Var}[\Delta m] \\
+  \textrm{Cov}[\Delta d, \Delta s] = & -\textrm{Var}[\Delta m] \\
+  \textrm{Corr}[\Delta d, \Delta s] = & -\frac{\textrm{Var}[\Delta m]}{\sqrt{\textrm{Var}[\Delta i] + \textrm{Var}[\Delta m]}\sqrt{\textrm{Var}[\Delta m]}} \label{eq:corr-ds1}
+\end{align}
+
+Compared to the developmental integration hypothesis, variation in stomatal index leads to greater variation in stomatal density and disintegration (lower correlation) between density and size. The approximation in Eqn. \ref{eq:corr-ds1} matches simulated values well for realistic values of stomatal index (Fig. \ref{fig:check-approximation}).
+
+Next, we switch our assumptions such that $\Delta b \ne 0$ and $\Delta i = 0$. We again make the simplifying assumption that there is no covariance in divergence between $m$ and $b$ ($\textrm{Cov}[\Delta b, \Delta m] = 0$. The (co)variance and correlation between stomatal density and size are:
+
+\begin{align}
+  \textrm{Var}[\Delta d] = & \textrm{Var}[\Delta b] + \textrm{Var}[\Delta m] \\
+  \textrm{Var}[\Delta s] = & \textrm{Var}[\Delta m] \\
+  \textrm{Cov}[\Delta d, \Delta s] = & -\textrm{Var}[\Delta m] \\
+  \textrm{Corr}[\Delta d, \Delta s] = & -\frac{\textrm{Var}[\Delta m]}{\sqrt{\textrm{Var}[\Delta m]}\sqrt{\textrm{Var}[\Delta b] + \textrm{Var}[\Delta m]}}
+\end{align}
+
+As with stomatal index, variation in asymmetric cell division also causes developmental disintegration. The key difference is that disintegration is driven by greater variation in stomatal size rather than density.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics{../figures/check-approximation.pdf}
+  \caption{(Caption next page.)}
+  \label{fig:check-approximation}
+\end{center}
+\end{figure}
+\addtocounter{figure}{-1}
+
+\begin{figure} [t!]
+\caption{(Previous page.) The approximation used to derive the correlation between log-transformed divergence in stomatal density and size ($\textrm{Corr}[\Delta d, \Delta s]$ in Eqn. \ref{eq:corr-ds1} matches simulated values. Each panel shows the relationship between approximate ($x$-axis) and calculated correlation values from $10^5$ random simulations per point ($y$-axis). The approximation is more accurate when the average stomatal index is low ($\mu_I = 0.1$) and less accurate when stomatal index is greater. Parameter values for simulations were $A = 5$, $B = 0.25$, $\mu_m = \textrm{log}[200~\mu\textrm{m}^3]$, $\sigma_{\Delta i} = 0.1$. The value of these parameters did not affect the results. The correlation changed based $\sigma_{\Delta m}$, which varied between 0.1 and 10 $\times~\sigma_{\Delta i}$).}
+\end{figure}
+
+### Predictions
+
+In this section, we summarize the predictions for each hypothesis (Table \@ref(tab:predictions)) and show they can be difficult to distinguish under certain parameter combinations. Comparing the divergence of stomatal density and size on each surface provides additional evidence that can help resolve competing hypotheses. We can convert predictions from stomatal size to length using the relationship from @sack_developmental_2016: $S = jL^2$ or $s = \textrm{log}(j) + 2 l$ on the log-transformed scale. It follows that $\Delta s = 2 \Delta l$, $\textrm{Var}[\Delta s] = 4 \textrm{Var}[\Delta l]$, and $\textrm{Corr}[\Delta d, \Delta s] = \textrm{Corr}[\Delta d, \Delta l]$.
+
+\begin{table}[ht]
+\caption{\label{tab:predictions}Key predictions about the (co)variance and correlation in divergence of log(stomatal density) ($\Delta d$) and log(stomatal size) ($\Delta s$) under the developmental integration and disintegration hypotheses. "Single surface" predictions apply to divergence in stomatal traits on either surface; "Both surfaces" predictions compare the divergence of traits on surface to that of the other. We further contrast two variants of the disintegration hypothesis, where either stomatal index ($\textrm{Var}[\Delta i] \ne 0$) or asymmetric cell division ($\textrm{Var}[\Delta b] \ne 0$) diverges.}
+\begin{center}
+\begin{tabular}{ccc}
+
+\toprule
+   & \multicolumn{2}{c}{Predictions} \\
+  Hypothesis & Single surface & Both surfaces \\
+  \midrule
+  
+  \multirow{3}{*}{Developmental integration} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d] = \textrm{Var}[\Delta s]$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d_\textrm{ab}] = \textrm{Var}[\Delta d_\textrm{ad}]$} \\
+& \multicolumn{1}{c}{$\textrm{Corr}[\Delta d, \Delta s] = -1$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta s_\textrm{ad}] = \textrm{Var}[\Delta s_\textrm{ad}]$} \\  
+& \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\textrm{Cov}[\Delta d_\textrm{ab},\Delta s_\textrm{ab}] = \textrm{Cov}[\Delta d_\textrm{ad},\Delta s_\textrm{ad}]$} \\  
+
+\midrule
+
+  \multirow{2}{*}{Developmental disintegration} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d] > \textrm{Var}[\Delta s]$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d_\textrm{ab}] \ne \textrm{Var}[\Delta d_\textrm{ad}]$} \\
+& \multicolumn{1}{c}{$0 < \textrm{Corr}[\Delta d, \Delta s] < -1$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta s_\textrm{ad}] = \textrm{Var}[\Delta s_\textrm{ad}]$} \\  
+ $\textrm{Var}[\Delta i] \ne 0$ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\textrm{Cov}[\Delta d_\textrm{ab},\Delta s_\textrm{ab}] \ne \textrm{Cov}[\Delta d_\textrm{ad},\Delta s_\textrm{ad}]$} \\  
+
+\midrule
+
+  \multirow{2}{*}{Developmental disintegration} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d] < \textrm{Var}[\Delta s]$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta d_\textrm{ab}] = \textrm{Var}[\Delta d_\textrm{ad}]$} \\
+& \multicolumn{1}{c}{$0 < \textrm{Corr}[\Delta d, \Delta s] < -1$} & \multicolumn{1}{c}{$\textrm{Var}[\Delta s_\textrm{ad}] \ne \textrm{Var}[\Delta s_\textrm{ad}]$} \\  
+ $\textrm{Var}[\Delta b] \ne 0$ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\textrm{Cov}[\Delta d_\textrm{ab},\Delta s_\textrm{ab}] \ne \textrm{Cov}[\Delta d_\textrm{ad},\Delta s_\textrm{ad}]$} \\  
+
+\bottomrule
+
+\end{tabular}
+\end{center}
+\end{table}
+
+The sections above clarify that it is possible to use the (co)divergence in stomatal density and size to test whether developmental integration contributes to phenotypic macroevolution. The problem is that there are parameter combinations where the (co)divergence in stomatal density and size appear consistent with strong developmental integration even when there is no constraint on the developmental function. For illustration, consider an extreme example where there is no divergence in $m$ or $a$ ($\textrm{Var}[\Delta m] = \textrm{Var}[\Delta a] = 0$) and the (co)variance in $\Delta b$ and $\Delta i$ are aligned such that $\textrm{Var}[\Delta b] = \textrm{Var}[\Delta i] = -\textrm{Cov}[\Delta b, \Delta i]$). This leads to the same predictions as the maximally constrained model, even though there is no constraint:
+
+\begin{align}
+  \textrm{Var}[\Delta s] = & \textrm{Var}[\Delta b] \\
+  \textrm{Var}[\Delta d] = & \textrm{Var}[\Delta i] \\
+  \textrm{Cov}[\Delta d, \Delta s] = & \textrm{Cov}[\Delta b, \Delta i] \\
+  \textrm{Corr}[\Delta d, \Delta s] = & -1
+\end{align}
+
+Ideally, we would measure $\Delta b$ and $\Delta i$ to test whether they contribute significantly to divergence in stomatal density and size. This is challenging because comparative data on $b$ and $i$ is scarcer than that for $d$ and $s$. As a result, we can test whether $\Delta b$ and $\Delta i$ contribute in certain lineages but cannot directly quantify their relative importance for angiosperm macroevolution in general, as we attempt in this study.
+
+We therefore take an alternative approach, leveraging the fact that stomatal trait evolution on each surface provides an additional line of evidence. If the stomatal developmental function is constrained then stomatal size and density on each surface should diverge in concert. Conversely, if the stomatal size and density on each surface diverge independently, this provides strong evidence that the developmental function is not fixed. If the developmental function differs between leaf surfaces with identical genomes then it seems implausible that it could not diverge over macroevolutionary time if there were selection. In that case we should give less credence to any hypothesis which posits that the developmental function *cannot* evolve.
+
+\clearpage
+
+## Notes S2: Phylogeny
+
+We resolved taxonomic names using the R package **taxize** version `r packageVersion("taxize")` [@chamberlain_taxize_2013]. We queried taxonomic names supplied by the original study authors on `r str_extract(file.info("processed-data/taxize_output.rds")$ctime, "^[0-9]{4}-[0-9]{2}-[0-9]{2}")` from the following sources: `r taxize_source_ref`. We retained the maximum scoring matched name with taxize score $\ge 0.75$ (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from `r n_tax1` to `r n_tax2` taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
+
+We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS-SSE3 -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducted molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa (Notes S3).
+
+```{r}
+library(ape)
+write.tree(trimmed_phy, "ms/notesS3.new")
+write.tree(trimmed_phy, "dryad/trimmed-phylogeny.new")
+```
+
+\clearpage
+
+```{r, sources}
+library(ropenstomata)
+
+stomata_anatomy_metadata |>
+  dplyr::mutate(Source = stringr::str_c("@", source), Taxa = taxa) |>
+  dplyr::select(Source, Taxa) |>
+  knitr::kable(format = "markdown", caption = "Primary sources of stomatal anatomical data and the taxa covered by each source.")
+
+```
+
+\clearpage
+
+# References Cited Only in the Online Enhancements

@@ -7,6 +7,7 @@ paper: ms/ms.pdf figures/concepts.pdf figures/h1-raw.pdf figures/h1.pdf figures/
 
 ms/ms.pdf: ms/ms.Rmd ms/stomata-independence.bib figures/concepts.pdf figures/h1-raw.pdf figures/h2-raw.pdf figures/h1.pdf figures/h2.pdf objects/h12output.rds
 	Rscript -e 'rmarkdown::render("ms/ms.Rmd", output_format = "bookdown::pdf_document2", output_file = "ms.pdf")'
+	Rscript -e 'rmarkdown::render("ms/online-supplement.Rmd", output_format = "bookdown::pdf_document2", output_file = "online-supplement.pdf")'
 
 figures/concepts.pdf: r/16_plot-concepts.R
 	Rscript -e 'source("r/16_plot-concepts.R")'
@@ -69,4 +70,3 @@ clean:
 	
 cleanall: 
 	\rm -f *.aux *.bbl *.blg *.log *.pdf *~ *.Rout */*~ */*.Rout figures/*.png figures/*.pdf ms/ms.pdf ms/ms.tex objects/*.rds processed-data/*.rds */*.aux */*.log 
-
