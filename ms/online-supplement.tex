@@ -102,7 +102,7 @@
 \pagestyle{fancy}
 \usepackage{multirow} % for merging rows in tables
 \usepackage{caption} % for \captionsetup{labelformat=empty}
-\usepackage{nopageno}
+\usepackage{nopageno} % suppress page numbers
 
 %%%%%%%%%%%%%%%%%%%%%
 % Header
@@ -171,6 +171,9 @@ Dongliang Xiong$^{6}$
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
 
 \begin{document}
 
@@ -261,7 +264,7 @@ Dongliang Xiong$^{6}$
 \end{center}
 
 \begin{table}
-\caption{\label{tab:pair_div}Final data set of 236 taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny (Notes S3). $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
+\caption{\label{tab:pair_div}Final data set of 236 taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny. $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
 \end{table}
 
 \begin{table}[ht]
@@ -346,8 +349,8 @@ Dongliang Xiong$^{6}$
 
 \clearpage
 
-\hypertarget{notes-s1-theory-connecting-developmental-function-constraint-and-integration}{%
-\subsection{Notes S1: Theory connecting developmental function, constraint, and integration}\label{notes-s1-theory-connecting-developmental-function-constraint-and-integration}}
+\hypertarget{theory-connecting-developmental-function-constraint-and-integration}{%
+\subsection{Theory connecting developmental function, constraint, and integration}\label{theory-connecting-developmental-function-constraint-and-integration}}
 
 Below we provide a conceptual background to motivate the derivation of a stomatal developmental function. We then derive predictions for how stomatal size and density should diverge with or without developmental constraint. We then explain why comparing evolutionary divergence of lower and upper stomatal anatomy provides an important additional line of evidence on the contribution of developmental integration to phenotypic macroevolution. Fig. \ref{fig:developmental-integration} is a graphical summary of our analysis.
 
@@ -540,12 +543,12 @@ We therefore take an alternative approach, leveraging the fact that stomatal tra
 
 \clearpage
 
-\hypertarget{notes-s2-phylogeny}{%
-\subsection{Notes S2: Phylogeny}\label{notes-s2-phylogeny}}
+\hypertarget{phylogeny}{%
+\subsection{Phylogeny}\label{phylogeny}}
 
-We resolved taxonomic names using the R package \textbf{taxize} version 0.9.100 (\protect\hyperlink{ref-chamberlain_taxize_2013}{Chamberlain and Szöcs 2013}). We queried taxonomic names supplied by the original study authors on 2022-10-05 from the following sources: GRIN Taxonomy for Plants (\protect\hyperlink{ref-united_states_department_of_agriculture_agricultural_research_service_germplasm_2020}{United States Department of Agriculture, Agricultural Research Service 2020}), Open Tree of Life Reference Taxonomy (\protect\hyperlink{ref-rees_automated_2017}{Rees and Cranston 2017}), The International Plant Names Index (\protect\hyperlink{ref-the_royal_botanic_gardens_international_2020}{The Royal Botanic Gardens et al. 2020}), Tropicos - Missouri Botanical Garden (\protect\hyperlink{ref-missouri_botanical_garden_tropicos_2020}{Missouri Botanical Garden 2020}). We retained the maximum scoring matched name with taxize score \(\ge 0.75\) (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from 1120 to 1080 taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
+We resolved taxonomic names using the R package \textbf{taxize} version 0.9.100 (\protect\hyperlink{ref-chamberlain_taxize_2013}{Chamberlain and Szöcs 2013}). We queried taxonomic names supplied by the original study authors on 2022-12-01 from the following sources: GRIN Taxonomy for Plants (\protect\hyperlink{ref-united_states_department_of_agriculture_agricultural_research_service_germplasm_2020}{United States Department of Agriculture, Agricultural Research Service 2020}), Open Tree of Life Reference Taxonomy (\protect\hyperlink{ref-rees_automated_2017}{Rees and Cranston 2017}), The International Plant Names Index (\protect\hyperlink{ref-the_royal_botanic_gardens_international_2020}{The Royal Botanic Gardens et al. 2020}), Tropicos - Missouri Botanical Garden (\protect\hyperlink{ref-missouri_botanical_garden_tropicos_2020}{Missouri Botanical Garden 2020}). We retained the maximum scoring matched name with taxize score \(\ge 0.75\) (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from 1120 to 1080 taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
 
-We used the R packages \textbf{taxonlookup} version 1.1.5 (\protect\hyperlink{ref-pennell_simple_2016}{Pennell, FitzJohn, and Cornwell 2016}) and \textbf{V.phylomaker} version 0.1.0 (\protect\hyperlink{ref-jin_vphylomaker_2019}{Jin and Qian 2019}) to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants (\protect\hyperlink{ref-smith_constructing_2018}{Smith and Brown 2018}; \protect\hyperlink{ref-zanne_three_2014}{Zanne et al. 2014}). We further resolved large (\(\ge4\) taxa) polytomies in 29 clades with sufficient sequence data using \textbf{PyPHLAWD} version 1.0 (\protect\hyperlink{ref-smith_pyphlawd_2019}{Smith and Walker 2019}) in Python 3.9.2 (Python Software Foundation, \url{https://www.python.org/}). We used sequence data from the most recent GenBank Plant and Fungal sequences database division (\protect\hyperlink{ref-ouellette_database_1997}{Ouellette and Boguski 1997}). We inferred subtree phylogenies using RAxML version 8.2.12 (\protect\hyperlink{ref-stamatakis_raxml_2014}{Stamatakis 2014}) and conducted molecular dating using the \texttt{chronos()} function in the R package \textbf{ape} version 5.6.2 (\protect\hyperlink{ref-paradis_ape_2019}{Paradis and Schliep 2019}) to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for \textbf{PyPHLAWD}. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the \texttt{multi2di()} function in \textbf{ape}. The final data set for which we had both trait and phylogenetic information contained 638 taxa (Notes S3).
+We used the R packages \textbf{taxonlookup} version 1.1.5 (\protect\hyperlink{ref-pennell_simple_2016}{Pennell, FitzJohn, and Cornwell 2016}) and \textbf{V.phylomaker} version 0.1.0 (\protect\hyperlink{ref-jin_vphylomaker_2019}{Jin and Qian 2019}) to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants (\protect\hyperlink{ref-smith_constructing_2018}{Smith and Brown 2018}; \protect\hyperlink{ref-zanne_three_2014}{Zanne et al. 2014}). We further resolved large (\(\ge4\) taxa) polytomies in 29 clades with sufficient sequence data using \textbf{PyPHLAWD} version 1.0 (\protect\hyperlink{ref-smith_pyphlawd_2019}{Smith and Walker 2019}) in Python 3.9.2 (Python Software Foundation, \url{https://www.python.org/}). We used sequence data from the most recent GenBank Plant and Fungal sequences database division (\protect\hyperlink{ref-ouellette_database_1997}{Ouellette and Boguski 1997}). We inferred subtree phylogenies using RAxML version 8.2.12 (\protect\hyperlink{ref-stamatakis_raxml_2014}{Stamatakis 2014}) and conducted molecular dating using the \texttt{chronos()} function in the R package \textbf{ape} version 5.6.2 (\protect\hyperlink{ref-paradis_ape_2019}{Paradis and Schliep 2019}) to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for \textbf{PyPHLAWD}. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the \texttt{multi2di()} function in \textbf{ape}. The final data set for which we had both trait and phylogenetic information contained 638 taxa. This phylogeny is deposited on Dryad (\protect\hyperlink{ref-muir_data_2022}{Muir et al. 2022}).
 
 \clearpage
 
@@ -602,9 +605,9 @@ Zoric et al. (\protect\hyperlink{ref-zoric_leaf_2009}{2009}) & trifolium \\
 
 \clearpage
 
-\hypertarget{references-cited-only-in-the-online-enhancements}{%
-\section*{References Cited Only in the Online Enhancements}\label{references-cited-only-in-the-online-enhancements}}
-\addcontentsline{toc}{section}{References Cited Only in the Online Enhancements}
+\hypertarget{literature-cited}{%
+\section*{Literature Cited}\label{literature-cited}}
+\addcontentsline{toc}{section}{Literature Cited}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
@@ -682,6 +685,9 @@ McKown, Athena D., Michelle Elmore Akamine, and Lawren Sack. 2016. {``Trait Conv
 
 \leavevmode\vadjust pre{\hypertarget{ref-missouri_botanical_garden_tropicos_2020}{}}%
 Missouri Botanical Garden. 2020. {``Tropicos.''} \url{https://tropicos.org}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-muir_data_2022}{}}%
+Muir, Christopher D, Miquel Àngel Conesa, Jeroni Galmés, Varsha S Pathare, Patricia Rivera, Rosana López Rodríguez, Teresa Terrazas, and Dongliang Xiong. 2022. {``Data from: {How} Important Are Functional and Developmental Constraints on Phenotypic Evolution? {An} Empirical Test with the Stomatal Anatomy of Flowering Plants.''} \url{https://doi.org/10.5061/dryad.0rxwdbs42}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-muir_unpublished_2022}{}}%
 Muir, Christopher D, Jeroni Galmés, and Miquel À Conesa. 2022. {``Unpublished Data.''}

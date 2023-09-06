@@ -2,7 +2,7 @@
 
 This repository contains source code associated with the manuscript:
 
-[How important are functional and developmental constraints on phenotypic evolution? An empirical test with the stomatal anatomy of flowering plants](https://doi.org/10.1101/2021.09.02.457988). Accepted at *The American Naturalist*.
+[How important are functional and developmental constraints on phenotypic evolution? An empirical test with the stomatal anatomy of flowering plants](https://doi.org/10.1086/723780). *The American Naturalist*. 201(6): 794-812.
 
 ## Author contributions
 

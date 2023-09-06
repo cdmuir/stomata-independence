@@ -237,7 +237,7 @@ invisible(file.copy("raw-data/plant-c-value.csv", "dryad/plant-c-value.csv",
 \end{center}
 
 \begin{table}
-\caption{\label{tab:pair_div}Final data set of `r n_pair` taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny (Notes S3). $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
+\caption{\label{tab:pair_div}Final data set of `r n_pair` taxon pairs for analysis. $\tt{tree\_node}$ is the node of the common ancestor of the taxon pair $\tt{sp1}$ and $\tt{sp2}$ in the phylogeny. $\tt{pair\_age}$ is the time in millions of years since taxa split. The remaining columns are the trait divergence (log-scale) between taxa ($\Delta \text{log(trait)}$).}
 \end{table}
 
 ```{r}
@@ -329,7 +329,7 @@ write_csv(pair_div, "dryad/phylogenetic-contrasts.csv")
 
 \clearpage
 
-## Notes S1: Theory connecting developmental function, constraint, and integration
+## Theory connecting developmental function, constraint, and integration
 
 Below we provide a conceptual background to motivate the derivation of a stomatal developmental function. We then derive predictions for how stomatal size and density should diverge with or without developmental constraint. We then explain why comparing evolutionary divergence of lower and upper stomatal anatomy provides an important additional line of evidence on the contribution of developmental integration to phenotypic macroevolution. Fig. \ref{fig:developmental-integration} is a graphical summary of our analysis.
 
@@ -507,11 +507,11 @@ We therefore take an alternative approach, leveraging the fact that stomatal tra
 
 \clearpage
 
-## Notes S2: Phylogeny
+## Phylogeny
 
 We resolved taxonomic names using the R package **taxize** version `r packageVersion("taxize")` [@chamberlain_taxize_2013]. We queried taxonomic names supplied by the original study authors on `r str_extract(file.info("processed-data/taxize_output.rds")$ctime, "^[0-9]{4}-[0-9]{2}-[0-9]{2}")` from the following sources: `r taxize_source_ref`. We retained the maximum scoring matched name with taxize score $\ge 0.75$ (a score of 1 is a perfect match). In 5 ambiguous cases we manually curated names. Taxonomic name resolution reduced the data set from `r n_tax1` to `r n_tax2` taxa. Most taxa are different species, but some recognized subspecies and varieties are also included. All algorithms and choices are documented in the associated source code.
 
-We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS-SSE3 -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducted molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa (Notes S3).
+We used the R packages **taxonlookup** version `r packageVersion("taxonlookup")` [@pennell_simple_2016] and **V.phylomaker** version `r packageVersion("V.phylomaker")` [@jin_vphylomaker_2019] to maximize overlap between our data set and the GBOTB.extended mega-tree of seed plants [@smith_constructing_2018; @zanne_three_2014]. We further resolved large ($\ge4$ taxa) polytomies in `r nrow(polytomies) - 1` clades with sufficient sequence data using **PyPHLAWD** version 1.0 [@smith_pyphlawd_2019] in `r system("python3 --version", intern = TRUE)` (Python Software Foundation, https://www.python.org/). We used sequence data from the most recent GenBank Plant and Fungal sequences database division [@ouellette_database_1997]. We inferred subtree phylogenies using `r str_extract(str_c(system("raxmlHPC-PTHREADS-SSE3 -version", intern = TRUE), collapse = ""), "RAxML version [0-9]*.[0-9]*.[0-9]*")` [@stamatakis_raxml_2014] and conducted molecular dating using the `chronos()` function in the R package **ape** version `r packageVersion("ape")` [@paradis_ape_2019] to obtain ultrametric trees. We grafted resolved, ultrametric subtrees onto the mega-tree at the polytomy nodes and rescaled to keep the mega-tree ultrametric. In some cases, resolving polytomies was not possible because there was little or no overlap between taxa in the data set and taxa with sequence data available for **PyPHLAWD**. In these cases, we randomly selected two taxa as a phylogenetially independent pair and dropped the rest. Remaining polytomies of three taxa were resolved randomly using the `multi2di()` function in **ape**. The final data set for which we had both trait and phylogenetic information contained `r n_tax3` taxa. This phylogeny is deposited on Dryad [@muir_data_2022].
 
 ```{r}
 library(ape)
@@ -533,4 +533,4 @@ stomata_anatomy_metadata |>
 
 \clearpage
 
-# References Cited Only in the Online Enhancements
+# Literature Cited
